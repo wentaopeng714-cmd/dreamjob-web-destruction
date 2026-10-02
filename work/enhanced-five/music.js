@@ -1,0 +1,42 @@
+// Five original, locally synthesized arrangements: no audio download or remote service.
+const MUSIC_THEMES={
+ 1:{title:'纸上的晴天',bpm:94,swing:.07,lead:'sine',cutoff:2600,bass:'sine',pad:'triangle',chords:[[48,52,55],[45,48,52],[41,45,48],[43,47,50]],melody:[72,null,76,79,null,76,74,null,72,null,67,69,72,null,76,null,74,null,72,69,null,67,64,null,67,69,72,null,74,null,72,null],color:'轻快钢琴 · 木质节拍'},
+ 2:{title:'未读的回声',bpm:108,swing:.025,lead:'triangle',cutoff:2100,bass:'triangle',pad:'sine',chords:[[45,48,52],[41,45,48],[48,52,55],[43,47,50]],melody:[69,null,null,72,76,null,74,null,72,null,69,null,67,69,null,null,64,null,67,69,null,72,null,74,76,null,74,null,72,69,null,null],color:'冷调合成器 · 回声'},
+ 3:{title:'复盘进行曲',bpm:114,swing:.045,lead:'triangle',cutoff:3600,bass:'sine',pad:'triangle',chords:[[50,54,57],[47,50,54],[43,47,50],[45,49,52]],melody:[74,78,null,81,78,null,76,74,null,69,71,null,74,76,null,78,81,null,78,76,74,null,71,69,null,71,74,78,76,null,74,null],color:'拨弦琶音 · 暖色律动'},
+ 4:{title:'截止时间',bpm:128,swing:0,lead:'square',cutoff:1500,bass:'sawtooth',pad:'triangle',chords:[[42,45,49],[38,42,45],[45,49,52],[40,44,47]],melody:[66,null,69,73,null,76,73,null,69,66,null,64,66,null,69,null,73,76,null,78,76,null,73,69,66,null,64,61,64,null,66,null],color:'电子脉冲 · 紧迫鼓组'},
+ 5:{title:'巨影之下',bpm:136,swing:0,lead:'sawtooth',cutoff:1400,bass:'square',pad:'sawtooth',chords:[[38,41,45],[34,38,41],[31,34,38],[33,37,40]],melody:[62,null,62,65,null,69,65,null,62,null,60,58,57,null,null,null,65,null,65,69,null,74,72,null,69,65,null,62,60,null,62,null],color:'低弦铜管 · 战斗鼓组'}
+};
+let musicEnabled=true,musicVolume=.28,musicRack=null,musicTimer=null,musicStep=0,musicNextAt=0,musicLastState='',musicWasPlaying=false,musicScheduled=0;
+try{musicEnabled=localStorage.getItem('dreamjob.music.enabled')!=='off';const v=Number(localStorage.getItem('dreamjob.music.volume'));if(localStorage.getItem('dreamjob.music.volume')!==null&&Number.isFinite(v))musicVolume=clamp(v,0,.6)}catch(e){}
+function makeMusicRack(ac,volume=.28){const output=ac.createGain(),compressor=ac.createDynamicsCompressor();compressor.threshold.value=-17;compressor.ratio.value=3;compressor.attack.value=.012;compressor.release.value=.17;compressor.connect(output);output.gain.value=volume;output.connect(ac.destination);
+ const delay=ac.createDelay(.6),feedback=ac.createGain(),wet=ac.createGain();delay.delayTime.value=.22;feedback.gain.value=.17;wet.gain.value=.16;delay.connect(feedback);feedback.connect(delay);delay.connect(wet);wet.connect(compressor);
+ const noise=ac.createBuffer(1,Math.ceil(ac.sampleRate*.28),ac.sampleRate),data=noise.getChannelData(0);let seed=87431;for(let i=0;i<data.length;i++){seed^=seed<<13;seed^=seed>>>17;seed^=seed<<5;data[i]=(seed>>>0)/2147483648-1}
+ return {ac,output,input:compressor,delay,noise,nodes:new Set(),events:0};
+}
+function musicTone(rack,midi,at,duration,volume,type='sine',cutoff=3000,echo=false){const ac=rack.ac,o=ac.createOscillator(),g=ac.createGain(),filter=ac.createBiquadFilter();o.type=type;o.frequency.value=440*2**((midi-69)/12);filter.type='lowpass';filter.frequency.setValueAtTime(cutoff,at);filter.frequency.exponentialRampToValueAtTime(Math.max(260,cutoff*.45),at+duration);g.gain.setValueAtTime(.0001,at);g.gain.linearRampToValueAtTime(volume,at+.014);g.gain.exponentialRampToValueAtTime(.0001,at+duration);o.connect(filter);filter.connect(g);g.connect(rack.input);if(echo)g.connect(rack.delay);rack.nodes.add(o);rack.events++;o.onended=()=>{rack.nodes.delete(o);o.disconnect();filter.disconnect();g.disconnect()};o.start(at);o.stop(at+duration+.02);
+}
+function musicDrum(rack,kind,at,volume){const ac=rack.ac,g=ac.createGain();g.connect(rack.input);const dur=kind==='hat'?.05:kind==='snare'?.14:.19;g.gain.setValueAtTime(Math.max(.001,volume),at);g.gain.exponentialRampToValueAtTime(.0001,at+dur);let src,filter;
+ if(kind==='kick'||kind==='tom'){src=ac.createOscillator();src.type='sine';src.frequency.setValueAtTime(kind==='kick'?145:205,at);src.frequency.exponentialRampToValueAtTime(kind==='kick'?39:79,at+dur);src.connect(g)}else{src=ac.createBufferSource();src.buffer=rack.noise;filter=ac.createBiquadFilter();filter.type=kind==='hat'?'highpass':'bandpass';filter.frequency.value=kind==='hat'?7200:1800;filter.Q.value=.65;src.connect(filter);filter.connect(g)}rack.nodes.add(src);rack.events++;src.onended=()=>{rack.nodes.delete(src);src.disconnect();filter?.disconnect();g.disconnect()};src.start(at);src.stop(at+dur+.02);
+}
+function arrangeMusicStep(rack,stage,step,at,phase=1){const t=MUSIC_THEMES[stage],beat=60/t.bpm,q=beat/4,s=step%16,bar=Math.floor(step/16),chord=t.chords[bar%4],melody=t.melody[step%t.melody.length];
+ if(s===0)for(const [i,n] of chord.entries()){musicTone(rack,n+12,at,beat*3.75,stage===5?.038:.024,t.pad,t.cutoff*.8);if(stage===5)musicTone(rack,n+12+.03,at+.014,beat*3.7,.016,'sawtooth',1100)}
+ const bassSteps=stage<=2?[0,8]:stage===3?[0,6,8,14]:stage===4?[0,3,6,8,11,14]:[0,2,6,8,10,14];if(bassSteps.includes(s))musicTone(rack,chord[0]-12+(s===14?12:0),at,beat*.65,stage===5?.16:.105,t.bass,stage===5?850:1300);
+ if(melody!==null){const dur=stage===3?beat*.38:stage<=2?beat*.95:beat*.6;musicTone(rack,melody,at,dur,stage===5?.105:stage===4?.08:.12,t.lead,t.cutoff,stage<=3);if(stage===5&&phase>=2)musicTone(rack,melody-12,at,dur,.045,'square',900)}
+ if(stage===3&&s%2===1)musicTone(rack,chord[(s>>1)%3]+24,at,beat*.22,.035,'triangle',3400);
+ if((stage===1?[0,8]:stage===2?[0,7,8]:stage===3?[0,6,8]:stage===4?[0,6,8,11]:[0,6,8,11]).includes(s))musicDrum(rack,'kick',at,stage>=4?.3:.11);
+ if([4,12].includes(s))musicDrum(rack,'snare',at,stage>=4?.095:.038);
+ if(stage>=4||s%2===0)musicDrum(rack,'hat',at,stage>=4?(s%2?.02:.035):.016);
+ if(stage===5&&phase>=2&&[10,14].includes(s))musicDrum(rack,'tom',at,.12);if(stage===5&&phase===3&&[13,15].includes(s))musicDrum(rack,'tom',at,.11);
+}
+function stopMusicNodes(){if(!musicRack)return;musicRack.output.gain.setTargetAtTime(0,musicRack.ac.currentTime,.025);for(const n of musicRack.nodes)try{n.stop(musicRack.ac.currentTime+.04)}catch(e){}musicRack.nodes.clear();musicWasPlaying=false}
+function renderMusic(state){const title=MUSIC_THEMES[level].title;const text=state||(!musicEnabled?'关闭':!started?'待启':paused||ending||settled?'暂停':audioCtx?.state==='running'?'播放':'待启');$('#music').textContent='♫ 音乐 '+text;$('#music').setAttribute('aria-pressed',String(musicEnabled));$('#music').title='第 '+level+' 关 · '+title+' · '+MUSIC_THEMES[level].color+'；独立于音效开关';$('#music-track').textContent=title;$('#music-volume').value=String(Math.round(musicVolume*100));$('#music-volume').setAttribute('aria-valuetext',Math.round(musicVolume*100)+'%');musicLastState=text}
+function musicTick(){if(!musicRack)return;const ac=musicRack.ac,playing=musicEnabled&&started&&!paused&&!ending&&!settled&&!document.hidden&&ac.state==='running';
+ if(!playing){if(musicWasPlaying)stopMusicNodes();const state=!musicEnabled?'关闭':!started?'待启':paused||ending||settled?'暂停':document.hidden?'暂停':'待启';if(musicLastState!==state)renderMusic(state);return}
+ if(!musicWasPlaying){musicNextAt=ac.currentTime+.055;musicRack.output.gain.setTargetAtTime(musicVolume,ac.currentTime,.07);musicWasPlaying=true;renderMusic('播放')}
+ const q=60/MUSIC_THEMES[level].bpm/4;while(musicNextAt<ac.currentTime+.18){arrangeMusicStep(musicRack,level,musicStep,musicNextAt,level===5&&boss?.active?boss.phase:1);musicScheduled++;musicStep++;musicNextAt+=q*(1+(musicStep%2?MUSIC_THEMES[level].swing:-MUSIC_THEMES[level].swing))}
+}
+function musicReady(){if(!audioCtx)return;if(!musicRack)musicRack=makeMusicRack(audioCtx,musicVolume);if(!musicTimer)musicTimer=setInterval(musicTick,80);musicTick()}
+function restartMusic(){stopMusicNodes();musicStep=0;musicNextAt=audioCtx?.currentTime||0;renderMusic(musicEnabled?'待启':'关闭');}
+$('#music').onclick=()=>{musicEnabled=!musicEnabled;try{localStorage.setItem('dreamjob.music.enabled',musicEnabled?'on':'off')}catch(e){}if(musicEnabled){begin();unlockAudio();musicReady()}else stopMusicNodes();renderMusic();musicTick();focusGame()};
+$('#music-volume').oninput=e=>{musicVolume=Number(e.target.value)/100;try{localStorage.setItem('dreamjob.music.volume',String(musicVolume))}catch(e){}if(musicRack&&musicWasPlaying)musicRack.output.gain.setTargetAtTime(musicVolume,audioCtx.currentTime,.035);renderMusic()};
+document.addEventListener('visibilitychange',()=>{musicTick();if(!document.hidden&&started)unlockAudio()});window.addEventListener('pagehide',()=>{clearInterval(musicTimer);stopMusicNodes()});renderMusic();

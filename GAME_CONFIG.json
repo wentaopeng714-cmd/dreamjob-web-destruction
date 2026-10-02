@@ -1,0 +1,420 @@
+{
+  "worldWidth": 1440,
+  "rewards": {
+    "glyph": 1,
+    "image": 100,
+    "button": 10,
+    "target": 60
+  },
+  "thresholds": [
+    70,
+    190,
+    360,
+    600,
+    920,
+    1320
+  ],
+  "targetFraction": 0.7,
+  "level1TargetFraction": 0.4,
+  "gun": {
+    "rate": 8,
+    "range": 640,
+    "damage": 1,
+    "speed": 1100
+  },
+  "grenade": {
+    "cooldown": 3,
+    "radius": 72,
+    "speed": 790,
+    "gravity": 520,
+    "fuse": 1.3
+  },
+  "upgrades": {
+    "A": [
+      1,
+      3,
+      5,
+      7,
+      9,
+      11,
+      14,
+      17,
+      20,
+      23,
+      26,
+      30,
+      34
+    ],
+    "B": [
+      {
+        "count": 0,
+        "range": 0
+      },
+      {
+        "count": 2,
+        "range": 140
+      },
+      {
+        "count": 3,
+        "range": 170
+      },
+      {
+        "count": 4,
+        "range": 200
+      },
+      {
+        "count": 4,
+        "range": 230
+      },
+      {
+        "count": 5,
+        "range": 260
+      },
+      {
+        "count": 6,
+        "range": 285
+      },
+      {
+        "count": 7,
+        "range": 310
+      },
+      {
+        "count": 8,
+        "range": 330
+      },
+      {
+        "count": 9,
+        "range": 350
+      },
+      {
+        "count": 10,
+        "range": 370
+      },
+      {
+        "count": 11,
+        "range": 390
+      },
+      {
+        "count": 12,
+        "range": 410
+      }
+    ],
+    "C": [
+      72,
+      90,
+      108,
+      126,
+      138,
+      150,
+      164,
+      177,
+      190,
+      205,
+      220,
+      235,
+      250
+    ],
+    "D": [
+      3,
+      2.6,
+      2.2,
+      1.8,
+      1.55,
+      1.35,
+      1.15,
+      1,
+      0.85,
+      0.75,
+      0.66,
+      0.59,
+      0.52
+    ]
+  },
+  "level2": {
+    "thresholds": [
+      90,
+      230,
+      420,
+      650,
+      930,
+      1210,
+      1510
+    ],
+    "maxLevel": 6,
+    "budget": 150,
+    "warning": 0.8,
+    "spawnInterval": 5,
+    "perSource": 3,
+    "globalCap": 3,
+    "shooterCap": 1,
+    "spawnBudget": 8,
+    "minDistance": 180,
+    "nearMargin": 160,
+    "shield": 5,
+    "invincible": 1.2,
+    "recovery": 2,
+    "grenadeDamage": 5,
+    "chaser": {
+      "hp": 3,
+      "speed": 100,
+      "jumpHeight": 55,
+      "jumpInterval": 1.2,
+      "reward": 15
+    },
+    "shooter": {
+      "hp": 5,
+      "speed": 45,
+      "interval": 3.2,
+      "range": 320,
+      "speedBullet": 190,
+      "lifeBullet": 2,
+      "reward": 25
+    },
+    "enableEnemies": true,
+    "enableShooter": true,
+    "enableShield": true,
+    "monsterSize": {
+      "width": 82,
+      "height": 52
+    }
+  },
+  "maxBullets": 220,
+  "maxSparks": 300,
+  "level3": {
+    "thresholds": [
+      100,
+      240,
+      410,
+      600,
+      800,
+      1010,
+      1220,
+      1390
+    ],
+    "maxLevel": 8,
+    "budget": 180,
+    "warning": 0.8,
+    "spawnInterval": 4.3,
+    "perSource": 3,
+    "globalCap": 4,
+    "shooterCap": 2,
+    "spawnBudget": 10,
+    "minDistance": 180,
+    "nearMargin": 160,
+    "shield": 5,
+    "invincible": 1.05,
+    "recovery": 2,
+    "grenadeDamage": 5,
+    "chaser": {
+      "hp": 5,
+      "speed": 125,
+      "jumpHeight": 60,
+      "jumpInterval": 1.2,
+      "reward": 15
+    },
+    "shooter": {
+      "hp": 8,
+      "speed": 45,
+      "interval": 2.8,
+      "range": 390,
+      "speedBullet": 225,
+      "lifeBullet": 2,
+      "reward": 25
+    },
+    "enableEnemies": true,
+    "enableShooter": true,
+    "enableShield": true,
+    "targetFraction": 0.75,
+    "monsterSize": {
+      "width": 82,
+      "height": 52
+    }
+  },
+  "level4": {
+    "thresholds": [
+      110,
+      250,
+      410,
+      580,
+      750,
+      920,
+      1080,
+      1230,
+      1390
+    ],
+    "maxLevel": 10,
+    "budget": 210,
+    "warning": 0.75,
+    "spawnInterval": 3.7,
+    "perSource": 3,
+    "globalCap": 4,
+    "shooterCap": 3,
+    "spawnBudget": 10,
+    "minDistance": 180,
+    "nearMargin": 160,
+    "shield": 4,
+    "invincible": 1,
+    "recovery": 1.8,
+    "grenadeDamage": 5,
+    "chaser": {
+      "hp": 7,
+      "speed": 150,
+      "jumpHeight": 66,
+      "jumpInterval": 1.2,
+      "reward": 15
+    },
+    "shooter": {
+      "hp": 11,
+      "speed": 45,
+      "interval": 2.25,
+      "range": 460,
+      "speedBullet": 260,
+      "lifeBullet": 2,
+      "reward": 25
+    },
+    "enableEnemies": true,
+    "enableShooter": true,
+    "enableShield": true,
+    "targetFraction": 0.8,
+    "monsterSize": {
+      "width": 82,
+      "height": 52
+    }
+  },
+  "level5": {
+    "thresholds": [
+      120,
+      260,
+      410,
+      550,
+      690,
+      840,
+      990,
+      1140,
+      1280,
+      1420
+    ],
+    "maxLevel": 12,
+    "budget": 250,
+    "warning": 0.7,
+    "spawnInterval": 3.4,
+    "perSource": 3,
+    "globalCap": 5,
+    "shooterCap": 3,
+    "spawnBudget": 12,
+    "minDistance": 180,
+    "nearMargin": 160,
+    "shield": 4,
+    "invincible": 0.95,
+    "recovery": 1.6,
+    "grenadeDamage": 5,
+    "chaser": {
+      "hp": 10,
+      "speed": 170,
+      "jumpHeight": 72,
+      "jumpInterval": 1.2,
+      "reward": 15
+    },
+    "shooter": {
+      "hp": 16,
+      "speed": 45,
+      "interval": 1.95,
+      "range": 500,
+      "speedBullet": 285,
+      "lifeBullet": 2,
+      "reward": 25
+    },
+    "enableEnemies": true,
+    "enableShooter": true,
+    "enableShield": true,
+    "targetFraction": 0.8,
+    "boss": {
+      "hp": 3600,
+      "reward": 500,
+      "healOnRecovery": 0.12,
+      "fragmentDamageMultiplier": 0.4,
+      "width": 260,
+      "height": 400,
+      "activationDistance": 720,
+      "shotCap": 32,
+      "range": 760,
+      "phases": [
+        {
+          "ratio": 0.65,
+          "fan": 5,
+          "warning": 1,
+          "cooldown": 2.5,
+          "speed": 215
+        },
+        {
+          "ratio": 0.3,
+          "fan": 7,
+          "warning": 0.85,
+          "cooldown": 2.1,
+          "speed": 240
+        },
+        {
+          "ratio": 0,
+          "fan": 9,
+          "warning": 0.65,
+          "cooldown": 1.55,
+          "speed": 285
+        }
+      ],
+      "explosionMultiplier": 3,
+      "dashSpeed": 390,
+      "dashDuration": 0.6,
+      "roamSpeed": 140,
+      "catchupSpeed": 420,
+      "roamAmplitude": 140,
+      "roamBounds": "document"
+    },
+    "monsterSize": {
+      "width": 82,
+      "height": 52
+    }
+  },
+  "advancedDamage": {
+    "gunEveryALevels": 3,
+    "grenadePerCLevel": 1.5,
+    "eraserEveryHighestLevels": 3
+  },
+  "level1MaxLevel": 4,
+  "growthMetric": "uniqueDestroyedGlyphs",
+  "music": {
+    "defaultVolume": 0.28,
+    "maxVolume": 0.6,
+    "themes": 5,
+    "source": "embedded original WebAudio composition"
+  },
+  "airMobility": {
+    "remainingGlyphRatio": 0.04,
+    "speed": 300,
+    "trigger": "allLevelsFromStart"
+  },
+  "waves": {
+    "2": [
+      3,
+      3,
+      2
+    ],
+    "3": [
+      4,
+      4,
+      4
+    ],
+    "4": [
+      4,
+      4,
+      4,
+      4
+    ],
+    "5": [
+      5,
+      5,
+      5,
+      5
+    ]
+  },
+  "linkedWeapons": "Gun A/B tier boosts grenade radius/damage/cooldown and eraser range/damage/cooldown; dedicated C/D upgrades remain available"
+}

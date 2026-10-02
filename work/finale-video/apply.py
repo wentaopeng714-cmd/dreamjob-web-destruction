@@ -1,0 +1,10 @@
+from base64 import b64encode
+finale=Path('work/finale-video')
+media='data:video/mp4;base64,'+b64encode((finale/'assets/ending.mp4').read_bytes()).decode()
+poster='data:image/jpeg;base64,'+b64encode((finale/'assets/preview.jpg').read_bytes()).decode()
+replace('<div class="clear-actions">',(finale/'ui.html').read_text()+'\n<div class="clear-actions">')
+replace('let clearNoticeShown=false,',"const FINALE_MEDIA="+json.dumps(media)+",FINALE_POSTER="+json.dumps(poster)+";\n"+(finale/'flow.js').read_text()+'\nlet clearNoticeShown=false,')
+replace('function resetClearFlow(){','function resetClearFlow(){stopFinale();')
+replace('function dismissClear(){','function dismissClear(){stopFinale();')
+replace('renderMusic()}\nfunction dismissClear', 'renderMusic();if(level===5)showFinale()}\nfunction dismissClear')
+s=s.replace('</style>',(finale/'ui.css').read_text()+'</style>',1)

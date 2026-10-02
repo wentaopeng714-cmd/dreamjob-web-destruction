@@ -1,0 +1,827 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#ffffff">
+<title>梦想直聘 · 招聘与沟通</title>
+<style>
+:root{color-scheme:light;--ink:#252525;--blue:#2e60b6;--muted:#78879d;--line:#d5dfeb}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#fff}body{font-family:Arial,"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",sans-serif;color:var(--ink);overscroll-behavior:none;touch-action:none}button{font:inherit;cursor:pointer}button:focus-visible{outline:2px solid #2e60b6;outline-offset:4px}#view{position:fixed;inset:0;overflow:hidden}#world{position:absolute;left:0;top:0;width:1440px;transform-origin:0 0;pointer-events:none;will-change:transform}#page{width:1440px;background:#fff;min-height:1620px;user-select:none}header{height:66px;border-bottom:1px solid #dce2eb;position:relative;background:#fff}.brand{position:absolute;left:42px;top:14px;font-size:24px;font-weight:700;color:var(--blue);line-height:37px}.tagline{position:absolute;left:158px;top:27px;color:var(--muted);font-size:11px;line-height:18px}.nav{position:absolute;left:300px;top:0;height:66px;display:flex;align-items:center;gap:30px;font-size:14px;color:var(--blue)}.nav .spacer{width:10px}.search{position:absolute;left:697px;top:14px;width:257px;height:37px;border:1px solid #d6dfed;background:#f6f7f9;border-radius:4px;padding:9px 14px;color:#8291a5;font-size:12px;line-height:18px}.page-body{padding:18px 32px 0 50px}.breadcrumb{font-size:12px;line-height:20px;color:#8291a5;margin-bottom:14px}h1{font-size:29px;line-height:42px;margin:0 0 3px;font-weight:700}.meta{font-size:14px;line-height:22px;color:#73849d}.blue{color:var(--blue)}.columns{display:grid;grid-template-columns:970px 346px;gap:42px;margin-top:15px}.notice{font-size:14px;line-height:24px;background:#f7f8fa;border:1px solid #d4dce9;border-left:3px solid #b1bfd5;padding:9px 12px}.notice p{margin:0;font-size:14px;line-height:24px}article h2{font-size:21px;line-height:31px;font-weight:400;margin:20px 0 8px;padding-bottom:4px;border-bottom:1px solid var(--line)}article p{font-size:16px;line-height:26px;margin:8px 0 12px;word-break:normal;overflow-wrap:anywhere}article > p{max-width:840px}article strong{font-weight:700}aside{margin-top:-63px;font-size:14px;line-height:26px}.apply{display:block;margin-left:auto;margin-right:18px;margin-bottom:24px;text-align:center;background:var(--blue);border-radius:2px;color:#fff;width:158px;height:41px;line-height:41px;font-size:14px}.company-name{font-weight:700;font-size:15px;margin:0 0 4px}.sidep{margin:0 0 3px}.small{font-size:12px;color:#7a889e;line-height:23px}.studio{display:block;width:314px;height:156px;margin-top:10px;object-fit:cover;background:#edf2f6}.caption{font-size:12px;color:#7c8ba1;line-height:24px;margin:3px 0 24px}.side-section{border-top:1px solid var(--line);padding-top:18px;margin-top:24px}.side-section h3{font-size:15px;line-height:25px;margin:0 0 5px}.side-section p{margin:0 0 6px}.side-job{margin-bottom:20px}.side-job .blue{line-height:25px}.dot{display:inline-block;width:6px;height:6px;background:#99acc6;border-radius:50%;margin-right:9px;vertical-align:middle}.fineprint{font-size:12px!important;line-height:23px!important;color:#7c8ba0}.site-footer{border-top:1px solid #dce2eb;padding:23px 50px 80px;color:#8090a5;font-size:12px;line-height:25px;margin-top:26px}.glyph{position:relative}.glyph.gone{visibility:hidden!important}.surface-gone{background:transparent!important;border-color:transparent!important}.rule-gone{border-color:transparent!important}
+#view:focus{outline:none}#fx{position:fixed;inset:0;z-index:2;pointer-events:none}#hud{position:fixed;right:34px;top:23px;z-index:5;display:flex;align-items:center;gap:12px;font-size:11px;line-height:20px;color:#748299;background:rgba(255,255,255,.9);border-radius:3px;padding:0 5px;user-select:none}#progress{color:#1f57ae;font-weight:700;font-variant-numeric:tabular-nums;min-width:29px;text-align:right}#hud button{border:0;background:none;color:#76879d;font-size:11px;padding:0 2px;line-height:20px}#hud button:hover{color:#285eae}#hud .sep{color:#a6b0bf}#finish{display:none;color:#285eae!important;font-weight:700}#controls{position:fixed;right:32px;bottom:13px;color:#7e8a9b;font-size:11px;z-index:5;background:rgba(255,255,255,.9);padding:5px 8px;border-radius:4px;line-height:20px;user-select:none;pointer-events:none}#controls .quiet{color:#a0aab8}#hint{position:fixed;left:32px;bottom:28px;z-index:6;background:rgba(255,255,255,.96);border:1px solid #d7e0ed;padding:13px 18px;max-width:370px;border-radius:4px;transition:opacity .4s,transform .4s;box-shadow:0 4px 20px rgba(36,56,80,.04)}#hint strong{font-size:14px;font-weight:500;color:#34557f;display:block;margin-bottom:6px}#hint span{font-size:12px;color:#8491a3;line-height:20px}#hint.dismissed{opacity:0;transform:translateY(8px);pointer-events:none}#toast{position:fixed;left:50%;bottom:58px;transform:translate(-50%,8px);font-size:13px;color:#667b96;background:rgba(255,255,255,.95);border:1px solid #e2e8f0;border-radius:3px;padding:9px 15px;opacity:0;z-index:7;pointer-events:none;transition:.2s;max-width:90vw;text-align:center}#toast.show{opacity:1;transform:translate(-50%,0)}#track{position:fixed;right:3px;top:75px;bottom:62px;width:5px;z-index:5;cursor:ns-resize;touch-action:none}#thumb{position:absolute;left:0;right:0;top:0;border-radius:5px;background:#c7ccd4;min-height:30px}#return{position:fixed;left:50%;top:75px;transform:translateX(-50%);display:none;z-index:5;border:1px solid #d9e2ec;color:#6c8099;background:rgba(255,255,255,.96);font-size:12px;border-radius:20px;padding:6px 15px}#ending{position:fixed;inset:0;background:rgba(255,255,255,.98);z-index:20;display:flex;justify-content:center;align-items:center;flex-direction:column;text-align:center;opacity:0;visibility:hidden;transition:opacity 1.6s,visibility 1.6s;padding:24px}#ending.visible{opacity:1;visibility:visible}#ending .eyebrow{font-size:11px;letter-spacing:.16em;color:#90a1b7;margin-bottom:24px}#ending h2{font-size:clamp(24px,3vw,36px);font-weight:500;line-height:1.8;margin:0;color:#344d6f}#ending p{font-size:15px;line-height:2.1;color:#7c899b;margin:24px 0 0}#ending .summary{font-size:12px;color:#98a4b5;margin:28px 0 22px;font-variant-numeric:tabular-nums}#ending button{border:1px solid #d8e2ee;color:#4b6a92;background:white;padding:10px 19px;border-radius:3px;font-size:13px;margin:0 4px}#ending .subtle{border-color:transparent;color:#90a0b5}#ending svg{margin-bottom:28px}#mobile{display:none;position:fixed;bottom:22px;left:18px;right:18px;z-index:10;pointer-events:none;justify-content:space-between;align-items:flex-end;gap:10px}#mobile .group{display:flex;gap:9px;align-items:flex-end}#mobile button{width:46px;height:46px;border-radius:50%;border:1px solid #c4d1e1;background:rgba(255,255,255,.76);color:#6682a8;pointer-events:auto;font-size:20px;touch-action:none;user-select:none}#mobile button[data-action="fire"]{width:58px;height:58px;font-size:14px}#mobile button.down{background:#e9f0fb;border-color:#7e9fc9}#mobile .drop{width:35px;height:35px;font-size:15px}#mobile button[data-action="jump"]{font-size:14px}#paused{position:fixed;inset:0;display:none;place-items:center;z-index:15;background:rgba(255,255,255,.72);backdrop-filter:blur(2px)}#paused button{background:#fff;color:#41648f;border:1px solid #d3deec;border-radius:4px;padding:16px 25px;font-size:14px}
+@media(pointer:coarse){#mobile{display:flex}#controls{display:none}#hud{top:10px;right:10px;font-size:10px;gap:8px}#hud button{font-size:10px}#hint{left:16px;bottom:100px;max-width:305px}#toast{bottom:99px}#track{bottom:100px}#return{top:42px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}#ending{transition:opacity .25s,visibility .25s}}
+
+.apply.surface-gone .glyph{color:#2e60b6}
+#growth-hud{position:fixed;right:34px;top:49px;z-index:5;text-align:right;font-size:11px;line-height:20px;color:#647995;background:#ffffffed;padding:4px 8px;border-radius:3px;max-width:calc(100vw - 24px)}
+#growth-hud button,#level-actions button{border:1px solid #cedbe9;color:#2e60b6;background:#fff;border-radius:3px;padding:4px 9px;font-size:12px}#build{color:#2e60b6}#upgrade{position:fixed;right:24px;bottom:65px;width:310px;max-width:calc(100vw - 32px);z-index:18;padding:14px;background:#fffffff7;border:1px solid #c8d6e6;border-radius:5px;box-shadow:0 5px 25px #2e466519}#upgrade h3{font-size:14px;color:#34557f;margin:0 0 10px;font-weight:500}#choices{display:grid;gap:7px}#choices button{background:#fff;border:1px solid #d5dfeb;border-radius:3px;padding:10px;text-align:left;color:#34557f}#choices button:hover{background:#f0f5fc}#choices strong{font-size:13px}#choices span{display:block;font-size:11px;line-height:1.6;margin-top:4px;color:#6d8098}#level-actions{margin-top:4px}#upgrade[hidden],#level-actions[hidden],#pending[hidden]{display:none}#growth-note{color:#94a0b0;font-size:10px}@media(pointer:coarse){#growth-hud{top:35px;right:10px}#upgrade{bottom:95px;right:16px}} 
+.chat-msg{margin:26px 0 34px;max-width:860px}.chat-msg.mine{margin-left:90px;max-width:750px}.chat-msg p{margin:6px 0 8px}.source-msg{margin-top:40px;margin-bottom:40px}#shield{color:#547599;display:inline;margin-left:8px}#build{display:inline}#resume-level[hidden],#skip-upgrades[hidden],#next-level[hidden]{display:none}
+#level-select{font:inherit;color:#2e60b6;border:1px solid #cedbe9;background:white;border-radius:3px;padding:3px}#switch-note{font-size:10px;color:#8291a5}#mission-rule{margin:3px 0;color:#34557f}#goals .goal-row{display:flex;gap:9px;align-items:center;justify-content:flex-end}#goals button{font-size:11px;padding:1px 6px;margin:2px 0}#goals button:disabled{color:#9ca9b9;border-color:#e4eaf1;cursor:default}#goal-detail{max-width:255px;font-size:11px;text-align:left;color:#47668b;line-height:1.6;margin:5px 0 3px auto}#goal-detail:empty{display:none}@media(max-width:600px){#hud{right:10px;gap:5px}#growth-hud{right:10px}#controls{font-size:9px;right:5px}#growth-hud{font-size:10px;line-height:17px}}
+/* Level 2 uses its own messaging interface; all rules are scoped to level-two. */
+.level-two{--ink:#2c3732;--blue:#39664e;--muted:#7a837a;--line:#d9dfd5;background:#e8ebe3;color:var(--ink)}
+.level-two #page{background:#f2f3ec;min-height:1800px}
+.level-two header{height:76px;background:#274a39;border:0;color:#eff4e9}
+.level-two .brand{left:30px;top:18px;color:#f2f6ec;font-size:22px;line-height:36px;letter-spacing:1px}
+.level-two .brand-divider{font-weight:400;color:#94b49f;margin:0 12px}.level-two .brand-channel{font-size:17px;font-weight:400}
+.level-two .nav{left:330px;height:76px;color:#d6e1d5;font-size:13px;gap:30px}.level-two .account{position:absolute;right:35px;top:27px;color:#c2d4c4;font-size:12px;line-height:23px}
+.level-two .message-workspace{display:grid;grid-template-columns:228px 830px 258px;gap:28px;padding:28px 34px 0 34px;align-items:start}
+.level-two .inbox{background:#e5eade;min-height:920px;padding:22px 18px;border-radius:5px;color:#59675a;font-size:13px;line-height:23px}
+.level-two .inbox-title{font-size:20px;font-weight:600;color:#304e3a;margin-bottom:18px}.level-two .inbox-count{float:right;color:#889d85;font-size:12px;font-weight:400;line-height:30px}
+.level-two .inbox-search{background:#f7f8f3;border:1px solid #ced7c8;color:#8b9686;border-radius:4px;padding:9px 10px;font-size:11px;line-height:18px;margin-bottom:20px}
+.level-two .conversation{margin:0 -9px;padding:17px 9px;border-radius:4px}.level-two .conversation.active{background:#d1ddc8}.level-two .conversation-company{font-size:14px;font-weight:600;color:#36503c}.level-two .conversation-time{float:right;font-size:10px;color:#71866d;font-weight:400}.level-two .conversation p{margin:4px 0;font-size:12px;line-height:22px}.level-two .conversation .small{font-size:11px;color:#7b8875}.level-two .conversation-status{font-size:10px;color:#5d7655;margin-top:7px}.level-two .inbox-tip{margin-top:34px;color:#8c9985;font-size:11px;line-height:22px}
+.level-two .chat-main{min-width:0;padding:0 12px 0 0}.level-two .conversation-heading{border-bottom:1px solid #d8ded3;padding:5px 0 21px;margin-bottom:20px}.level-two .breadcrumb{font-size:11px;color:#8b9587;line-height:19px;margin-bottom:7px}.level-two h1{font-size:24px;color:#304b38;font-weight:600;line-height:35px;margin:0 0 6px}.level-two .chat-heading-caption{font-weight:400;font-size:14px;color:#7b8975;margin-left:14px}.level-two .meta{font-size:12px;line-height:22px;color:#7a8973}.level-two .meta .blue{float:right;font-size:11px}
+.level-two article{padding:0 0 0 10px}.level-two .notice{background:transparent;border:0;padding:0 0 10px;color:#8b9286}.level-two .notice p{font-size:11px;line-height:20px;margin:0}
+.level-two article h2{font-size:11px;font-weight:400;line-height:22px;text-align:center;color:#889282;letter-spacing:1px;border:0;padding:0;margin:20px 0 28px}
+.level-two .chat-msg{max-width:680px;width:fit-content;margin:22px 0 30px;padding:13px 18px 15px;background:#fffef9;border-radius:2px 10px 10px 10px;box-shadow:0 1px 0 #dee3d7}
+.level-two .chat-msg.mine{max-width:630px;margin-left:auto;background:#dce7cc;border-radius:10px 2px 10px 10px;color:#3d4e35}
+.level-two .chat-msg .small{font-size:11px;color:#8b9583;line-height:20px}.level-two .chat-msg.mine>.small{text-align:right;color:#73886b}.level-two .chat-msg p{font-size:15px;line-height:27px;margin:7px 0 0;max-width:644px;overflow-wrap:anywhere}
+.level-two .chat-msg p.small{font-size:11px;line-height:20px;color:#99a08f;margin-top:10px}.level-two .source-msg{margin-top:35px;margin-bottom:35px}.level-two .source-msg strong{font-weight:600;color:#7b5540}.level-two .blue{color:#4f7951;text-decoration:underline;text-decoration-color:#bdd0b5;text-underline-offset:3px}
+.level-two .chat-msg.text-empty{background:transparent;box-shadow:none}
+.level-two article>p{font-size:13px;line-height:25px;color:#7e8b76;margin-left:18px;margin-right:18px}.level-two .fineprint{color:#9aa18e!important;font-size:10px!important}
+.level-two aside{margin:0;background:#edf0e5;border-radius:5px;padding:20px 18px;color:#697460;font-size:12px;line-height:23px}.level-two .context-title{font-size:11px;letter-spacing:2px;color:#879a7d;margin-bottom:24px}.level-two .company-name{font-size:18px;color:#3b553b;margin:20px 0 8px}.level-two .apply{margin:0;width:100%;height:36px;line-height:36px;font-size:12px;background:#5b7650;border-radius:4px;color:#f8faef}
+.level-two .sidep{font-size:12px;line-height:23px;margin-bottom:5px}.level-two .sidep.small{font-size:11px;color:#8a947f}.level-two .studio{width:222px;height:110px;margin-top:20px;border-radius:3px}.level-two .caption{font-size:10px;color:#8f9b83;margin-bottom:12px}.level-two .side-section{border-color:#d3ddc8;padding-top:17px;margin-top:19px}.level-two .side-section h3{font-size:13px;color:#526748;line-height:22px;margin-bottom:8px}.level-two .side-section p{font-size:12px;line-height:23px}.level-two .side-section p.small{font-size:11px;color:#8c987f}.level-two .dot{background:#7d9c6c}.level-two .side-job .blue{font-size:12px;line-height:22px}.level-two .side-job .small{font-size:11px;color:#8d997f}
+.level-two .site-footer{border-color:#d9dfd0;margin-top:30px;padding:22px 18px 100px;font-size:10px;line-height:23px;color:#98a18b}
+.level-two #hud{background:#274a39ef;color:#d7e4ce;top:26px}.level-two #hud button{color:#d7e4ce}.level-two #progress{color:#e3eecc}.level-two #hud .sep{color:#829a7d}
+.level-two #growth-hud{top:auto;bottom:69px;background:#fafbf1f2;color:#718261;border:1px solid #d5dfc8;max-width:280px;padding:10px 12px}.level-two #level-select,.level-two #growth-hud button{color:#4c7044;border-color:#c7d5b9;background:#fffff7}.level-two #build,.level-two #mission-rule{color:#4b6c42}.level-two #shield{color:#70805b}.level-two #switch-note,.level-two #goal-detail{color:#839372}
+.level-two #hint{background:#f9fbf0f5;border-color:#d1debf}.level-two #hint strong{color:#4d6940}.level-two #hint span{color:#849575}.level-two #controls{color:#849276;background:#f3f6eae8}.level-two #controls .quiet{color:#99a38a}
+.level-two #upgrade{background:#fafcf2;border-color:#c5d6b2}.level-two #upgrade h3,.level-two #choices button{color:#456537}.level-two #choices button{background:#fffef7;border-color:#d2dfc1}.level-two #choices span{color:#80956f}.level-two #choices button:hover{background:#eaf1de}.level-two #toast{color:#638353;background:#f7faee;border-color:#d4e0c7}.level-two #thumb{background:#91a384}
+.level-two #ending{background:#f3f6eafc}.level-two #ending h2{color:#4d6940}.level-two #ending p{color:#87957a}.level-two #ending button{color:#5c794e;border-color:#d1ddc1;background:#fcfff4}
+.level-two .apply.surface-gone .glyph{color:#4f7951}
+@media(pointer:coarse){.level-two #growth-hud{bottom:100px;right:10px;max-width:260px}.level-two #hud{top:12px}.level-two #hint{bottom:100px}}
+/* Level 2 uses its own messaging interface; all rules are scoped to level-two. */
+.level-3{--ink:#37362c;--blue:#665d39;--muted:#837d7a;--line:#dfd5d6;background:#ebe3e5;color:var(--ink)}
+.level-3 #page{background:#f3ecf0;min-height:1800px}
+.level-3 header{height:76px;background:#4a4527;border:0;color:#f4e9eb}
+.level-3 .brand{left:30px;top:18px;color:#f6ecef;font-size:22px;line-height:36px;letter-spacing:1px}
+.level-3 .brand-divider{font-weight:400;color:#b4aa94;margin:0 12px}.level-3 .brand-channel{font-size:17px;font-weight:400}
+.level-3 .nav{left:330px;height:76px;color:#e1d8d5;font-size:13px;gap:30px}.level-3 .account{position:absolute;right:35px;top:27px;color:#d4cac2;font-size:12px;line-height:23px}
+.level-3 .message-workspace{display:grid;grid-template-columns:228px 830px 258px;gap:28px;padding:28px 34px 0 34px;align-items:start}
+.level-3 .inbox{background:#eadee1;min-height:920px;padding:22px 18px;border-radius:5px;color:#675f59;font-size:13px;line-height:23px}
+.level-3 .inbox-title{font-size:20px;font-weight:600;color:#4e4430;margin-bottom:18px}.level-3 .inbox-count{float:right;color:#9d8a85;font-size:12px;font-weight:400;line-height:30px}
+.level-3 .inbox-search{background:#f8f3f5;border:1px solid #d7c8c9;color:#968686;border-radius:4px;padding:9px 10px;font-size:11px;line-height:18px;margin-bottom:20px}
+.level-3 .conversation{margin:0 -9px;padding:17px 9px;border-radius:4px}.level-3 .conversation.active{background:#ddc8ca}.level-3 .conversation-company{font-size:14px;font-weight:600;color:#504536}.level-3 .conversation-time{float:right;font-size:10px;color:#86716d;font-weight:400}.level-3 .conversation p{margin:4px 0;font-size:12px;line-height:22px}.level-3 .conversation .small{font-size:11px;color:#887575}.level-3 .conversation-status{font-size:10px;color:#765855;margin-top:7px}.level-3 .inbox-tip{margin-top:34px;color:#998585;font-size:11px;line-height:22px}
+.level-3 .chat-main{min-width:0;padding:0 12px 0 0}.level-3 .conversation-heading{border-bottom:1px solid #ded3d4;padding:5px 0 21px;margin-bottom:20px}.level-3 .breadcrumb{font-size:11px;color:#958887;line-height:19px;margin-bottom:7px}.level-3 h1{font-size:24px;color:#4b4130;font-weight:600;line-height:35px;margin:0 0 6px}.level-3 .chat-heading-caption{font-weight:400;font-size:14px;color:#897675;margin-left:14px}.level-3 .meta{font-size:12px;line-height:22px;color:#897373}.level-3 .meta .blue{float:right;font-size:11px}
+.level-3 article{padding:0 0 0 10px}.level-3 .notice{background:transparent;border:0;padding:0 0 10px;color:#928687}.level-3 .notice p{font-size:11px;line-height:20px;margin:0}
+.level-3 article h2{font-size:11px;font-weight:400;line-height:22px;text-align:center;color:#928283;letter-spacing:1px;border:0;padding:0;margin:20px 0 28px}
+.level-3 .chat-msg{max-width:680px;width:fit-content;margin:22px 0 30px;padding:13px 18px 15px;background:#fff9fe;border-radius:2px 10px 10px 10px;box-shadow:0 1px 0 #e3d7da}
+.level-3 .chat-msg.mine{max-width:630px;margin-left:auto;background:#e7ccd3;border-radius:10px 2px 10px 10px;color:#4e3535}
+.level-3 .chat-msg .small{font-size:11px;color:#958385;line-height:20px}.level-3 .chat-msg.mine>.small{text-align:right;color:#886d6b}.level-3 .chat-msg p{font-size:15px;line-height:27px;margin:7px 0 0;max-width:644px;overflow-wrap:anywhere}
+.level-3 .chat-msg p.small{font-size:11px;line-height:20px;color:#a08f93;margin-top:10px}.level-3 .source-msg{margin-top:35px;margin-bottom:35px}.level-3 .source-msg strong{font-weight:600;color:#69407b}.level-3 .blue{color:#795f4f;text-decoration:underline;text-decoration-color:#d0b6b5;text-underline-offset:3px}
+.level-3 .chat-msg.text-empty{background:transparent;box-shadow:none}
+.level-3 article>p{font-size:13px;line-height:25px;color:#8b7677;margin-left:18px;margin-right:18px}.level-3 .fineprint{color:#a18e94!important;font-size:10px!important}
+.level-3 aside{margin:0;background:#f0e5e9;border-radius:5px;padding:20px 18px;color:#746062;font-size:12px;line-height:23px}.level-3 .context-title{font-size:11px;letter-spacing:2px;color:#9a7d7d;margin-bottom:24px}.level-3 .company-name{font-size:18px;color:#55443b;margin:20px 0 8px}.level-3 .apply{margin:0;width:100%;height:36px;line-height:36px;font-size:12px;background:#765250;border-radius:4px;color:#faeff4}
+.level-3 .sidep{font-size:12px;line-height:23px;margin-bottom:5px}.level-3 .sidep.small{font-size:11px;color:#947f83}.level-3 .studio{width:222px;height:110px;margin-top:20px;border-radius:3px}.level-3 .caption{font-size:10px;color:#9b8387;margin-bottom:12px}.level-3 .side-section{border-color:#ddc8cc;padding-top:17px;margin-top:19px}.level-3 .side-section h3{font-size:13px;color:#674848;line-height:22px;margin-bottom:8px}.level-3 .side-section p{font-size:12px;line-height:23px}.level-3 .side-section p.small{font-size:11px;color:#987f84}.level-3 .dot{background:#9c6c6d}.level-3 .side-job .blue{font-size:12px;line-height:22px}.level-3 .side-job .small{font-size:11px;color:#997f84}
+.level-3 .site-footer{border-color:#dfd0d4;margin-top:30px;padding:22px 18px 100px;font-size:10px;line-height:23px;color:#a18b91}
+.level-3 #hud{background:#4a4527ef;color:#e4ced0;top:26px}.level-3 #hud button{color:#e4ced0}.level-3 #progress{color:#eeccd8}.level-3 #hud .sep{color:#9a827d}
+.level-3 #growth-hud{top:auto;bottom:69px;background:#fbf1f7f2;color:#826166;border:1px solid #dfc8cd;max-width:280px;padding:10px 12px}.level-3 #level-select,.level-3 #growth-hud button{color:#704b44;border-color:#d5b9be;background:#fff7fc}.level-3 #build,.level-3 #mission-rule{color:#6c4742}.level-3 #shield{color:#805b64}.level-3 #switch-note,.level-3 #goal-detail{color:#937278}
+.level-3 #hint{background:#fbf0f5f5;border-color:#debfc7}.level-3 #hint strong{color:#694140}.level-3 #hint span{color:#957579}.level-3 #controls{color:#92767b;background:#f6eaefe8}.level-3 #controls .quiet{color:#a38a91}
+.level-3 #upgrade{background:#fcf2f7;border-color:#d6b2b9}.level-3 #upgrade h3,.level-3 #choices button{color:#653837}.level-3 #choices button{background:#fff7fd;border-color:#dfc1c8}.level-3 #choices span{color:#956f73}.level-3 #choices button:hover{background:#f1dee4}.level-3 #toast{color:#835353;background:#faeef3;border-color:#e0c7cc}.level-3 #thumb{background:#a38487}
+.level-3 #ending{background:#f6eaeffc}.level-3 #ending h2{color:#694140}.level-3 #ending p{color:#957a7e}.level-3 #ending button{color:#794e4e;border-color:#ddc1c8;background:#fff4f8}
+.level-3 .apply.surface-gone .glyph{color:#795f4f}
+@media(pointer:coarse){.level-3 #growth-hud{bottom:100px;right:10px;max-width:260px}.level-3 #hud{top:12px}.level-3 #hint{bottom:100px}}
+
+.level-3 #page{background:#f6f0e6}.level-3 header,.level-3 #hud{background:#66492e}
+/* Level 2 uses its own messaging interface; all rules are scoped to level-two. */
+.level-4{--ink:#372c37;--blue:#613966;--muted:#7e7a83;--line:#d5d5df;background:#e3e5eb;color:var(--ink)}
+.level-4 #page{background:#eceff3;min-height:1800px}
+.level-4 header{height:76px;background:#48274a;border:0;color:#e9eaf4}
+.level-4 .brand{left:30px;top:18px;color:#eceef6;font-size:22px;line-height:36px;letter-spacing:1px}
+.level-4 .brand-divider{font-weight:400;color:#ac94b4;margin:0 12px}.level-4 .brand-channel{font-size:17px;font-weight:400}
+.level-4 .nav{left:330px;height:76px;color:#d9d5e1;font-size:13px;gap:30px}.level-4 .account{position:absolute;right:35px;top:27px;color:#ccc2d4;font-size:12px;line-height:23px}
+.level-4 .message-workspace{display:grid;grid-template-columns:228px 830px 258px;gap:28px;padding:28px 34px 0 34px;align-items:start}
+.level-4 .inbox{background:#dee0ea;min-height:920px;padding:22px 18px;border-radius:5px;color:#605967;font-size:13px;line-height:23px}
+.level-4 .inbox-title{font-size:20px;font-weight:600;color:#46304e;margin-bottom:18px}.level-4 .inbox-count{float:right;color:#8c859d;font-size:12px;font-weight:400;line-height:30px}
+.level-4 .inbox-search{background:#f3f5f8;border:1px solid #c8c8d7;color:#888696;border-radius:4px;padding:9px 10px;font-size:11px;line-height:18px;margin-bottom:20px}
+.level-4 .conversation{margin:0 -9px;padding:17px 9px;border-radius:4px}.level-4 .conversation.active{background:#c8c8dd}.level-4 .conversation-company{font-size:14px;font-weight:600;color:#473650}.level-4 .conversation-time{float:right;font-size:10px;color:#736d86;font-weight:400}.level-4 .conversation p{margin:4px 0;font-size:12px;line-height:22px}.level-4 .conversation .small{font-size:11px;color:#777588}.level-4 .conversation-status{font-size:10px;color:#5b5576;margin-top:7px}.level-4 .inbox-tip{margin-top:34px;color:#868599;font-size:11px;line-height:22px}
+.level-4 .chat-main{min-width:0;padding:0 12px 0 0}.level-4 .conversation-heading{border-bottom:1px solid #d3d3de;padding:5px 0 21px;margin-bottom:20px}.level-4 .breadcrumb{font-size:11px;color:#898795;line-height:19px;margin-bottom:7px}.level-4 h1{font-size:24px;color:#43304b;font-weight:600;line-height:35px;margin:0 0 6px}.level-4 .chat-heading-caption{font-weight:400;font-size:14px;color:#777589;margin-left:14px}.level-4 .meta{font-size:12px;line-height:22px;color:#757389}.level-4 .meta .blue{float:right;font-size:11px}
+.level-4 article{padding:0 0 0 10px}.level-4 .notice{background:transparent;border:0;padding:0 0 10px;color:#868692}.level-4 .notice p{font-size:11px;line-height:20px;margin:0}
+.level-4 article h2{font-size:11px;font-weight:400;line-height:22px;text-align:center;color:#838292;letter-spacing:1px;border:0;padding:0;margin:20px 0 28px}
+.level-4 .chat-msg{max-width:680px;width:fit-content;margin:22px 0 30px;padding:13px 18px 15px;background:#f9feff;border-radius:2px 10px 10px 10px;box-shadow:0 1px 0 #d7d9e3}
+.level-4 .chat-msg.mine{max-width:630px;margin-left:auto;background:#ccd1e7;border-radius:10px 2px 10px 10px;color:#37354e}
+.level-4 .chat-msg .small{font-size:11px;color:#838395;line-height:20px}.level-4 .chat-msg.mine>.small{text-align:right;color:#6f6b88}.level-4 .chat-msg p{font-size:15px;line-height:27px;margin:7px 0 0;max-width:644px;overflow-wrap:anywhere}
+.level-4 .chat-msg p.small{font-size:11px;line-height:20px;color:#8f92a0;margin-top:10px}.level-4 .source-msg{margin-top:35px;margin-bottom:35px}.level-4 .source-msg strong{font-weight:600;color:#407b6e}.level-4 .blue{color:#624f79;text-decoration:underline;text-decoration-color:#b8b5d0;text-underline-offset:3px}
+.level-4 .chat-msg.text-empty{background:transparent;box-shadow:none}
+.level-4 article>p{font-size:13px;line-height:25px;color:#77768b;margin-left:18px;margin-right:18px}.level-4 .fineprint{color:#8e92a1!important;font-size:10px!important}
+.level-4 aside{margin:0;background:#e5e8f0;border-radius:5px;padding:20px 18px;color:#606174;font-size:12px;line-height:23px}.level-4 .context-title{font-size:11px;letter-spacing:2px;color:#7f7d9a;margin-bottom:24px}.level-4 .company-name{font-size:18px;color:#463b55;margin:20px 0 8px}.level-4 .apply{margin:0;width:100%;height:36px;line-height:36px;font-size:12px;background:#555076;border-radius:4px;color:#eff3fa}
+.level-4 .sidep{font-size:12px;line-height:23px;margin-bottom:5px}.level-4 .sidep.small{font-size:11px;color:#7f8194}.level-4 .studio{width:222px;height:110px;margin-top:20px;border-radius:3px}.level-4 .caption{font-size:10px;color:#83859b;margin-bottom:12px}.level-4 .side-section{border-color:#c8cadd;padding-top:17px;margin-top:19px}.level-4 .side-section h3{font-size:13px;color:#4b4867;line-height:22px;margin-bottom:8px}.level-4 .side-section p{font-size:12px;line-height:23px}.level-4 .side-section p.small{font-size:11px;color:#7f8298}.level-4 .dot{background:#6f6c9c}.level-4 .side-job .blue{font-size:12px;line-height:22px}.level-4 .side-job .small{font-size:11px;color:#7f8299}
+.level-4 .site-footer{border-color:#d0d3df;margin-top:30px;padding:22px 18px 100px;font-size:10px;line-height:23px;color:#8b8fa1}
+.level-4 #hud{background:#48274aef;color:#cecee4;top:26px}.level-4 #hud button{color:#cecee4}.level-4 #progress{color:#ccd5ee}.level-4 #hud .sep{color:#847d9a}
+.level-4 #growth-hud{top:auto;bottom:69px;background:#f1f6fbf2;color:#616382;border:1px solid #c8cbdf;max-width:280px;padding:10px 12px}.level-4 #level-select,.level-4 #growth-hud button{color:#4e4470;border-color:#b9bbd5;background:#f7fcff}.level-4 #build,.level-4 #mission-rule{color:#4a426c}.level-4 #shield{color:#5b6180}.level-4 #switch-note,.level-4 #goal-detail{color:#727593}
+.level-4 #hint{background:#f0f4fbf5;border-color:#bfc4de}.level-4 #hint strong{color:#444069}.level-4 #hint span{color:#757795}.level-4 #controls{color:#767892;background:#eaeef6e8}.level-4 #controls .quiet{color:#8a8fa3}
+.level-4 #upgrade{background:#f2f6fc;border-color:#b2b6d6}.level-4 #upgrade h3,.level-4 #choices button{color:#3c3765}.level-4 #choices button{background:#f7fdff;border-color:#c1c5df}.level-4 #choices span{color:#6f7095}.level-4 #choices button:hover{background:#dee2f1}.level-4 #toast{color:#575383;background:#eef2fa;border-color:#c7cae0}.level-4 #thumb{background:#8484a3}
+.level-4 #ending{background:#eaeef6fc}.level-4 #ending h2{color:#444069}.level-4 #ending p{color:#7a7c95}.level-4 #ending button{color:#524e79;border-color:#c1c5dd;background:#f4f7ff}
+.level-4 .apply.surface-gone .glyph{color:#624f79}
+@media(pointer:coarse){.level-4 #growth-hud{bottom:100px;right:10px;max-width:260px}.level-4 #hud{top:12px}.level-4 #hint{bottom:100px}}
+
+.level-4 #page{background:#f0edf7}.level-4 header,.level-4 #hud{background:#473457}
+/* Level 2 uses its own messaging interface; all rules are scoped to level-two. */
+.level-5{--ink:#372d2c;--blue:#663939;--muted:#837a7e;--line:#dfd5de;background:#eae3eb;color:var(--ink)}
+.level-5 #page{background:#f1ecf3;min-height:1800px}
+.level-5 header{height:76px;background:#4a2927;border:0;color:#f4e9f4}
+.level-5 .brand{left:30px;top:18px;color:#f5ecf6;font-size:22px;line-height:36px;letter-spacing:1px}
+.level-5 .brand-divider{font-weight:400;color:#b49498;margin:0 12px}.level-5 .brand-channel{font-size:17px;font-weight:400}
+.level-5 .nav{left:330px;height:76px;color:#e1d5dc;font-size:13px;gap:30px}.level-5 .account{position:absolute;right:35px;top:27px;color:#d4c2c8;font-size:12px;line-height:23px}
+.level-5 .message-workspace{display:grid;grid-template-columns:228px 830px 258px;gap:28px;padding:28px 34px 0 34px;align-items:start}
+.level-5 .inbox{background:#e9deea;min-height:920px;padding:22px 18px;border-radius:5px;color:#67595f;font-size:13px;line-height:23px}
+.level-5 .inbox-title{font-size:20px;font-weight:600;color:#4e3034;margin-bottom:18px}.level-5 .inbox-count{float:right;color:#9d8593;font-size:12px;font-weight:400;line-height:30px}
+.level-5 .inbox-search{background:#f7f3f8;border:1px solid #d7c8d5;color:#968692;border-radius:4px;padding:9px 10px;font-size:11px;line-height:18px;margin-bottom:20px}
+.level-5 .conversation{margin:0 -9px;padding:17px 9px;border-radius:4px}.level-5 .conversation.active{background:#ddc8db}.level-5 .conversation-company{font-size:14px;font-weight:600;color:#50363c}.level-5 .conversation-time{float:right;font-size:10px;color:#866d7d;font-weight:400}.level-5 .conversation p{margin:4px 0;font-size:12px;line-height:22px}.level-5 .conversation .small{font-size:11px;color:#887584}.level-5 .conversation-status{font-size:10px;color:#76556c;margin-top:7px}.level-5 .inbox-tip{margin-top:34px;color:#998595;font-size:11px;line-height:22px}
+.level-5 .chat-main{min-width:0;padding:0 12px 0 0}.level-5 .conversation-heading{border-bottom:1px solid #ded3dd;padding:5px 0 21px;margin-bottom:20px}.level-5 .breadcrumb{font-size:11px;color:#958792;line-height:19px;margin-bottom:7px}.level-5 h1{font-size:24px;color:#4b3035;font-weight:600;line-height:35px;margin:0 0 6px}.level-5 .chat-heading-caption{font-weight:400;font-size:14px;color:#897584;margin-left:14px}.level-5 .meta{font-size:12px;line-height:22px;color:#897384}.level-5 .meta .blue{float:right;font-size:11px}
+.level-5 article{padding:0 0 0 10px}.level-5 .notice{background:transparent;border:0;padding:0 0 10px;color:#928691}.level-5 .notice p{font-size:11px;line-height:20px;margin:0}
+.level-5 article h2{font-size:11px;font-weight:400;line-height:22px;text-align:center;color:#92828f;letter-spacing:1px;border:0;padding:0;margin:20px 0 28px}
+.level-5 .chat-msg{max-width:680px;width:fit-content;margin:22px 0 30px;padding:13px 18px 15px;background:#fbf9ff;border-radius:2px 10px 10px 10px;box-shadow:0 1px 0 #e2d7e3}
+.level-5 .chat-msg.mine{max-width:630px;margin-left:auto;background:#e5cce7;border-radius:10px 2px 10px 10px;color:#4e3549}
+.level-5 .chat-msg .small{font-size:11px;color:#958393;line-height:20px}.level-5 .chat-msg.mine>.small{text-align:right;color:#886b81}.level-5 .chat-msg p{font-size:15px;line-height:27px;margin:7px 0 0;max-width:644px;overflow-wrap:anywhere}
+.level-5 .chat-msg p.small{font-size:11px;line-height:20px;color:#9f8fa0;margin-top:10px}.level-5 .source-msg{margin-top:35px;margin-bottom:35px}.level-5 .source-msg strong{font-weight:600;color:#40477b}.level-5 .blue{color:#794f61;text-decoration:underline;text-decoration-color:#d0b5ca;text-underline-offset:3px}
+.level-5 .chat-msg.text-empty{background:transparent;box-shadow:none}
+.level-5 article>p{font-size:13px;line-height:25px;color:#8b7688;margin-left:18px;margin-right:18px}.level-5 .fineprint{color:#9f8ea1!important;font-size:10px!important}
+.level-5 aside{margin:0;background:#eee5f0;border-radius:5px;padding:20px 18px;color:#746072;font-size:12px;line-height:23px}.level-5 .context-title{font-size:11px;letter-spacing:2px;color:#9a7d95;margin-bottom:24px}.level-5 .company-name{font-size:18px;color:#553b47;margin:20px 0 8px}.level-5 .apply{margin:0;width:100%;height:36px;line-height:36px;font-size:12px;background:#76506d;border-radius:4px;color:#f7effa}
+.level-5 .sidep{font-size:12px;line-height:23px;margin-bottom:5px}.level-5 .sidep.small{font-size:11px;color:#947f94}.level-5 .studio{width:222px;height:110px;margin-top:20px;border-radius:3px}.level-5 .caption{font-size:10px;color:#9b839a;margin-bottom:12px}.level-5 .side-section{border-color:#ddc8dd;padding-top:17px;margin-top:19px}.level-5 .side-section h3{font-size:13px;color:#674860;line-height:22px;margin-bottom:8px}.level-5 .side-section p{font-size:12px;line-height:23px}.level-5 .side-section p.small{font-size:11px;color:#987f98}.level-5 .dot{background:#9c6c93}.level-5 .side-job .blue{font-size:12px;line-height:22px}.level-5 .side-job .small{font-size:11px;color:#997f99}
+.level-5 .site-footer{border-color:#ded0df;margin-top:30px;padding:22px 18px 100px;font-size:10px;line-height:23px;color:#a08ba1}
+.level-5 #hud{background:#4a2927ef;color:#e4cee1;top:26px}.level-5 #hud button{color:#e4cee1}.level-5 #progress{color:#e9ccee}.level-5 #hud .sep{color:#9a7d90}
+.level-5 #growth-hud{top:auto;bottom:69px;background:#f7f1fbf2;color:#826180;border:1px solid #dec8df;max-width:280px;padding:10px 12px}.level-5 #level-select,.level-5 #growth-hud button{color:#704461;border-color:#d5b9d4;background:#fbf7ff}.level-5 #build,.level-5 #mission-rule{color:#6c425f}.level-5 #shield{color:#7f5b80}.level-5 #switch-note,.level-5 #goal-detail{color:#937292}
+.level-5 #hint{background:#f8f0fbf5;border-color:#ddbfde}.level-5 #hint strong{color:#694060}.level-5 #hint span{color:#957593}.level-5 #controls{color:#927691;background:#f3eaf6e8}.level-5 #controls .quiet{color:#a18aa3}
+.level-5 #upgrade{background:#f9f2fc;border-color:#d6b2d6}.level-5 #upgrade h3,.level-5 #choices button{color:#65375a}.level-5 #choices button{background:#faf7ff;border-color:#dec1df}.level-5 #choices span{color:#956f92}.level-5 #choices button:hover{background:#efdef1}.level-5 #toast{color:#835379;background:#f7eefa;border-color:#e0c7e0}.level-5 #thumb{background:#a3849f}
+.level-5 #ending{background:#f3eaf6fc}.level-5 #ending h2{color:#694060}.level-5 #ending p{color:#957a94}.level-5 #ending button{color:#794e70;border-color:#dcc1dd;background:#fdf4ff}
+.level-5 .apply.surface-gone .glyph{color:#794f61}
+@media(pointer:coarse){.level-5 #growth-hud{bottom:100px;right:10px;max-width:260px}.level-5 #hud{top:12px}.level-5 #hint{bottom:100px}}
+
+.level-5 #page{background:#f5eaec}.level-5 header,.level-5 #hud{background:#512f3b}
+/* Each later page has a different information hierarchy while text remains terrain. */
+.level-3 .message-workspace{grid-template-columns:196px 876px 252px;gap:24px;padding:30px 34px 0}.level-3 .inbox{background:transparent;padding:14px 5px;min-height:800px}.level-3 .inbox-title{font-size:17px;letter-spacing:2px}.level-3 .conversation{border-left:2px solid #d7c3a2;padding:15px 15px;margin:0 0 14px;border-radius:0}.level-3 .chat-main{padding:0 22px}.level-3 .conversation-heading{padding-bottom:25px}.level-3 article h2{text-align:left;font-size:13px;color:#a17b49;letter-spacing:1px;margin:32px 0 20px}.level-3 .chat-msg{max-width:none;width:100%;border-radius:0;background:transparent;box-shadow:none;border-bottom:1px solid #e1d4be;padding:14px 0 20px;margin:18px 0 24px}.level-3 .chat-msg>.small{width:110px;float:left;font-size:11px;line-height:24px;color:#a88c62}.level-3 .chat-msg p{margin-left:115px;max-width:686px;font-size:16px;line-height:28px}.level-3 .chat-msg.mine{margin-left:0;background:#efe3cf;padding-left:18px;border-radius:2px}.level-3 .chat-msg.mine>.small{text-align:left}.level-3 .chat-msg.text-empty{border-color:transparent;background:transparent}.level-3 .source-msg strong{color:#865622}
+.level-4 .message-workspace{grid-template-columns:170px 924px 242px;gap:24px;padding:25px 28px 0}.level-4 .inbox{padding:18px 12px;background:#e4ddec;border-radius:0;min-height:1000px}.level-4 .inbox-title{font-size:18px}.level-4 .inbox-search{font-size:10px;padding:7px}.level-4 .conversation{padding:18px 0;margin:0;border-bottom:1px solid #d1c4df}.level-4 .conversation-company{font-size:12px}.level-4 .chat-msg{max-width:780px;width:fit-content;background:transparent;box-shadow:none;border:0;border-radius:0;margin:27px 0 34px;padding:4px 12px 10px 0}.level-4 .chat-msg>.small{color:#896a9e;font-size:12px;letter-spacing:.5px}.level-4 .chat-msg p{max-width:790px;font-size:16px;line-height:29px}.level-4 .chat-msg.mine{background:#e3d7f0;max-width:730px;margin-left:90px;margin-right:0;padding:12px 18px;border-radius:5px}.level-4 .chat-msg.mine>.small{text-align:left}.level-4 article h2{text-align:left;border-bottom:1px solid #d6c8e2;padding-bottom:9px;font-size:12px;letter-spacing:1px;margin:28px 0}.level-4 aside{background:transparent;border-left:1px solid #d7cbe1;border-radius:0;padding:10px 15px}
+.level-5 .message-workspace{grid-template-columns:200px 794px 322px;gap:28px;padding:32px 34px 0}.level-5 .inbox{background:#ead4d9;min-height:1020px;border-radius:0;padding:20px 15px}.level-5 .inbox-title{font-size:18px;letter-spacing:2px}.level-5 .conversation{padding:20px 0;margin:0;border-bottom:1px solid #cdaeb7}.level-5 .conversation-company{font-size:13px}.level-5 .chat-main{padding:0 12px}.level-5 .chat-heading-caption{display:block;margin:2px 0;color:#a97686;font-size:13px}.level-5 h1{font-size:22px;line-height:31px}.level-5 .chat-msg{max-width:660px;background:#fff7f6;border-radius:0 7px 7px 7px;padding:15px 18px;margin:27px 0 34px}.level-5 .chat-msg.mine{max-width:610px;background:#e5c9d0;border-radius:7px 0 7px 7px;margin-left:auto}.level-5 .source-msg{background:#f2dad8;border-left:2px solid #ad7076;border-radius:0}.level-5 .source-msg strong{color:#814554}.level-5 .chat-msg.text-empty{background:transparent;border-color:transparent}.level-5 .chat-msg p{font-size:15px;line-height:29px}.level-5 aside{background:#ede0e1;border-top:3px solid #8b5b6e;border-radius:0;padding:25px 20px}.level-5 .studio{width:282px;height:140px}.level-5 article h2{font-size:12px;letter-spacing:2px;margin:32px 0;color:#a57b86}.level-5 #boss-anchor{color:#a65061;font-weight:600}
+#boss-hud[hidden]{display:none}#boss-hud{margin-top:7px;padding-top:6px;border-top:1px solid #d9adb5;text-align:left}#boss-status{font-size:11px;color:#985668;line-height:20px}#boss-hp{width:152px;height:7px;accent-color:#b25668;vertical-align:middle;margin-right:9px}#boss-guide{font-size:10px!important;padding:2px 5px!important}#loadout-mode{color:#9c897d;font-size:10px;line-height:17px}.level-later #growth-hud{max-width:300px}.level-5 #growth-hud{max-width:310px}button:focus-visible,select:focus-visible{outline-offset:3px}
+.level-3 aside{background:#eee5d8}.level-3 #growth-hud,.level-3 #hint,.level-3 #controls{background:#fcf5e7ed;border-color:#d8c5a4}.level-3 #upgrade{background:#fff7e9}.level-3 #level-select,.level-3 #growth-hud button,.level-3 #choices button{color:#8a6537;background:#fffaf0;border-color:#d6c09f}.level-3 #build,.level-3 #mission-rule,.level-3 #hint strong,.level-3 #goals{color:#836137}.level-3 #switch-note,.level-3 #hint span,.level-3 #loadout-mode{color:#a28d6c}
+.level-4 #growth-hud,.level-4 #hint,.level-4 #controls{background:#f7f2ffed;border-color:#d5c2e6}.level-4 #level-select,.level-4 #growth-hud button{color:#79608f;background:#fffcff;border-color:#cbb5e0}.level-4 #build,.level-4 #mission-rule,.level-4 #hint strong{color:#79608f}
+</style>
+</head>
+<body>
+<div id="view" tabindex="0" aria-label="游戏区域：方向键或 A D 移动，空格跳跃"><div id="world"><div id="page">
+<header>
+ <div class="brand ink">梦想直聘</div><div class="tagline ink">找到适合你的下一站</div>
+ <div class="nav ink"><span>职位</span><span>公司</span><span class="spacer"></span><span>消息</span><span class="spacer"></span><span>我的投递</span></div>
+ <div class="search ink" data-surface>搜索职位或公司</div>
+</header>
+<div class="page-body">
+ <div class="breadcrumb ink">职位 / 设计 / 产品设计</div>
+ <h1 class="ink">初级产品设计师</h1>
+ <div class="meta ink"><span class="blue">北辰科技</span>　杭州 · 全职　1–3 年 · 本科　15–20K · 13薪</div>
+ <div class="columns">
+ <article>
+ <div class="notice ink" data-surface><p><strong>投递动态：</strong>你的简历已被查看，我们会与符合条件的候选人进一步沟通。</p><p>此消息由系统自动发送，请勿直接回复。<span class="blue">查看投递进度</span></p></div>
+ <h2 class="ink">职位介绍</h2>
+ <p class="ink">我们正在寻找一位注重细节的<span class="blue">产品设计师</span>，帮助用户更轻松地使用数字产品。你将加入一个由设计师、产品经理和<br>研发工程师组成的小团队，把最初的想法转化为真正可以使用的功能，并持续打磨面向用户的产品体验。</p>
+ <p class="ink">这个岗位适合喜欢解决问题、愿意尝试不同方案，并且能够清晰表达想法的你。我们期待你可以独立推进设计任务，<br>也能够适应<span class="blue">快节奏的工作环境</span>，主动跟进项目进展，在不同团队之间沟通协调，把设计方案一步步推进到实际落地。<br>面对需求变化，你需要及时调整优先级，与团队一起找到更合适的解决方式。</p>
+ <p class="ink">我们看重好奇心、对细节的关注，以及能够体现思考过程的作品集。不要求每个方案都尽善尽美，但希望你愿意解释<br>自己的设计选择、听取反馈，并在不断尝试中一起成长。<span class="blue">了解我们的团队与工作方式。</span></p>
+ <h2 class="ink">岗位职责</h2>
+ <p class="ink" id="spawn-paragraph">与产品经理一起理解用户需求和业务目标，将需求转化为清晰、实用的产品方案。通过用户流程、线框图与<br>交互原型探索不同的解决方式，再完成页面布局、交互细节和视觉设计。向团队成员说明设计依据，<br>并根据真实的使用反馈不断调整，让产品更容易被理解和使用。</p>
+ <p class="ink">与研发工程师合作，确保最终实现符合设计预期。跟进开发中的细节，检查页面状态和交互逻辑，参与新功能测试，<br>发现问题并提出改进建议。维护<span class="blue">共享设计系统</span>中的组件，让产品在不同页面、不同终端之间保持一致、顺畅的体验，<br>也让团队后续的协作与迭代更加高效。</p>
+ <p class="ink">在多项任务并行、需求不断变化的情况下合理安排工作。遇到紧急需求时，与团队确认优先级，及时同步进度和风险，<br>根据项目实际情况调整计划。重要版本上线期间可能需要灵活配合，但我们同样重视清晰的沟通与可持续的工作节奏。<br><span class="blue">了解我们的工作方式。</span></p>
+ <h2 class="ink">任职要求</h2>
+ <p class="ink"><strong data-goal="experience">3–5 年相关工作经验</strong>，熟悉产品设计、交互设计或相关领域，有完整的项目作品集，能够说明从需求理解到方案落地的思考过程。有互联网产品、企业服务或数字化产品相关经验者优先。</p>
+ <p class="ink">本科及以上学历，设计或相关专业。具备良好的视觉基础、表达能力与协作意识，能够在需求变化中保持清晰的判断，在有限的时间里找到合适的方案。熟悉常见设计工具，能与团队一起推进项目落地。</p>
+ <p class="ink">具备主动沟通、独立思考与解决问题的能力。面对紧张的排期与多方意见，能够快速理解背景、整理需求、推动共识。<strong>抗压能力强，能够接受阶段性加班。</strong>有成熟团队项目经验者优先。</p>
+ <h2 class="ink">面试与沟通</h2>
+ <p class="ink">投递后请耐心等待筛选结果。若你的经历与岗位要求匹配，我们会通过站内消息与你联系。面试流程包括初步沟通、专业面试与团队交流；部分岗位可能需要完成设计测试。</p>
+ <p class="ink"><strong>当前状态：简历已查看，暂未回复。</strong>我们每天收到大量申请，暂时无法逐一回复。请留意站内通知；若岗位已有调整，页面信息将同步更新。<span class="blue">查看常见问题。</span></p>
+ <h2 class="ink">薪酬与工作安排</h2>
+ <p class="ink">薪酬根据个人能力、过往经历和面试表现综合评估，<strong>具体待遇面议</strong>。公司提供五险一金、带薪年假与必要的工作设备。试用期安排、绩效标准和奖金规则以正式沟通为准。</p>
+ <p class="ink">工作地点：杭州。办公时间与具体安排由团队协商确定。重要版本发布期间需要跨团队配合，<strong data-goal="overtime">保持响应，及时处理临时需求。</strong>我们希望每位同事都能积极主动，在变化中持续成长。</p>
+ <h2 class="ink">补充说明</h2>
+ <p class="ink">我们尊重不同的经历，也理解每个人都有自己的起点。提交作品集时，请尽量描述你承担的工作、解决的问题和得到的反馈，而不仅是最终画面。<span class="blue">查看作品集提交说明。</span></p>
+ <p class="ink">如果你还没有收到回复，可以先保存这份申请记录，继续寻找与你更匹配的机会。一次投递只是一段过程，不是对你全部能力的判断。</p>
+ </article>
+ <aside>
+ <div class="apply ink" data-surface>立即投递</div>
+ <div class="company-name ink">北辰科技</div>
+ <p class="sidep ink">互联网 · 企业服务 · 数字化产品</p>
+ <p class="sidep small ink">B 轮 · 100–499 人 · 民营企业</p>
+ <p class="sidep ink">做让工作更简单、更好用的产品。</p>
+ <div class="blue ink">查看公司主页 ↗</div>
+ <img class="studio" id="studio-image" alt="办公室环境示意图">
+ <div class="caption ink">办公环境</div>
+ <section class="side-section">
+  <h3 class="ink">你的投递记录</h3><p class="small ink">5 天前投递</p>
+  <p class="ink" style="color:#8595ab"><span class="dot" data-surface></span><span data-goal="reply">已查看 · 暂未回复</span></p><div class="blue ink">查看沟通记录</div>
+ </section>
+ <section class="side-section">
+  <h3 class="ink">相似职位</h3>
+  <div class="side-job ink"><div class="blue">初级用户体验设计师</div><div class="small">明途科技 · 杭州</div><div class="small">1–3 年经验 · 12–18K</div></div>
+  <div class="side-job ink"><div class="blue">助理产品设计师</div><div class="small">微光工作室 · 混合办公</div><div class="small">需提供作品集 · 10–15K</div></div>
+  <div class="side-job ink"><div class="blue">视觉设计实习生</div><div class="small">纸飞机设计 · 杭州</div><div class="small">优先考虑可连续实习者</div></div>
+ </section>
+ <section class="side-section">
+  <h3 class="ink">消息提醒</h3>
+  <p class="small ink">你还有 3 条新的系统消息</p>
+  <p class="ink">很遗憾，你的经历与当前岗位暂不匹配。感谢关注，祝你求职顺利。</p>
+  <div class="blue ink">查看更多消息</div>
+ </section>
+ <section class="side-section">
+  <h3 class="ink">投递小贴士</h3>
+  <p class="small ink">工作经历、项目链接与联系方式，请确认填写完整。</p>
+  <p class="small ink">职位信息仅供参考，具体要求请以沟通结果为准。</p>
+ </section>
+ </aside>
+ </div>
+</div>
+<footer class="site-footer ink">梦想直聘　·　职位　·　公司　·　消息　·　帮助中心<br>本页面为游戏内的虚构招聘网站，所有岗位、公司和投递记录均为创作内容，不会提交任何真实申请。</footer>
+</div></div></div>
+<canvas id="fx" aria-label="网页破坏游戏：方向键或 A D 移动，空格跳跃，鼠标瞄准并射击"></canvas>
+<div id="hud"><button id="weapon" title="点击切换；1 连发枪 / 2 榴弹 / 3 橡皮擦">1 射击 ▸</button><span class="sep">·</span><span>页面清理</span><span id="progress">0%</span><button id="finish" title="三处目标完成后，可结束这一页并结算改造">收尾</button><span class="sep">·</span><button id="audio" title="切换音效 (M)">音效 开</button><span class="sep">·</span><button id="reset" title="恢复入关改造；刷新也从入关状态重开">重试本关</button><button id="new-run">新一轮</button></div>
+<div id="growth-hud"><div id="level-picker"><label>选择关卡 <select id="level-select" aria-label="选择关卡"><option value="1">第一关 · 招聘网页</option><option value="2">第二关 · 沟通记录</option><option value="3">第三关 · 面试复盘</option><option value="4">第四关 · 项目群聊</option><option value="5">第五关 · 高压终面 / Boss</option></select></label></div><div id="switch-note">切关会重开该关；保留已结算改造</div><div id="mission-rule"></div><div id="goals"></div><div id="goal-detail"></div><div><span id="growth-status"></span> <button id="pending" hidden></button></div><div id="build"></div><div id="shield"></div><div id="boss-hud" hidden><div id="boss-status"></div><progress id="boss-hp" max="1500" value="1500" aria-label="Boss生命"></progress><button id="boss-guide">定位 Boss</button></div><div id="loadout-mode"></div><button id="resume-level" hidden>继续到第二关</button><button id="skip-upgrades" hidden>放弃待选改造并结束</button><div id="level-actions" hidden><button id="continue-break">继续拆</button> <button id="end-page">结束这一页</button></div></div>
+<section id="upgrade" role="dialog" aria-label="选择改造" hidden><h3 id="upgrade-title"></h3><div id="choices"></div></section>
+<div id="controls">A / D 移动　·　空格跳跃 / 二段跳　·　S 下落　·　鼠标瞄准＋射击<br><span class="quiet">1 / 2 / 3 切换武器　·　右键蓄力爆破　·　滚轮查看长页　·　R 回到文字上　·　Esc 暂停</span></div>
+<div id="hint"><strong>拆掉：已读不回、经验门槛、加班要求。</strong><span id="hint-copy">右上角点“前往”，小人会到目标附近。<br>每处只需打掉 40% 的字，三处完成即可通关。<br>不限时、不扣血；按 3 用橡皮擦快速清理。</span></div>
+<div id="toast" role="status" aria-live="polite"></div>
+<div id="track"><div id="thumb"></div></div><button id="return">回到小人 ↓</button>
+<div id="mobile"><div class="group"><button data-action="left" aria-label="向左移动">‹</button><button data-action="right" aria-label="向右移动">›</button><button class="drop" data-action="drop" aria-label="穿过文字下落">↓</button></div><div class="group"><button data-action="jump">跳跃</button><button data-action="fire">射击</button></div></div>
+<div id="paused"><button id="resume">休息一下也没关系 · 点击继续</button></div>
+<div id="ending" role="dialog" aria-modal="true" aria-label="关卡完成">
+ <svg width="78" height="68" viewBox="0 0 78 68" aria-hidden="true"><g fill="none" stroke="#6d829f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="32" cy="15" r="5" fill="#6d829f" stroke="none"/><path d="M31 23 L28 41 L44 42 L54 55 M28 41 L25 55 M31 27 L44 36 L52 34 M30 26 L24 36"/><path stroke="#cbd6e5" d="M12 57 H66"/></g></svg>
+ <div class="eyebrow">这一页，结束了。</div><h2>这一页，先到这里。</h2><p>一次没有回复，不等于你不够好。<br>今天可以先到这里。</p>
+ <div id="summary" class="summary"></div><div><button id="next-level" hidden>进入第二关</button><button id="ending-levels">选择关卡</button><button id="again">开始新一轮</button><button id="quiet" class="subtle">看看安静的页面</button></div>
+</div>
+<script>
+'use strict';
+(() => {
+// A real HTML layout is measured into per-character collision geometry.
+// Destroying a glyph changes visibility, never display: the remaining text never reflows.
+const $ = s => document.querySelector(s);
+const world=$('#world'), page=$('#page'), canvas=$('#fx'), ctx=canvas.getContext('2d');
+const W=1440, G=1480, isTouch=matchMedia('(pointer:coarse)').matches;
+const reduced=matchMedia('(prefers-reduced-motion:reduce)').matches;
+let H=1800, sw=innerWidth, sh=innerHeight, scale=1, dpr=1;
+let camX=0,camY=0,manualUntil=0,time=0,started=false,paused=false,ending=false,settled=false;
+let startTime=0,activeTime=0,shake=0,flash=0,muted=false,cleanup=false,cleanupBudget=0;
+let all=[], glyphs=[], imageTiles=[], surfaces=[], totalWeight=0, goneWeight=0, goneGlyphs=0, goneTiles=0;
+let grid=new Map(), queryTick=0;
+let bullets=[],fragments=[],sparks=[],rings=[],sweeps=[];
+let weapon=0,lastErase=-100;
+let lastShot=-100,lastHeavy=-100,charge=0,heavyHeld=false,mouseDown=false,touchFire=false;
+let pointer={x:800,y:460,moved:false}, cursorWorld={x:800,y:460};
+const keys=new Set(), mobileKeys=new Set();
+const p={x:490,y:600,vx:0,vy:0,w:7,h:37,onGround:false,jumps:0,drop:0,coyote:0,jumpBuffer:0,face:1,angle:0,recoil:0,step:0};
+let spawn={x:490,y:600},lastSafe={x:490,y:600}, lastSafeTime=0;
+let sourceImage,toastTimer;
+let hitDebug=new URLSearchParams(location.search).has('debug'),debugTrace=[],debugHits=[],debugRemoved=[],debugStats={};
+const debugPanel=document.createElement('pre');debugPanel.id='hit-debug';debugPanel.style='position:fixed;left:10px;top:45px;z-index:40;pointer-events:none;background:#fffffff2;border:1px solid #c5cbd1;padding:9px;font:11px/1.5 monospace;color:#253d4e;max-width:550px;white-space:pre-wrap';document.body.append(debugPanel);debugPanel.style.display=hitDebug?'block':'none';
+window.addEventListener('keydown',e=>{if(e.code==='F2'){e.preventDefault();hitDebug=!hitDebug}},true);
+function traceHit(x,y,a){debugHits.push({x,y,id:a.id,text:a.text||a.kind});if(debugHits.length>10)debugHits.shift()}
+function drawHitDebug(){
+ debugPanel.style.display=hitDebug?'block':'none';if(!hitDebug)return;
+ const wr=world.getBoundingClientRect(),s=wr.width/W;let max=0,worst=null;
+ for(const a of glyphs){if(!a.alive)continue;const r=a.el.getBoundingClientRect(),expected={x:(r.x-wr.x)/s,y:(r.y-wr.y)/s+(r.height/s-a.fs)*.5+.7,w:r.width/s,h:a.fs};
+  const err=Math.max(Math.abs(a.x-expected.x),Math.abs(a.y-expected.y),Math.abs(a.w-expected.w));if(err>max){max=err;worst={id:a.id,text:a.text,stored:{x:a.x,y:a.y},actual:{x:expected.x,y:expected.y}}}
+  if(expected.y<camY-40||expected.y>camY+sh/scale+40)continue;
+  ctx.lineWidth=.7/scale;ctx.strokeStyle='#ef4747';ctx.strokeRect(a.x,a.y,a.w,a.h);ctx.strokeStyle='#00a5bb';ctx.strokeRect(expected.x,expected.y,expected.w,expected.h);
+ }
+ for(const t of debugTrace){ctx.strokeStyle='#9555cc';ctx.lineWidth=1.5/scale;ctx.beginPath();ctx.moveTo(t.x,t.y);ctx.lineTo(t.ex,t.ey);ctx.stroke()}
+ for(const h of debugHits){ctx.strokeStyle='#dc8b00';ctx.lineWidth=2/scale;ctx.beginPath();ctx.arc(h.x,h.y,4/scale,0,Math.PI*2);ctx.stroke();ctx.font=`${11/scale}px monospace`;ctx.fillStyle='#744600';ctx.fillText(`#${h.id} ${h.text}`,h.x+6/scale,h.y-6/scale)}
+ debugStats={maxWorldError:max,worst,scale,camX,camY,worldHeight:H,player:{x:p.x,y:p.y,onGround:p.onGround},lastHit:debugHits.at(-1),removed:debugRemoved.slice(-12)};
+ debugPanel.textContent='F2 开关调试 · 红=碰撞框 青=可见字符框 紫=弹道 橙=实际命中\n'+JSON.stringify(debugStats,null,1);
+}
+// First-level growth. Geometry/query code remains independent of rewards and tasks.
+const GAME_CONFIG={"worldWidth": 1440, "rewards": {"glyph": 1, "image": 100, "button": 10, "target": 60}, "thresholds": [12, 90, 240], "targetFraction": 0.7, "level1TargetFraction": 0.4, "gun": {"rate": 8, "range": 640, "damage": 1, "speed": 1100}, "grenade": {"cooldown": 3, "radius": 72, "speed": 790, "gravity": 520, "fuse": 1.3}, "upgrades": {"A": [1, 3, 5, 7, 9, 11, 14, 17, 20], "B": [{"count": 0, "range": 0}, {"count": 2, "range": 140}, {"count": 3, "range": 170}, {"count": 4, "range": 200}, {"count": 4, "range": 230}, {"count": 5, "range": 260}, {"count": 6, "range": 285}, {"count": 7, "range": 310}, {"count": 8, "range": 330}], "C": [72, 90, 108, 126, 138, 150, 164, 177, 190], "D": [3, 2.6, 2.2, 1.8, 1.55, 1.35, 1.15, 1, 0.85]}, "level2": {"thresholds": [40, 120, 240, 420, 680, 1000], "maxLevel": 5, "budget": 150, "warning": 0.8, "spawnInterval": 5, "perSource": 3, "globalCap": 5, "shooterCap": 1, "spawnBudget": 8, "minDistance": 180, "nearMargin": 160, "shield": 5, "invincible": 1.2, "recovery": 2, "grenadeDamage": 5, "chaser": {"hp": 3, "speed": 100, "jumpHeight": 55, "jumpInterval": 1.2, "reward": 15}, "shooter": {"hp": 5, "speed": 45, "interval": 3.2, "range": 320, "speedBullet": 190, "lifeBullet": 2, "reward": 25}, "enableEnemies": true, "enableShooter": true, "enableShield": true}, "maxBullets": 220, "maxSparks": 300, "level3": {"thresholds": [45, 140, 300, 520, 850], "maxLevel": 6, "budget": 180, "warning": 0.8, "spawnInterval": 4.3, "perSource": 3, "globalCap": 6, "shooterCap": 2, "spawnBudget": 10, "minDistance": 180, "nearMargin": 160, "shield": 5, "invincible": 1.05, "recovery": 2, "grenadeDamage": 5, "chaser": {"hp": 5, "speed": 125, "jumpHeight": 60, "jumpInterval": 1.2, "reward": 15}, "shooter": {"hp": 8, "speed": 45, "interval": 2.8, "range": 390, "speedBullet": 225, "lifeBullet": 2, "reward": 25}, "enableEnemies": true, "enableShooter": true, "enableShield": true, "targetFraction": 0.75}, "level4": {"thresholds": [55, 170, 360, 620, 950], "maxLevel": 7, "budget": 210, "warning": 0.75, "spawnInterval": 3.7, "perSource": 3, "globalCap": 8, "shooterCap": 3, "spawnBudget": 10, "minDistance": 180, "nearMargin": 160, "shield": 4, "invincible": 1, "recovery": 1.8, "grenadeDamage": 5, "chaser": {"hp": 7, "speed": 150, "jumpHeight": 66, "jumpInterval": 1.2, "reward": 15}, "shooter": {"hp": 11, "speed": 45, "interval": 2.25, "range": 460, "speedBullet": 260, "lifeBullet": 2, "reward": 25}, "enableEnemies": true, "enableShooter": true, "enableShield": true, "targetFraction": 0.8}, "level5": {"thresholds": [65, 200, 430, 800], "maxLevel": 8, "budget": 250, "warning": 0.7, "spawnInterval": 3.4, "perSource": 3, "globalCap": 8, "shooterCap": 3, "spawnBudget": 12, "minDistance": 180, "nearMargin": 160, "shield": 4, "invincible": 0.95, "recovery": 1.6, "grenadeDamage": 5, "chaser": {"hp": 10, "speed": 170, "jumpHeight": 72, "jumpInterval": 1.2, "reward": 15}, "shooter": {"hp": 16, "speed": 45, "interval": 1.95, "range": 500, "speedBullet": 285, "lifeBullet": 2, "reward": 25}, "enableEnemies": true, "enableShooter": true, "enableShield": true, "targetFraction": 0.8, "boss": {"hp": 1500, "reward": 300, "healOnRecovery": 0.12, "fragmentDamageMultiplier": 0.4, "width": 88, "height": 28, "activationDistance": 650, "shotCap": 32, "range": 620, "phases": [{"ratio": 0.65, "fan": 3, "warning": 1, "cooldown": 2.5, "speed": 215}, {"ratio": 0.3, "fan": 5, "warning": 0.85, "cooldown": 2.1, "speed": 240}, {"ratio": 0, "fan": 7, "warning": 0.65, "cooldown": 1.55, "speed": 285}]}}, "advancedDamage": {"gunEveryALevels": 3, "grenadePerCLevel": 1.5, "eraserEveryHighestLevels": 3}};
+const STORE='dreamjob.two-levels.v2',blankMods=()=>({A:0,B:0,C:0,D:0});
+function cleanMods(m){return Object.fromEntries(['A','B','C','D'].map(k=>[k,Math.max(0,Math.min(8,Math.floor(Number(m?.[k])||0)))]))}
+let storageOK=true;
+function emptyRun(){return {version:2,id:Date.now()+'-'+Math.random().toString(36).slice(2),entries:{1:blankMods()},mods:blankMods(),results:{}}}
+function readRun(){try{let r=JSON.parse(localStorage.getItem(STORE));if(r?.version===2&&r.entries&&r.results){const late=JSON.parse(localStorage.getItem('dreamjob.growth.v1'));if(!r.results[1]&&late?.id===r.id&&late.result){r.results[1]=late.result;r.mods=cleanMods(late.mods);r.entries[2]={...r.mods}}return {...r,mods:cleanMods(r.mods)}};
+ const old=JSON.parse(localStorage.getItem('dreamjob.growth.v1'));if(old?.version===1){r=emptyRun();r.id=old.id;r.entries[1]=cleanMods(old.entry);if(old.result){r.results[1]=old.result;r.mods=cleanMods(old.mods);r.entries[2]={...r.mods}}return r}
+}catch(e){storageOK=false}try{if(window.name.startsWith('dreamjob-run-v2:'+STORE+':')){const r=JSON.parse(window.name.slice(('dreamjob-run-v2:'+STORE+':').length));if(r.version===2&&r.entries&&r.results)return r}}catch(e){}return emptyRun()}
+let run=readRun();const selectedLevel=Number(new URLSearchParams(location.search).get('level')||1),level=Number.isInteger(selectedLevel)&&selectedLevel>=1&&selectedLevel<=5?selectedLevel:1;
+const combatConfig=GAME_CONFIG['level'+level]||GAME_CONFIG.level2;
+const STAGES={"3": {"name": "面试复盘", "company": "微光工作室", "channel": "面试记录", "intro": "专业面试 · 设计协作", "outline": ["项目复盘", "设计测试", "反馈与边界"], "goals": ["能力否定", "无偿试做", "反复拖延"], "difficulty": "进阶 · 5 次改造", "comfort": "你的思考和付出，值得被认真对待。", "accent": "#986638", "starter": {"A": 2, "B": 1, "C": 2, "D": 1}, "words": [["没亮点", "做得慢", "不够好"], ["回去改", "再证明", "没结果"]], "sections": [["10 月 08 日 · 项目复盘", [["面试官 · 10:00", "欢迎参加设计面试。我们想从作品集里选一个项目，聊聊你的判断与协作过程。<br>不用先说结论，可以从当时遇到的问题开始。"], ["我 · 10:06", "这个项目最初的问题是信息难找。我先整理了访谈和使用记录，再与产品同事确认优先级。<br>其中两版方案没有采用，但它们帮助我们找到更准确的问题。"], ["面试官 · 补充记录", "补充一个问题：你会怎样判断方案是否有效，又会怎样记录不同意见？<br>我们希望看见具体的证据，而不只看最终的截图。"], ["我 · 补充说明", "我会把方案、验证结果和当时的限制条件写在一起。<br>即使最后没有采用某个方案，过程中的发现也值得保留。"], ["面试官 · 10:14", "你讲了这么多，看起来还是没什么亮点。", "reply"], ["我 · 10:19", "我可以补充为什么选择这个方案，以及它解决了哪些具体问题。<br>我也希望得到针对作品和过程的反馈，而不只是一句概括。"]]], ["10 月 09 日 · 设计测试", [["招聘同事 · 09:20", "团队希望进一步了解你的设计思路。附件里有一个产品方向，请先看一下。<br>你可以把需要澄清的问题列出来，我们再确认测试范围。"], ["我 · 09:44", "我想先确认时间要求、交付范围，以及测试成果会如何使用。<br>我愿意讨论一个有限的题目，完整上线方案需要相应的时间与合作约定。"], ["招聘同事 · 测试范围", "测试的范围仍需要双方确认。请先说明你能够投入的时间，以及题目中缺失的信息。<br>可以先交流方法，再决定是否继续完整的方案。"], ["我 · 范围确认", "我已经列出了可完成的分析、需要确认的问题和预计时间。<br>明确范围会让沟通更可靠，也能避免把无限要求当成默认约定。"], ["招聘同事 · 11:08", "先免费做一套完整方案，再证明你的能力。", "experience"], ["我 · 11:27", "我能提供限定范围内的分析，说明自己的方法。<br>如果需要完整的业务方案，我希望明确合作方式与成果边界。"]]], ["10 月 12 日 · 反馈安排", [["招聘同事 · 14:00", "作品已转给团队。因为项目安排有变化，反馈可能还需要一点时间。<br>我们目前没有新的测试要求，你可以继续安排其他面试。"], ["我 · 14:22", "谢谢告知。方便确认一下预期反馈日期，以及下一步沟通方式吗？<br>如果暂时无法确定，我会先按自己的安排继续求职。"], ["招聘同事 · 记录归档", "这次沟通的材料都已放进记录。我们也在整理每轮面试中已经答复的问题。<br>后续有确定的安排，会基于现有记录继续沟通。"], ["我 · 记录补充", "我保存了测试范围与提交时间，也标出了等待反馈的事项。<br>我会继续自己的安排，不把没有结果的等待变成全部生活。"], ["招聘同事 · 17:30", "再等一等，反正你也没有更好的选择。", "overtime"], ["我 · 17:48", "我会尊重自己的时间，也会继续寻找双方能够清楚沟通的机会。<br>这次面试的结果，不能替我决定下一步。"]]]], "html": "<header><div class=\"brand ink\">梦想直聘<span class=\"brand-divider\"> / </span><span class=\"brand-channel\">面试记录</span></div><div class=\"nav ink\"><span>职位</span><span>消息</span><span>我的记录</span><span>帮助</span></div><div class=\"account ink\">沟通档案 · 第 3 关</div></header><div class=\"message-workspace\"><nav class=\"inbox\" aria-label=\"会话列表\"><div class=\"inbox-title ink\">面试索引</div><div class=\"inbox-search ink\" data-surface>搜索记录 / 关键词</div><div class=\"conversation\"><div class=\"conversation-company ink\">项目复盘</div><p class=\"small ink\">沟通记录 · 初始议题</p></div><div class=\"conversation\"><div class=\"conversation-company ink\">设计测试</div><p class=\"small ink\">继续沟通 · 待确认事项</p></div><div class=\"conversation\"><div class=\"conversation-company ink\">反馈与边界</div><p class=\"small ink\">后续答复 · 记录归档</p></div><div class=\"inbox-tip ink\">进阶 · 5 次改造<br>记录是沟通的一部分</div></nav><main class=\"chat-main\"><div class=\"conversation-heading\"><div class=\"breadcrumb ink\">消息中心 / 面试记录</div><h1 class=\"ink\">微光工作室 <span class=\"chat-heading-caption\">面试复盘</span></h1><div class=\"meta ink\">专业面试 · 设计协作 <span class=\"blue\">查看详细资料 ↗</span></div></div><article><div class=\"notice ink\"><p>此记录仅展示预设的虚构沟通，不会向任何人发送消息。</p><p>保持清楚的事实，也保留自己的判断。<span class=\"blue\">查看记录说明</span></p></div><h2 class=\"ink\">10 月 08 日 · 项目复盘</h2><div class=\"chat-msg\"><div class=\"small ink\">面试官 · 10:00</div><p class=\"ink\" id=\"spawn-paragraph\">欢迎参加设计面试。我们想从作品集里选一个项目，聊聊你的判断与协作过程。<br>不用先说结论，可以从当时遇到的问题开始。</p></div><div class=\"chat-msg mine\"><div class=\"small ink\">我 · 10:06</div><p class=\"ink\">这个项目最初的问题是信息难找。我先整理了访谈和使用记录，再与产品同事确认优先级。<br>其中两版方案没有采用，但它们帮助我们找到更准确的问题。</p></div><div class=\"chat-msg\"><div class=\"small ink\">面试官 · 补充记录</div><p class=\"ink\">补充一个问题：你会怎样判断方案是否有效，又会怎样记录不同意见？<br>我们希望看见具体的证据，而不只看最终的截图。</p></div><div class=\"chat-msg mine\"><div class=\"small ink\">我 · 补充说明</div><p class=\"ink\">我会把方案、验证结果和当时的限制条件写在一起。<br>即使最后没有采用某个方案，过程中的发现也值得保留。</p></div><div class=\"chat-msg source-msg\"><div class=\"small ink\">面试官 · 10:14</div><p class=\"ink\"><strong data-goal=\"reply\">你讲了这么多，看起来还是没什么亮点。</strong></p><p class=\"small ink\">已送达　<span class=\"blue\">查看上下文</span></p></div><div class=\"chat-msg mine\"><div class=\"small ink\">我 · 10:19</div><p class=\"ink\">我可以补充为什么选择这个方案，以及它解决了哪些具体问题。<br>我也希望得到针对作品和过程的反馈，而不只是一句概括。</p></div><h2 class=\"ink\">10 月 09 日 · 设计测试</h2><div class=\"chat-msg\"><div class=\"small ink\">招聘同事 · 09:20</div><p class=\"ink\">团队希望进一步了解你的设计思路。附件里有一个产品方向，请先看一下。<br>你可以把需要澄清的问题列出来，我们再确认测试范围。</p></div><div class=\"chat-msg mine\"><div class=\"small ink\">我 · 09:44</div><p class=\"ink\">我想先确认时间要求、交付范围，以及测试成果会如何使用。<br>我愿意讨论一个有限的题目，完整上线方案需要相应的时间与合作约定。</p></div><div class=\"chat-msg\"><div class=\"small ink\">招聘同事 · 测试范围</div><p class=\"ink\">测试的范围仍需要双方确认。请先说明你能够投入的时间，以及题目中缺失的信息。<br>可以先交流方法，再决定是否继续完整的方案。</p></div><div class=\"chat-msg mine\"><div class=\"small ink\">我 · 范围确认</div><p class=\"ink\">我已经列出了可完成的分析、需要确认的问题和预计时间。<br>明确范围会让沟通更可靠，也能避免把无限要求当成默认约定。</p></div><div class=\"chat-msg source-msg\"><div class=\"small ink\">招聘同事 · 11:08</div><p class=\"ink\"><strong data-goal=\"experience\">先免费做一套完整方案，再证明你的能力。</strong></p><p class=\"small ink\">已送达　<span class=\"blue\">查看上下文</span></p></div><div class=\"chat-msg mine\"><div class=\"small ink\">我 · 11:27</div><p class=\"ink\">我能提供限定范围内的分析，说明自己的方法。<br>如果需要完整的业务方案，我希望明确合作方式与成果边界。</p></div><h2 class=\"ink\">10 月 12 日 · 反馈安排</h2><div class=\"chat-msg\"><div class=\"small ink\">招聘同事 · 14:00</div><p class=\"ink\">作品已转给团队。因为项目安排有变化，反馈可能还需要一点时间。<br>我们目前没有新的测试要求，你可以继续安排其他面试。</p></div><div class=\"chat-msg mine\"><div class=\"small ink\">我 · 14:22</div><p class=\"ink\">谢谢告知。方便确认一下预期反馈日期，以及下一步沟通方式吗？<br>如果暂时无法确定，我会先按自己的安排继续求职。</p></div><div class=\"chat-msg\"><div class=\"small ink\">招聘同事 · 记录归档</div><p class=\"ink\">这次沟通的材料都已放进记录。我们也在整理每轮面试中已经答复的问题。<br>后续有确定的安排，会基于现有记录继续沟通。</p></div><div class=\"chat-msg mine\"><div class=\"small ink\">我 · 记录补充</div><p class=\"ink\">我保存了测试范围与提交时间，也标出了等待反馈的事项。<br>我会继续自己的安排，不把没有结果的等待变成全部生活。</p></div><div class=\"chat-msg source-msg\"><div class=\"small ink\">招聘同事 · 17:30</div><p class=\"ink\"><strong data-goal=\"overtime\">再等一等，反正你也没有更好的选择。</strong></p><p class=\"small ink\">已送达　<span class=\"blue\">查看上下文</span></p></div><div class=\"chat-msg mine\"><div class=\"small ink\">我 · 17:48</div><p class=\"ink\">我会尊重自己的时间，也会继续寻找双方能够清楚沟通的机会。<br>这次面试的结果，不能替我决定下一步。</p></div><h2 class=\"ink\">我的记录</h2><p class=\"ink\">你的思考和付出，值得被认真对待。<br>我会继续寻找合适的合作方式，也会继续向前。</p><p class=\"fineprint ink\">虚构内容，不对应任何真实招聘人员或团队。</p></article><footer class=\"site-footer ink\">梦想直聘 · 沟通档案 · 帮助中心<br>记录不会发送，不提交真实申请。</footer></main><aside><div class=\"context-title ink\">沟通资料</div><div class=\"apply ink\" data-surface>查看岗位资料</div><div class=\"company-name ink\">微光工作室</div><p class=\"sidep ink\">专业面试 · 设计协作</p><p class=\"sidep small ink\">全部文案为虚构预设</p><div class=\"blue ink\">查看沟通约定 ↗</div><img class=\"studio\" id=\"studio-image\" alt=\"协作空间示意图\"><div class=\"caption ink\">协作空间</div><section class=\"side-section\"><h3 class=\"ink\">记录状态</h3><p class=\"ink\"><span class=\"dot\" data-surface></span>沟通记录已保存</p><p class=\"small ink\">每轮沟通都保留原始上下文</p></section><section class=\"side-section\"><h3 class=\"ink\">待确认事项</h3><p class=\"ink\">职责范围与交付要求</p><p class=\"ink\">排期、资源与反馈</p><div class=\"blue ink\">查看全部记录</div></section><section class=\"side-section\"><h3 class=\"ink\">沟通提示</h3><p class=\"small ink\">讨论具体的问题，保留清楚的事实和自己的判断。</p><p class=\"small ink\">一句话无法概括你的全部价值。</p></section></aside></div>"}, "4": {"name": "项目群聊", "company": "协作项目组", "channel": "项目群聊", "intro": "设计推进群 · 6 位成员", "outline": ["需求变更", "排期与协作", "复盘与责任"], "goals": ["临时加码", "边界压迫", "责任转嫁"], "difficulty": "高压 · 5 次改造", "comfort": "清楚地表达边界，也是把事情做好的一部分。", "accent": "#76558f", "starter": {"A": 3, "B": 2, "C": 3, "D": 2}, "words": [["快一点", "别解释", "你负责"], ["马上改", "都怪你", "扛下来"]], "sections": [["周一 · 需求变更", [["项目同事 · 09:10", "早上好，今天先同步本周的设计任务。核心流程已经确认，剩余细节会在文档里记录。<br>如果发现新的问题，请先说明影响范围，我们一起调整安排。"], ["我 · 09:24", "我已经整理了当前任务和待确认项。优先完成关键流程，再补齐次要页面。<br>如果需求变化，麻烦一起确认哪些内容需要顺延。"], ["产品同事 · 需求清单", "我把新增需求分成了必要、可延后和需要进一步确认三类。<br>每次变化都写入记录，方便大家看见影响，而不只看最后的日期。"], ["我 · 清单核对", "我会按确认后的顺序推进，同时把依赖其他成员的部分标出来。<br>如果资源不足，需要一起选择先完成什么，而不是假设所有内容都能同时完成。"], ["项目负责人 · 10:40", "这些临时需求今晚都要，做不完就是你效率低。", "reply"], ["我 · 10:57", "新增内容会影响原来的交付时间。我可以先完成最重要的一部分。<br>需要明确优先级和可用资源，才能给出可靠的排期。"]]], ["周三 · 排期与协作", [["研发同事 · 14:15", "接口变更已经补充到协作文档。有两处状态还需要设计确认。<br>我把问题拆成了单独的条目，大家可以逐项讨论。"], ["我 · 14:32", "我会先看阻塞开发的状态，其他优化放进后续计划。<br>今天确认的问题我会写在记录里，避免大家重复处理。"], ["协调同事 · 工作安排", "今天还有两个事项需要确认。我们先检查是否影响当前交付，再决定处理时间。<br>请把紧急原因写清楚，方便大家协调。"], ["我 · 安排确认", "已经完成的内容和未完成的事项我都同步了。<br>可以讨论实际需求和解决方式，也需要给每个人留出休息与恢复的时间。"], ["项目负责人 · 18:20", "别人都在线，你凭什么到点就下班？", "experience"], ["我 · 18:35", "我会按约定完成任务，并提前说明需要协调的事项。<br>持续在线不能替代明确的安排；紧急需求也需要具体的处理方式。"]]], ["周五 · 项目复盘", [["产品同事 · 10:05", "这一轮交付已经结束，我们来记录做得顺畅和需要改进的地方。<br>需求确认、接口调整、设计反馈都可以放在同一张时间线上。"], ["我 · 10:22", "我已经补充每一次变更的记录，也标明了当时的依赖条件。<br>复盘应该帮助我们改善协作，而不是把复杂的问题压给一个人。"], ["研发同事 · 复盘材料", "接口版本、确认时间和上线记录都已归档。<br>有争议的部分可以逐条核对，避免依靠印象判断是谁的问题。"], ["我 · 事实核对", "我会补齐自己负责的记录，也希望把相关条件放在同一条时间线上。<br>看清事实才能改善下一次协作，而不是制造新的互相指责。"], ["项目负责人 · 11:50", "项目出了问题先算你的，别再解释了。", "overtime"], ["我 · 12:10", "我愿意承担自己负责的部分，也希望每个人都基于事实讨论。<br>如果要解决问题，就需要看见完整的过程和各方的责任。"]]]], "html": "<header><div class=\"brand ink\">梦想直聘<span class=\"brand-divider\"> / </span><span class=\"brand-channel\">项目群聊</span></div><div class=\"nav ink\"><span>职位</span><span>消息</span><span>我的记录</span><span>帮助</span></div><div class=\"account ink\">沟通档案 · 第 4 关</div></header><div class=\"message-workspace\"><nav class=\"inbox\" aria-label=\"会话列表\"><div class=\"inbox-title ink\">项目频道</div><div class=\"inbox-search ink\" data-surface>搜索记录 / 关键词</div><div class=\"conversation\"><div class=\"conversation-company ink\">需求变更</div><p class=\"small ink\">沟通记录 · 初始议题</p></div><div class=\"conversation\"><div class=\"conversation-company ink\">排期与协作</div><p class=\"small ink\">继续沟通 · 待确认事项</p></div><div class=\"conversation\"><div class=\"conversation-company ink\">复盘与责任</div><p class=\"small ink\">后续答复 · 记录归档</p></div><div class=\"inbox-tip ink\">高压 · 5 次改造<br>记录是沟通的一部分</div></nav><main class=\"chat-main\"><div class=\"conversation-heading\"><div class=\"breadcrumb ink\">消息中心 / 项目群聊</div><h1 class=\"ink\">协作项目组 <span class=\"chat-heading-caption\">项目群聊</span></h1><div class=\"meta ink\">设计推进群 · 6 位成员 <span class=\"blue\">查看详细资料 ↗</span></div></div><article><div class=\"notice ink\"><p>此记录仅展示预设的虚构沟通，不会向任何人发送消息。</p><p>保持清楚的事实，也保留自己的判断。<span class=\"blue\">查看记录说明</span></p></div><h2 class=\"ink\">周一 · 需求变更</h2><div class=\"chat-msg\"><div class=\"small ink\">项目同事 · 09:10</div><p class=\"ink\" id=\"spawn-paragraph\">早上好，今天先同步本周的设计任务。核心流程已经确认，剩余细节会在文档里记录。<br>如果发现新的问题，请先说明影响范围，我们一起调整安排。</p></div><div class=\"chat-msg mine\"><div class=\"small ink\">我 · 09:24</div><p class=\"ink\">我已经整理了当前任务和待确认项。优先完成关键流程，再补齐次要页面。<br>如果需求变化，麻烦一起确认哪些内容需要顺延。</p></div><div class=\"chat-msg\"><div class=\"small ink\">产品同事 · 需求清单</div><p class=\"ink\">我把新增需求分成了必要、可延后和需要进一步确认三类。<br>每次变化都写入记录，方便大家看见影响，而不只看最后的日期。</p></div><div class=\"chat-msg mine\"><div class=\"small ink\">我 · 清单核对</div><p class=\"ink\">我会按确认后的顺序推进，同时把依赖其他成员的部分标出来。<br>如果资源不足，需要一起选择先完成什么，而不是假设所有内容都能同时完成。</p></div><div class=\"chat-msg source-msg\"><div class=\"small ink\">项目负责人 · 10:40</div><p class=\"ink\"><strong data-goal=\"reply\">这些临时需求今晚都要，做不完就是你效率低。</strong></p><p class=\"small ink\">已送达　<span class=\"blue\">查看上下文</span></p></div><div class=\"chat-msg mine\"><div class=\"small ink\">我 · 10:57</div><p class=\"ink\">新增内容会影响原来的交付时间。我可以先完成最重要的一部分。<br>需要明确优先级和可用资源，才能给出可靠的排期。</p></div><h2 class=\"ink\">周三 · 排期与协作</h2><div class=\"chat-msg\"><div class=\"small ink\">研发同事 · 14:15</div><p class=\"ink\">接口变更已经补充到协作文档。有两处状态还需要设计确认。<br>我把问题拆成了单独的条目，大家可以逐项讨论。</p></div><div class=\"chat-msg mine\"><div class=\"small ink\">我 · 14:32</div><p class=\"ink\">我会先看阻塞开发的状态，其他优化放进后续计划。<br>今天确认的问题我会写在记录里，避免大家重复处理。</p></div><div class=\"chat-msg\"><div class=\"small ink\">协调同事 · 工作安排</div><p class=\"ink\">今天还有两个事项需要确认。我们先检查是否影响当前交付，再决定处理时间。<br>请把紧急原因写清楚，方便大家协调。</p></div><div class=\"chat-msg mine\"><div class=\"small ink\">我 · 安排确认</div><p class=\"ink\">已经完成的内容和未完成的事项我都同步了。<br>可以讨论实际需求和解决方式，也需要给每个人留出休息与恢复的时间。</p></div><div class=\"chat-msg source-msg\"><div class=\"small ink\">项目负责人 · 18:20</div><p class=\"ink\"><strong data-goal=\"experience\">别人都在线，你凭什么到点就下班？</strong></p><p class=\"small ink\">已送达　<span class=\"blue\">查看上下文</span></p></div><div class=\"chat-msg mine\"><div class=\"small ink\">我 · 18:35</div><p class=\"ink\">我会按约定完成任务，并提前说明需要协调的事项。<br>持续在线不能替代明确的安排；紧急需求也需要具体的处理方式。</p></div><h2 class=\"ink\">周五 · 项目复盘</h2><div class=\"chat-msg\"><div class=\"small ink\">产品同事 · 10:05</div><p class=\"ink\">这一轮交付已经结束，我们来记录做得顺畅和需要改进的地方。<br>需求确认、接口调整、设计反馈都可以放在同一张时间线上。</p></div><div class=\"chat-msg mine\"><div class=\"small ink\">我 · 10:22</div><p class=\"ink\">我已经补充每一次变更的记录，也标明了当时的依赖条件。<br>复盘应该帮助我们改善协作，而不是把复杂的问题压给一个人。</p></div><div class=\"chat-msg\"><div class=\"small ink\">研发同事 · 复盘材料</div><p class=\"ink\">接口版本、确认时间和上线记录都已归档。<br>有争议的部分可以逐条核对，避免依靠印象判断是谁的问题。</p></div><div class=\"chat-msg mine\"><div class=\"small ink\">我 · 事实核对</div><p class=\"ink\">我会补齐自己负责的记录，也希望把相关条件放在同一条时间线上。<br>看清事实才能改善下一次协作，而不是制造新的互相指责。</p></div><div class=\"chat-msg source-msg\"><div class=\"small ink\">项目负责人 · 11:50</div><p class=\"ink\"><strong data-goal=\"overtime\">项目出了问题先算你的，别再解释了。</strong></p><p class=\"small ink\">已送达　<span class=\"blue\">查看上下文</span></p></div><div class=\"chat-msg mine\"><div class=\"small ink\">我 · 12:10</div><p class=\"ink\">我愿意承担自己负责的部分，也希望每个人都基于事实讨论。<br>如果要解决问题，就需要看见完整的过程和各方的责任。</p></div><h2 class=\"ink\">我的记录</h2><p class=\"ink\">清楚地表达边界，也是把事情做好的一部分。<br>我会继续寻找合适的合作方式，也会继续向前。</p><p class=\"fineprint ink\">虚构内容，不对应任何真实招聘人员或团队。</p></article><footer class=\"site-footer ink\">梦想直聘 · 沟通档案 · 帮助中心<br>记录不会发送，不提交真实申请。</footer></main><aside><div class=\"context-title ink\">项目成员</div><div class=\"apply ink\" data-surface>查看协作文档</div><div class=\"company-name ink\">协作项目组</div><p class=\"sidep ink\">设计推进群 · 6 位成员</p><p class=\"sidep small ink\">全部文案为虚构预设</p><div class=\"blue ink\">查看沟通约定 ↗</div><img class=\"studio\" id=\"studio-image\" alt=\"协作空间示意图\"><div class=\"caption ink\">协作空间</div><section class=\"side-section\"><h3 class=\"ink\">成员与职责</h3><p class=\"ink\"><span class=\"dot\" data-surface></span>沟通记录已保存</p><p class=\"small ink\">产品 · 研发 · 设计 · 项目协调</p></section><section class=\"side-section\"><h3 class=\"ink\">待确认事项</h3><p class=\"ink\">职责范围与交付要求</p><p class=\"ink\">排期、资源与反馈</p><div class=\"blue ink\">查看全部记录</div></section><section class=\"side-section\"><h3 class=\"ink\">沟通提示</h3><p class=\"small ink\">讨论具体的问题，保留清楚的事实和自己的判断。</p><p class=\"small ink\">一句话无法概括你的全部价值。</p></section></aside></div>"}, "5": {"name": "高压终面", "company": "终面评估组", "channel": "终面沟通", "intro": "最终评估 · 绩效审判", "outline": ["持续证明", "无边界投入", "最终评估"], "goals": ["价值绑架", "投入压迫", "全盘否定"], "difficulty": "极难 · Boss 战 · 4 次改造", "comfort": "你不需要用耗尽自己，来换一句认可。", "accent": "#a75262", "starter": {"A": 4, "B": 3, "C": 4, "D": 3}, "words": [["不达标", "再努力", "要证明"], ["不够拼", "别停下", "还不够"]], "sections": [["第一轮 · 持续证明", [["评估同事 · 09:00", "欢迎进入最后一轮沟通。我们会核对岗位职责、项目经历与双方的合作期待。<br>请按自己的实际经历作答，清楚表达判断依据。"], ["我 · 09:16", "我准备了项目过程、关键决定和复盘记录，也整理了想确认的问题。<br>我希望这次沟通能帮助双方判断是否适合合作。"], ["评估同事 · 证据核对", "我们先把目标、资源、过程和结果放在同一份记录里。<br>你可以补充哪些决定属于自己，哪些条件需要与团队共同处理。"], ["我 · 证据补充", "我已经写清自己承担的部分，也记录了方案改变时的原因。<br>我愿意面对具体的问题，不会因为一句笼统的判断抹去全部努力。"], ["评估委员 · 10:02", "你的价值只看结果，之前的努力都不算。", "reply"], ["我 · 10:20", "结果很重要，过程中的判断、协作和限制条件也值得讨论。<br>我会认真说明自己的贡献，不把一句评价当成全部事实。"]]], ["第二轮 · 投入与回报", [["评估同事 · 13:10", "我们继续确认工作方式。岗位会有集中推进的阶段，也需要提前沟通资源和安排。<br>你可以说说怎样处理多项任务，或怎样判断优先级。"], ["我 · 13:28", "我会明确目标、拆分任务，并尽早暴露风险。<br>投入需要建立在清楚的职责、合理的安排和可持续的节奏上。"], ["评估同事 · 合作方式", "这一轮同时讨论职责、节奏和回报。双方都可以提出具体的期待和需要澄清的事项。<br>清楚的安排能够帮助我们判断合作是否可持续。"], ["我 · 合作期待", "我重视交付和反馈，也重视投入与安排之间的平衡。<br>我可以说明怎样负责地推进任务，但投入并不意味着放弃所有边界。"], ["评估委员 · 15:12", "要证明你足够拼，就别谈休息和回报。", "experience"], ["我 · 15:35", "认真工作和照顾自己可以同时成立。<br>我愿意投入有意义的任务，也需要明确的协作与回报。"]]], ["最终轮 · 评估结论", [["评估同事 · 17:00", "最后请补充你对这份工作的期待。我们的记录会保留问题、答复和沟通中已经确认的事项。<br>评价应该落在具体的工作证据上。"], ["我 · 17:18", "我希望在能够讨论问题、尊重事实和边界的团队里工作。<br>我也会继续提升能力，而不是等一个声音替我定义全部价值。"], ["评估同事 · 最后核对", "记录里保留了每轮的提问和答复，也保留了双方尚未达成一致的地方。<br>最终评价应当解释依据，而不是要求一个人永远证明自己。"], ["我 · 最后补充", "我会继续学习，承担属于自己的责任，也保留清楚的判断。<br>一次评估不能抹掉所有经历，未来也不会只有这一条路。"], ["评估委员 · 18:00", "只要还有一项没做到，你就什么都不值得。", "overtime"], ["评估核心 · 18:05", "最终判定：绩效审判。所有疑问，都算你不够努力。<br>评估未结束，证明不能停。", null, "boss-anchor"], ["我 · 18:12", "我会处理具体的问题，也会保留自己的判断。<br>别人的结论可以结束这次沟通，却不能结束我的未来。"]]]], "html": "<header><div class=\"brand ink\">梦想直聘<span class=\"brand-divider\"> / </span><span class=\"brand-channel\">终面沟通</span></div><div class=\"nav ink\"><span>职位</span><span>消息</span><span>我的记录</span><span>帮助</span></div><div class=\"account ink\">沟通档案 · 第 5 关</div></header><div class=\"message-workspace\"><nav class=\"inbox\" aria-label=\"会话列表\"><div class=\"inbox-title ink\">评估记录</div><div class=\"inbox-search ink\" data-surface>搜索记录 / 关键词</div><div class=\"conversation\"><div class=\"conversation-company ink\">持续证明</div><p class=\"small ink\">沟通记录 · 初始议题</p></div><div class=\"conversation\"><div class=\"conversation-company ink\">无边界投入</div><p class=\"small ink\">继续沟通 · 待确认事项</p></div><div class=\"conversation\"><div class=\"conversation-company ink\">最终评估</div><p class=\"small ink\">后续答复 · 记录归档</p></div><div class=\"inbox-tip ink\">极难 · Boss 战 · 4 次改造<br>记录是沟通的一部分</div></nav><main class=\"chat-main\"><div class=\"conversation-heading\"><div class=\"breadcrumb ink\">消息中心 / 终面沟通</div><h1 class=\"ink\">终面评估组 <span class=\"chat-heading-caption\">高压终面</span></h1><div class=\"meta ink\">最终评估 · 绩效审判 <span class=\"blue\">查看详细资料 ↗</span></div></div><article><div class=\"notice ink\"><p>此记录仅展示预设的虚构沟通，不会向任何人发送消息。</p><p>保持清楚的事实，也保留自己的判断。<span class=\"blue\">查看记录说明</span></p></div><h2 class=\"ink\">第一轮 · 持续证明</h2><div class=\"chat-msg\"><div class=\"small ink\">评估同事 · 09:00</div><p class=\"ink\" id=\"spawn-paragraph\">欢迎进入最后一轮沟通。我们会核对岗位职责、项目经历与双方的合作期待。<br>请按自己的实际经历作答，清楚表达判断依据。</p></div><div class=\"chat-msg mine\"><div class=\"small ink\">我 · 09:16</div><p class=\"ink\">我准备了项目过程、关键决定和复盘记录，也整理了想确认的问题。<br>我希望这次沟通能帮助双方判断是否适合合作。</p></div><div class=\"chat-msg\"><div class=\"small ink\">评估同事 · 证据核对</div><p class=\"ink\">我们先把目标、资源、过程和结果放在同一份记录里。<br>你可以补充哪些决定属于自己，哪些条件需要与团队共同处理。</p></div><div class=\"chat-msg mine\"><div class=\"small ink\">我 · 证据补充</div><p class=\"ink\">我已经写清自己承担的部分，也记录了方案改变时的原因。<br>我愿意面对具体的问题，不会因为一句笼统的判断抹去全部努力。</p></div><div class=\"chat-msg source-msg\"><div class=\"small ink\">评估委员 · 10:02</div><p class=\"ink\"><strong data-goal=\"reply\">你的价值只看结果，之前的努力都不算。</strong></p><p class=\"small ink\">已送达　<span class=\"blue\">查看上下文</span></p></div><div class=\"chat-msg mine\"><div class=\"small ink\">我 · 10:20</div><p class=\"ink\">结果很重要，过程中的判断、协作和限制条件也值得讨论。<br>我会认真说明自己的贡献，不把一句评价当成全部事实。</p></div><h2 class=\"ink\">第二轮 · 投入与回报</h2><div class=\"chat-msg\"><div class=\"small ink\">评估同事 · 13:10</div><p class=\"ink\">我们继续确认工作方式。岗位会有集中推进的阶段，也需要提前沟通资源和安排。<br>你可以说说怎样处理多项任务，或怎样判断优先级。</p></div><div class=\"chat-msg mine\"><div class=\"small ink\">我 · 13:28</div><p class=\"ink\">我会明确目标、拆分任务，并尽早暴露风险。<br>投入需要建立在清楚的职责、合理的安排和可持续的节奏上。</p></div><div class=\"chat-msg\"><div class=\"small ink\">评估同事 · 合作方式</div><p class=\"ink\">这一轮同时讨论职责、节奏和回报。双方都可以提出具体的期待和需要澄清的事项。<br>清楚的安排能够帮助我们判断合作是否可持续。</p></div><div class=\"chat-msg mine\"><div class=\"small ink\">我 · 合作期待</div><p class=\"ink\">我重视交付和反馈，也重视投入与安排之间的平衡。<br>我可以说明怎样负责地推进任务，但投入并不意味着放弃所有边界。</p></div><div class=\"chat-msg source-msg\"><div class=\"small ink\">评估委员 · 15:12</div><p class=\"ink\"><strong data-goal=\"experience\">要证明你足够拼，就别谈休息和回报。</strong></p><p class=\"small ink\">已送达　<span class=\"blue\">查看上下文</span></p></div><div class=\"chat-msg mine\"><div class=\"small ink\">我 · 15:35</div><p class=\"ink\">认真工作和照顾自己可以同时成立。<br>我愿意投入有意义的任务，也需要明确的协作与回报。</p></div><h2 class=\"ink\">最终轮 · 评估结论</h2><div class=\"chat-msg\"><div class=\"small ink\">评估同事 · 17:00</div><p class=\"ink\">最后请补充你对这份工作的期待。我们的记录会保留问题、答复和沟通中已经确认的事项。<br>评价应该落在具体的工作证据上。</p></div><div class=\"chat-msg mine\"><div class=\"small ink\">我 · 17:18</div><p class=\"ink\">我希望在能够讨论问题、尊重事实和边界的团队里工作。<br>我也会继续提升能力，而不是等一个声音替我定义全部价值。</p></div><div class=\"chat-msg\"><div class=\"small ink\">评估同事 · 最后核对</div><p class=\"ink\">记录里保留了每轮的提问和答复，也保留了双方尚未达成一致的地方。<br>最终评价应当解释依据，而不是要求一个人永远证明自己。</p></div><div class=\"chat-msg mine\"><div class=\"small ink\">我 · 最后补充</div><p class=\"ink\">我会继续学习，承担属于自己的责任，也保留清楚的判断。<br>一次评估不能抹掉所有经历，未来也不会只有这一条路。</p></div><div class=\"chat-msg source-msg\"><div class=\"small ink\">评估委员 · 18:00</div><p class=\"ink\"><strong data-goal=\"overtime\">只要还有一项没做到，你就什么都不值得。</strong></p><p class=\"small ink\">已送达　<span class=\"blue\">查看上下文</span></p></div><div class=\"chat-msg\"><div class=\"small ink\">评估核心 · 18:05</div><p class=\"ink\" id=\"boss-anchor\">最终判定：绩效审判。所有疑问，都算你不够努力。<br>评估未结束，证明不能停。</p></div><div class=\"chat-msg mine\"><div class=\"small ink\">我 · 18:12</div><p class=\"ink\">我会处理具体的问题，也会保留自己的判断。<br>别人的结论可以结束这次沟通，却不能结束我的未来。</p></div><h2 class=\"ink\">我的记录</h2><p class=\"ink\">你不需要用耗尽自己，来换一句认可。<br>我会继续寻找合适的合作方式，也会继续向前。</p><p class=\"fineprint ink\">虚构内容，不对应任何真实招聘人员或团队。</p></article><footer class=\"site-footer ink\">梦想直聘 · 沟通档案 · 帮助中心<br>记录不会发送，不提交真实申请。</footer></main><aside><div class=\"context-title ink\">沟通资料</div><div class=\"apply ink\" data-surface>查看岗位资料</div><div class=\"company-name ink\">终面评估组</div><p class=\"sidep ink\">最终评估 · 绩效审判</p><p class=\"sidep small ink\">全部文案为虚构预设</p><div class=\"blue ink\">查看沟通约定 ↗</div><img class=\"studio\" id=\"studio-image\" alt=\"协作空间示意图\"><div class=\"caption ink\">协作空间</div><section class=\"side-section\"><h3 class=\"ink\">记录状态</h3><p class=\"ink\"><span class=\"dot\" data-surface></span>沟通记录已保存</p><p class=\"small ink\">每轮沟通都保留原始上下文</p></section><section class=\"side-section\"><h3 class=\"ink\">待确认事项</h3><p class=\"ink\">职责范围与交付要求</p><p class=\"ink\">排期、资源与反馈</p><div class=\"blue ink\">查看全部记录</div></section><section class=\"side-section\"><h3 class=\"ink\">沟通提示</h3><p class=\"small ink\">讨论具体的问题，保留清楚的事实和自己的判断。</p><p class=\"small ink\">一句话无法概括你的全部价值。</p></section></aside></div>"}};
+run.practice=run.practice||{};
+if(!run.entries[level]){const inherited=run.results[level-1]?.mods;run.entries[level]=cleanMods(inherited||(level>=3?STAGES[level].starter:null));run.practice[level]=level>=3&&!inherited;}
+let guidedTarget=null;
+let mods=cleanMods(run.entries[level]),growth,targets=[],rewarded=new Set(),choiceNode=null,openChoices=[],growthDirty=false,endingRequested=false;
+const nodeThresholds=level>=2?combatConfig.thresholds:GAME_CONFIG.thresholds,maxModLevel=level>=2?combatConfig.maxLevel:3;
+const modNames={A:'贯穿弹',B:'分裂弹',C:'扩散爆破',D:'快速装填'},roman=['','I','II','III','IV','V','VI','VII','VIII'];
+function saveRun(){window.name='dreamjob-run-v2:'+STORE+':'+JSON.stringify(run);try{localStorage.setItem(STORE,JSON.stringify(run))}catch(e){storageOK=false}}
+function getWeaponStats(){return {pierce:GAME_CONFIG.upgrades.A[mods.A],split:GAME_CONFIG.upgrades.B[mods.B],radius:GAME_CONFIG.upgrades.C[mods.C],cooldown:GAME_CONFIG.upgrades.D[mods.D],damage:level>=3?1+Math.floor(mods.A/3):1,grenadeDamage:level>=3?5+Math.floor(mods.C*1.5):5,eraserDamage:level>=3?1+Math.floor(Math.max(...Object.values(mods))/3):1}}
+function resetGrowth(){
+ mods=cleanMods(run.entries[level]);rewarded.clear();choiceNode=null;openChoices=[];growthDirty=false;endingRequested=false;
+ growth={points:0,sources:{glyph:0,image:0,button:0,target:0,enemy:0,source:0,boss:0},firstAt:null,firstWallAt:null,nodes:nodeThresholds.map((v,i)=>({id:'level'+level+'-node'+(i+1),threshold:v,state:'locked',unlockAt:null,claimAt:null,choice:null})),complete:false,continued:false,committed:false};
+ targets=(level===1?[['reply','已读不回'],['experience','经验门槛'],['overtime','加班要求']]:[['reply',STAGES[level]?.goals[0]||'经验否定'],['experience',STAGES[level]?.goals[1]||'薪资质疑'],['overtime',STAGES[level]?.goals[2]||'加班压力']]).map(([id,label])=>({id,label,items:glyphs.filter(a=>a.el.closest('[data-goal="'+id+'"]')),gone:0,done:false}));
+ guidedTarget=null;$('#goal-detail').textContent='';$('#upgrade').hidden=true;$('#skip-upgrades').hidden=true;resetCombat();renderGrowth();
+}
+function targetFraction(){return level===1?GAME_CONFIG.level1TargetFraction:(combatConfig.targetFraction||GAME_CONFIG.targetFraction)}
+function guideTarget(id){
+ if(paused||ending||settled)return;const t=targets.find(t=>t.id===id);if(!t||t.done)return;
+ const alive=t.items.filter(a=>a.alive),g=alive[Math.floor(alive.length/2)];if(!g)return;
+ clearHeldInput();guidedTarget=t;const text=t.items.map(a=>a.text).join('');
+ if(level===1){
+  // Optional travel assistance uses surviving text, without adding platforms or changing collisions.
+  const nearby=glyphs.filter(a=>a.alive&&Math.abs(a.y-g.y)<95&&Math.abs(a.x-g.x)<250&&Math.hypot(a.x+a.w/2-g.x-g.w/2,a.y-24-g.y-g.h/2)>65);
+  nearby.sort((a,b)=>Math.abs(a.y-g.y-26)*4+Math.abs(Math.abs(a.x-g.x)-135)-Math.abs(b.y-g.y-26)*4-Math.abs(Math.abs(b.x-g.x)-135));
+  const floor=nearby[0]||g;
+  Object.assign(p,{x:floor.x+floor.w/2,y:floor.y,vx:0,vy:0,onGround:true,jumps:0,drop:0,coyote:0,jumpBuffer:0});lastSafe={x:p.x,y:p.y};pointer.moved=false;p.face=g.x>=p.x?1:-1;p.angle=p.face===1?0:Math.PI;begin();
+ }
+ camX=clamp(g.x-sw/scale*.4,0,Math.max(0,W-sw/scale));camY=clamp(g.y-sh/scale*.5,0,Math.max(0,H-sh/scale));manualUntil=time+8;updateTransforms();
+ $('#goal-detail').textContent='目标：「'+text+'」'+(level===1?' 小人已到附近，瞄准蓝框内文字射击。':' 标框是来源；移动到附近射击，拆掉 '+Math.round(targetFraction()*100)+'% 即可关闭。');focusGame();
+}
+function drawTargetGuide(){if(!guidedTarget||guidedTarget.done)return;ctx.save();ctx.strokeStyle=level>=3?STAGES[level].accent:level===2?'#73884f':'#2e60b6';ctx.lineWidth=1/scale;ctx.setLineDash([3/scale,3/scale]);for(const a of guidedTarget.items)if(a.alive)ctx.strokeRect(a.x-1,a.y-2,a.w+2,a.h+4);ctx.restore()}
+function award(source,amount){if(amount<=0)return;if(growth.firstAt===null){growth.firstAt=time;growth.firstWallAt=performance.now()/1000;}growth.sources[source]+=amount;growth.points+=amount;growthDirty=true}
+// Only destroy() emits this event, after the alive flag is cleared. Stable ID ledger is defensive.
+function onDestroyed(a){
+ if(!growth||rewarded.has(a.id))return;rewarded.add(a.id);
+ if(a.kind==='glyph'){award('glyph',GAME_CONFIG.rewards.glyph);if(level>=2){const bubble=a.el.closest('.chat-msg');if(bubble&&!bubble.querySelector('.glyph:not(.gone)'))bubble.classList.add('text-empty')}}
+ else if(a.kind==='tile')award('image',GAME_CONFIG.rewards.image*(a.ssw*a.ssh)/(sourceImage.naturalWidth*sourceImage.naturalHeight));
+ else if(a.kind==='surface'&&a.el.matches('.apply'))award('button',GAME_CONFIG.rewards.button);
+ for(const t of targets){if(t.done||!t.items.includes(a))continue;t.gone++;
+  if(t.gone+1e-8>=t.items.length*targetFraction()){t.done=true;if(level>=2)closeSource(t);else award('target',GAME_CONFIG.rewards.target);for(const g of t.items)if(g.alive)destroy(g,g.x+g.w/2,g.y,.7)}
+ }
+}
+function pendingNodes(){return growth.nodes.filter(n=>n.state==='pending')}
+function flushGrowth(){
+ if(!growthDirty||!growth)return;growthDirty=false;const done=targets.filter(t=>t.done).length,hadPending=pendingNodes().length>0;let fresh=false;
+ growth.nodes.forEach((n,i)=>{if(n.state==='locked'&&(growth.points+1e-8>=n.threshold||Math.ceil(done*growth.nodes.length/3)>=i+1)){n.state='pending';n.unlockAt=time-growth.firstAt;n.unlockWallAt=performance.now()/1000-growth.firstWallAt;fresh=true}});
+ growth.complete=done===3&&(level!==5||boss.defeated);
+ renderGrowth();
+ // Batch damage finishes before the panel pauses simulation. Existing queues never force-chain.
+ if(fresh&&!hadPending&&!choiceNode&&!paused&&!ending)openUpgrade();
+}
+function choicesFor(n){
+ let order;if(level>=2){const preferred=weapon===1?'C':weapon===0?'A':Object.keys(mods).sort((a,b)=>mods[b]-mods[a])[0];order=[preferred,({A:'B',B:'A',C:'D',D:'C'})[preferred],...(['A','B'].includes(preferred)?['C','D']:['A','B'])]}else if(n===0)order=['A','B','C'];else if(n===1)order=({A:['A','B','C'],B:['B','A','D'],C:['C','D','A']})[growth.nodes[0].choice]||['A','B','C'];
+ else {const first=growth.nodes.find(x=>x.choice)?.choice||'A';order=first==='A'||first==='B'?[first,first==='A'?'B':'A','C','D']: [first,first==='C'?'D':'C','A','B']}
+ return [...new Set([...order,'A','B','C','D'])].filter(k=>mods[k]<maxModLevel).slice(0,3);
+}
+function modDescription(k){let l=mods[k],u=GAME_CONFIG.upgrades;if(k==='A')return `连发枪：每弹命中 ${u.A[l]} → ${u.A[l+1]} 个单位`+(level>=3?`；伤害 ${1+Math.floor(l/3)} → ${1+Math.floor((l+1)/3)}`:'');
+ if(k==='B')return `连发枪：终止命中副弹 ${u.B[l].count} → ${u.B[l+1].count} 颗；射程 ${u.B[l].range} → ${u.B[l+1].range}`;
+ return k==='C'?`榴弹：爆炸半径 ${u.C[l]} → ${u.C[l+1]}`+(level>=3?`；伤害 ${5+Math.floor(l*1.5)} → ${5+Math.floor((l+1)*1.5)}`:''):`榴弹：冷却 ${Number(u.D[l].toFixed(2))} → ${Number(u.D[l+1].toFixed(2))} 秒`;
+}
+function openUpgrade(){if(choiceNode||ending||settled||paused)return;const n=pendingNodes()[0];if(!n)return;clearHeldInput();p.recoil=0;choiceNode=n;paused=true;openChoices=choicesFor(growth.nodes.indexOf(n));$('#upgrade-title').textContent=`第 ${growth.nodes.indexOf(n)+1} 次改造 · 选择后继续`;
+ if(!openChoices.length){n.state='skipped';choiceNode=null;paused=false;notify('当前四项改造已满级。');renderGrowth();return}const box=$('#choices');box.replaceChildren();for(const k of openChoices){const b=document.createElement('button');b.dataset.mod=k;const title=document.createElement('strong'),desc=document.createElement('span');title.textContent=modNames[k]+roman[mods[k]+1];desc.textContent=modDescription(k);b.append(title,desc);b.onclick=()=>claimUpgrade(k);box.append(b)}$('#upgrade').hidden=false;box.firstElementChild?.focus({preventScroll:true});renderGrowth();
+}
+function claimUpgrade(k){if(!choiceNode||choiceNode.state!=='pending'||!openChoices.includes(k)||mods[k]>=maxModLevel)return;mods[k]++;choiceNode.state='claimed';choiceNode.choice=k;choiceNode.claimAt=time-growth.firstAt;choiceNode.claimWallAt=performance.now()/1000-growth.firstWallAt;choiceNode=null;openChoices=[];$('#upgrade').hidden=true;clearHeldInput();p.recoil=0;paused=false;renderGrowth();focusGame();
+ if(endingRequested&&!pendingNodes().length)finishLevel();
+}
+function renderGrowth(){if(!growth)return;$('#resume-level').hidden=level!==1||!run.results[1];const claimed=growth.nodes.filter(n=>n.state==='claimed').length,next=growth.nodes.find(n=>n.state==='locked');
+ $('#growth-status').textContent=claimed===growth.nodes.length?`本关改造 ${claimed}/${growth.nodes.length}`:`改造 ${claimed}/${growth.nodes.length} · ${Math.floor(growth.points+1e-6)}${next?' / '+next.threshold:''} 点`;
+ $('#loadout-mode').textContent=level>=3?(run.practice[level]?'直接选关 · 体验构筑入场':'连续闯关 · 继承已结算构筑'):'';
+ $('#build').textContent=Object.entries(mods).filter(([k,l])=>l).map(([k,l])=>modNames[k]+roman[l]).join(' · ')||'基础装备';
+ if(guidedTarget?.done)$('#goal-detail').textContent='✓ '+guidedTarget.label+'已完成。'+(targets.every(t=>t.done)?(level===5&&!boss.defeated?'来源已关闭，继续击败 Boss。':'三处都完成了，可以结束这一页。'):'继续处理其余目标即可。');
+ $('#mission-rule').textContent=growth.complete?'本关目标已完成 · 可以结束，也可以继续拆':level===1?'完成三处即可通关 · 每处只需拆 40%':(level===5?'关闭三处来源 + 击败绩效审判':`关闭三处来源即可通关 · ${Math.round(targetFraction()*100)}%`);
+ if(!$('#goals').children.length)for(const t of targets){const row=document.createElement('div');row.className='goal-row';const label=document.createElement('span'),button=document.createElement('button');label.id='goal-'+t.id;button.dataset.target=t.id;button.textContent=level===1?'前往':'定位';button.setAttribute('aria-label',(level===1?'前往':'定位')+t.label);button.title=level===1?'把小人移到目标附近的现存文字上':'查看目标位置；小人留在原处';button.onclick=()=>guideTarget(t.id);row.append(label,button);$('#goals').append(row)}
+ for(const t of targets){$('#goal-'+t.id).textContent=t.done?'✓ '+t.label:t.label+' · 还需 '+Math.max(0,Math.ceil(t.items.length*targetFraction())-t.gone)+' 字';$('#goals button[data-target="'+t.id+'"]').disabled=t.done||paused||ending||settled}
+
+ const pending=pendingNodes().length;$('#pending').hidden=!pending||!!choiceNode;$('#pending').textContent=`还有 ${pending} 次改造`;
+ $('#level-actions').hidden=!growth.complete||growth.continued||ending;$('#finish').style.display=growth.complete?'inline-block':'none';$('#finish').textContent=pending&&endingRequested?'领取改造后结束':'结束这一页';if(level===5)renderBoss();
+}
+function requestEnd(){if(!growth.complete||growth.committed)return;clearHeldInput();endingRequested=true;if(pendingNodes().length){openUpgrade();if(level>=2)$('#skip-upgrades').hidden=false;notify(level>=2?'还有待选改造，可领取后结束，也可放弃。':'先领取剩余改造，再结束这一页。');return}finishLevel()}
+function commitLevel(){if(growth.committed)return false;growth.committed=true;if(!run.results[level]){run.mods={...mods};run.results[level]={level,points:growth.points,mods:{...mods},sources:{...growth.sources},nodes:growth.nodes.map(n=>({...n})),completedAt:Date.now()};if(level<5){run.entries[level+1]={...mods};run.practice[level+1]=false}saveRun()}return true}
+function goLevel(n){clearHeldInput();geometryObserver.disconnect();window.removeEventListener('resize',resize);const url=new URL(location.href);url.searchParams.set('level',n);location.assign(url.href)}
+function newRun(){run=emptyRun();saveRun();if(level>1)goLevel(1);else resetGame()}
+window.DreamJobRun={readNextLevel:()=>({runId:run.id,completedLevel:Math.max(0,...Object.keys(run.results).map(Number)),upgrades:{...run.mods}}),getConfig:()=>structuredClone(GAME_CONFIG)};
+$('#level-select').value=String(level);$('#level-select').onchange=e=>{saveRun();goLevel(Number(e.target.value))};
+$('#next-level').onclick=()=>{if(level<5&&run.results[level]){saveRun();goLevel(level+1)}};
+$('#skip-upgrades').onclick=()=>{if(level<2||!endingRequested)return;for(const n of pendingNodes())n.state='skipped';choiceNode=null;paused=false;$('#upgrade').hidden=true;$('#skip-upgrades').hidden=true;finishLevel()};
+$('#resume-level').onclick=()=>{if(run.results[1])goLevel(2)};$('#pending').onclick=openUpgrade;$('#continue-break').onclick=()=>{growth.continued=true;renderGrowth();clearHeldInput();focusGame()};$('#end-page').onclick=requestEnd;$('#new-run').onclick=newRun;
+
+if(level===2){document.body.classList.add("level-two");page.innerHTML="<header><div class=\"brand ink\">梦想直聘<span class=\"brand-divider\"> / </span><span class=\"brand-channel\">消息</span></div><div class=\"nav ink\"><span>职位</span><span>公司</span><span>我的投递</span><span>帮助</span></div><div class=\"account ink\">我的求职账号 · 在线</div></header><div class=\"message-workspace\"><nav class=\"inbox\" aria-label=\"会话列表\"><div class=\"inbox-title ink\">会话 <span class=\"inbox-count\">03</span></div><div class=\"inbox-search ink\" data-surface>搜索联系人 / 公司</div>\n<div class=\"conversation active\"><div class=\"conversation-company ink\">北辰科技 <span class=\"conversation-time\">18:05</span></div><p class=\"ink\">产品设计 · 招聘团队</p><p class=\"small ink\">大家都能接受加班……</p><div class=\"conversation-status ink\">正在查看</div></div>\n<div class=\"conversation\"><div class=\"conversation-company ink\">微光工作室 <span class=\"conversation-time\">昨天</span></div><p class=\"ink\">交互设计助理</p><p class=\"small ink\">谢谢，我们已收到你的作品集。</p></div>\n<div class=\"conversation\"><div class=\"conversation-company ink\">纸飞机设计 <span class=\"conversation-time\">周二</span></div><p class=\"ink\">视觉设计实习生</p><p class=\"small ink\">方便确认一下到岗时间吗？</p></div>\n<div class=\"inbox-tip ink\">站内沟通<br>清晰了解职责与工作安排</div></nav><main class=\"chat-main\"><div class=\"conversation-heading\"><div class=\"breadcrumb ink\">消息中心 / 当前会话</div><h1 class=\"ink\">北辰科技 <span class=\"chat-heading-caption\">沟通记录</span></h1><div class=\"meta ink\">招聘团队　·　初级产品设计师 <span class=\"blue\">查看职位详情 ↗</span></div></div><article>\n<div class=\"notice ink\"><p>沟通提醒：请通过站内消息交流，注意保护个人信息。</p><p>招聘沟通记录仅对双方可见。<span class=\"blue\">查看沟通须知</span></p></div>\n<h2 class=\"ink\">9 月 18 日 · 初次联系</h2>\n<div class=\"chat-msg\"><div class=\"small ink\">招聘团队 · 10:18</div><p class=\"ink\" id=\"spawn-paragraph\">您好，作品集已收到。感谢你关注我们的产品设计岗位。<br>方便介绍一下你负责的部分吗？我们希望了解从需求到交付的过程。</p></div>\n<div class=\"chat-msg mine\"><div class=\"small ink\">我 · 10:32</div><p class=\"ink\">您好，谢谢查看。我在这个项目中负责用户访谈、信息整理与交互设计。<br>作品集里标注了独立完成的部分，也说明了与其他成员合作的过程。</p></div>\n<div class=\"chat-msg\"><div class=\"small ink\">招聘团队 · 11:06</div><p class=\"ink\">我们还需要内部讨论。项目经历已经转给用人团队，<br>后续有进展会再联系。你也可以补充更详细的说明。</p></div>\n<div class=\"chat-msg source-msg\"><div class=\"small ink\">招聘团队 · 14:20</div><p class=\"ink\"><strong data-goal=\"reply\">没有相关经验，暂时不考虑。</strong></p><p class=\"small ink\">消息已送达　<span class=\"blue\">查看原职位要求</span></p></div>\n<div class=\"chat-msg mine\"><div class=\"small ink\">我 · 14:46</div><p class=\"ink\">了解。我有一些可以迁移到这个岗位的经验，也愿意补充介绍。<br>如果现阶段确实不匹配，我会继续寻找合适的机会。谢谢回复。</p></div>\n<h2 class=\"ink\">9 月 20 日 · 关于岗位</h2>\n<div class=\"chat-msg\"><div class=\"small ink\">招聘团队 · 09:15</div><p class=\"ink\">方便说一下你对工作内容的期待吗？我们的项目涉及企业服务，<br>需要和不同角色沟通。岗位说明中的职责会根据具体项目安排调整。</p></div>\n<div class=\"chat-msg mine\"><div class=\"small ink\">我 · 09:38</div><p class=\"ink\">我希望参与真实的产品问题，也希望能有清晰的协作与反馈。<br>我可以讲一下之前怎样整理复杂的信息，以及怎样与研发确认方案。<br>如果能进一步沟通，也想了解团队目前最需要解决的问题。</p></div>\n<div class=\"chat-msg\"><div class=\"small ink\">招聘团队 · 10:12</div><p class=\"ink\">作品集中的一些细节我们还在讨论。你可以先看看公司介绍，<br>我们稍后会补充岗位情况。<span class=\"blue\">查看团队与工作方式</span></p></div>\n<div class=\"chat-msg source-msg\"><div class=\"small ink\">招聘团队 · 16:08</div><p class=\"ink\"><strong data-goal=\"experience\">这个水平，薪资要求是不是太高了？</strong></p><p class=\"small ink\">消息已送达　<span class=\"blue\">查看薪酬说明</span></p></div>\n<div class=\"chat-msg mine\"><div class=\"small ink\">我 · 16:30</div><p class=\"ink\">我的预期是结合职责范围和工作安排提出的，可以讨论具体条件。<br>我也希望双方能基于项目经历与岗位要求沟通，而不是只有一句评价。<br>如果预算或职责有变化，麻烦提供更明确的信息。</p></div>\n<h2 class=\"ink\">9 月 23 日 · 工作安排</h2>\n<div class=\"chat-msg\"><div class=\"small ink\">招聘团队 · 11:10</div><p class=\"ink\">我们还需要内部讨论。后续有进展会再联系。<br>目前团队处于项目推进期，具体节奏需要和项目负责人进一步确认。</p></div>\n<div class=\"chat-msg mine\"><div class=\"small ink\">我 · 11:35</div><p class=\"ink\">明白。想再了解一下日常工作时间、紧急需求的处理方式，<br>以及项目之间怎样安排优先级。清晰的安排能帮助我判断是否合适。</p></div>\n<div class=\"chat-msg\"><div class=\"small ink\">招聘团队 · 15:40</div><p class=\"ink\">补充说明：不同项目的交付时间有所区别，我们会在周会上同步安排。<br>关于工作时间和协作方式，你可以在后续沟通中继续确认。<br>岗位要求、职责范围与个人期待，都需要双方了解清楚再作决定。</p></div>\n<div class=\"chat-msg source-msg\"><div class=\"small ink\">招聘团队 · 18:05</div><p class=\"ink\"><strong data-goal=\"overtime\">大家都能接受加班，你的抗压能力还需要提升。</strong></p><p class=\"small ink\">消息已送达　<span class=\"blue\">查看工作安排</span></p></div>\n<div class=\"chat-msg mine\"><div class=\"small ink\">我 · 18:26</div><p class=\"ink\">我能理解项目会遇到需要配合的阶段，也重视提前沟通和合理安排。<br>我想知道的是具体的工作方式，这与是否愿意投入并不是同一个问题。<br>如果双方的期待不同，也可以在这里结束这次沟通。</p></div>\n<h2 class=\"ink\">沟通备注</h2><p class=\"ink\">你可以保存这段记录，也可以继续寻找与你更匹配的机会。<br>一次沟通无法概括你的能力，别人的一句话也不能替你决定未来。<br><span class=\"blue\">查看其他适合的职位</span></p><p class=\"fineprint ink\">以上为游戏内预设的虚构沟通文案，不对应任何真实招聘人员。</p>\n</article><footer class=\"site-footer ink\">记录仅对沟通双方可见　·　沟通须知　·　帮助中心<br>此为虚构的游戏页面，不发送消息，不提交真实申请。</footer></main><aside><div class=\"context-title ink\">职位资料</div><div class=\"apply ink\" data-surface>查看原职位</div><div class=\"company-name ink\">北辰科技</div><p class=\"sidep ink\">初级产品设计师</p><p class=\"sidep small ink\">杭州 · 全职 · 产品设计</p><p class=\"sidep ink\">互联网 · 企业服务</p><div class=\"blue ink\">查看公司主页 ↗</div><img class=\"studio\" id=\"studio-image\" alt=\"办公室环境示意图\"><div class=\"caption ink\">办公环境</div>\n<section class=\"side-section\"><h3 class=\"ink\">投递状态</h3><p class=\"small ink\">9 月 18 日投递</p><p class=\"ink\"><span class=\"dot\" data-surface></span>已查看 · 沟通中</p><div class=\"blue ink\">查看投递记录</div></section>\n<section class=\"side-section\"><h3 class=\"ink\">沟通记录</h3><p class=\"ink\">初次联系</p><p class=\"ink\">关于岗位与薪资</p><p class=\"ink\">工作时间与协作</p><div class=\"blue ink\">查看全部消息</div></section>\n<section class=\"side-section\"><h3 class=\"ink\">沟通小贴士</h3><p class=\"small ink\">明确职责、工作时间和沟通方式，有助于判断这份工作是否合适。</p><p class=\"small ink\">不必用一次回复衡量自己的全部价值。</p></section>\n<section class=\"side-section\"><h3 class=\"ink\">其他机会</h3><div class=\"side-job ink\"><div class=\"blue\">产品设计师</div><div class=\"small\">微光工作室 · 混合办公</div></div><div class=\"side-job ink\"><div class=\"blue\">交互设计助理</div><div class=\"small\">纸飞机设计 · 杭州</div></div></section></aside></div>";document.title='梦想直聘 · 第二关：沟通记录';$('#hint strong').textContent='让三处消息来源安静下来。';$('#hint-copy').innerHTML='三处消息各拆掉 70% 即可通关，无需杀光小怪。<br>点右下角“定位”查看原句和标框位置。<br>已有第一关结算则继承改造；直接进入用基础装备。';$('#ending p').textContent='一句‘不合适’，不是对你整个人的评价。'}
+if(level>=3){document.body.classList.add('level-two','level-later','level-'+level);page.innerHTML=STAGES[level].html;document.title='梦想直聘 · 第 '+level+' 关：'+STAGES[level].name;$('#hint strong').textContent=STAGES[level].name+' · '+STAGES[level].difficulty;$('#hint-copy').innerHTML=level===5?'关闭三处来源并击败 Boss。<br>Boss 有三阶段预告；护盾归零让它回血 12%。<br>Boss 抵抗副弹，主弹与榴弹伤害完整。<br>连续闯关继承改造，直接选关提供体验构筑。':`来源各拆掉 ${Math.round(targetFraction()*100)}% 即可通关。<br>右下角定位目标；先升级，再决定清敌或拆来源。<br>本关 ${nodeThresholds.length} 次改造，上限 ${roman[maxModLevel]}。`;$('#ending p').textContent=STAGES[level].comfort;}
+// Dynamic combat objects never enter the DOM terrain registry or its spatial index.
+let enemies=[],enemyShots=[],spawnLetters=[],enemySerial=0,shotSerial=0,shield=5,invincibleUntil=0;
+function resetCombat(){enemies=[];enemyShots=[];spawnLetters=[];enemySerial=0;shotSerial=0;shield=combatConfig.shield;invincibleUntil=time;resetBoss();
+ if(level>=2)for(const t of targets)Object.assign(t,{budget:combatConfig.budget,paid:0,spawned:0,nextSpawn:time,warning:null});renderShield();
+}
+function renderShield(){ $('#shield').textContent=level>=2&&combatConfig.enableShield?'护盾 '+ '●'.repeat(shield)+'○'.repeat(combatConfig.shield-shield):'' }
+function sourceReward(t,amount){const paid=Math.min(t.budget,amount);t.budget-=paid;t.paid+=paid;return paid}
+function closeSource(t){
+ t.warning=null;award('source',sourceReward(t,t.budget));
+ for(const e of enemies)if(e.source===t.id&&e.alive){e.alive=false;e.hushUntil=time+.45;e.vx=0;e.vy=0;e.warning=null}
+ enemyShots=enemyShots.filter(b=>b.source!==t.id);spawnLetters=spawnLetters.filter(b=>b.source!==t.id);
+}
+function combatCandidates(x,y,w,h){const found=query(x,y,w,h);if(level>=2)for(const e of enemies)if(e.alive&&e.x<=x+w&&e.x+e.w>=x&&e.y<=y+h&&e.y+e.h>=y)found.push(e);if(level===5&&boss.active&&boss.alive&&boss.x<=x+w&&boss.x+boss.w>=x&&boss.y<=y+h&&boss.y+boss.h>=y)found.push(boss);return found}
+function objectAlive(id){if(level===5&&id===boss.id)return boss.alive;return typeof id==='number'?!!all[id]?.alive:!!enemies.find(e=>e.id===id)?.alive}
+function scatterEnemy(e){for(let i=0;i<e.text.length;i++)fragment({kind:'glyph',text:e.text[i],x:e.x+i*14,y:e.y,w:14,h:18,fs:14,font:'600 14px Arial',color:'#657084'},e.x+e.w/2,e.y+e.h,1)}
+function hurtEnemy(e,amount,x){if(e.type==='boss'){hurtBoss(amount,x);return}if(!e.alive)return;e.hp-=amount;e.hitUntil=time+.12;e.kick=(e.x+e.w/2>=x?1:-1)*180;
+ if(e.hp<=0){e.alive=false;e.warning=null;scatterEnemy(e);const t=targets.find(t=>t.id===e.source);if(t&&!t.done)award('enemy',sourceReward(t,combatConfig[e.type].reward));}
+}
+function sourceCenter(t){const live=t.items.filter(a=>a.alive);if(!live.length)return null;return {x:live[0].x,y:live[0].y}}
+function spawnPlace(t){const c=sourceCenter(t);if(!c)return null;
+ const floors=query(c.x-80,c.y-12,Math.min(320,W-c.x+80),80,true).filter(a=>a.kind==='glyph');
+ for(const a of floors){const pos={x:clamp(a.x,8,W-52),y:a.y-23,w:44,h:22};if(Math.hypot(pos.x+22-p.x,pos.y+11-(p.y-22))<combatConfig.minDistance)continue;
+  if(query(pos.x+.1,pos.y+.1,pos.w-.2,pos.h-.2,true).some(g=>g.x<pos.x+pos.w&&g.x+g.w>pos.x&&g.y<pos.y+pos.h&&g.y+g.h>pos.y))continue;
+  if(enemies.some(e=>e.alive&&Math.hypot(e.x-pos.x,e.y-pos.y)<60))continue;return pos;
+ }return null;
+}
+function spawnEnemy(t,type,pos){const cfg=combatConfig[type],words=level>=3?STAGES[level].words[type==='chaser'?0:1]:(type==='chaser'?['没经验','不合适','要求高']:['再等等','你不行','别挑了']);
+ const e={kind:'enemy',id:'enemy-'+level+'-'+(++enemySerial),source:t.id,type,text:words[t.spawned%3],...pos,alive:true,born:time,hp:cfg.hp,vx:0,vy:0,kick:0,onGround:false,nextJump:time+combatConfig.chaser.jumpInterval,hitUntil:0,home:{x:pos.x,y:pos.y},nextAttack:time+combatConfig.shooter.interval-combatConfig.warning,warning:null};enemies.push(e);t.spawned++;t.nextSpawn=time+combatConfig.spawnInterval-combatConfig.warning;t.warning=null;
+ const from=t.items.find(a=>a.alive);if(from)for(let i=0;i<3;i++)spawnLetters.push({source:t.id,text:e.text[i],x:from.x+i*14,y:from.y,tx:pos.x+i*14,ty:pos.y,born:time});if(spawnLetters.length>30)spawnLetters.splice(0,spawnLetters.length-30);return e;
+}
+function updateSources(){const cfg=combatConfig;
+ for(const t of targets){if(t.done||t.spawned>=cfg.spawnBudget){t.warning=null;continue}const c=sourceCenter(t);if(!c)continue;
+  const near=c.y>camY-cfg.nearMargin&&c.y<camY+sh/scale+cfg.nearMargin&&c.x>camX-cfg.nearMargin&&c.x<camX+sw/scale+cfg.nearMargin;
+  const live=enemies.filter(e=>e.alive);if(!near||live.length>=cfg.globalCap||live.filter(e=>e.source===t.id).length>=cfg.perSource){t.warning=null;continue}
+  const pos=spawnPlace(t);if(!pos){t.warning=null;continue}
+  if(!t.warning&&time>=t.nextSpawn){const shooter=cfg.enableShooter&&(level>=3||targets.some(x=>x.done))&&t.spawned%2===1&&live.filter(e=>e.type==='shooter').length<cfg.shooterCap;t.warning={at:time,type:shooter?'shooter':'chaser'};sound('impact')}
+  if(t.warning&&time-t.warning.at>=cfg.warning){if(t.warning.type==='shooter'&&enemies.some(e=>e.alive&&e.type==='shooter')){t.warning=null;t.nextSpawn=time+.5;continue}spawnEnemy(t,t.warning.type,pos)}
+ }
+}
+function updateCombat(dt){if(level<2||!combatConfig.enableEnemies||paused||ending||settled)return;updateSources();updateBoss(dt);
+ for(const e of enemies){if(!e.alive){if(e.hushUntil&&time>=e.hushUntil){scatterEnemy(e);e.hushUntil=0}continue}
+  if(e.type==='chaser'){
+   const dir=Math.sign(p.x-(e.x+e.w/2));e.vx=dir*combatConfig.chaser.speed;e.kick*=Math.exp(-dt*9);
+   if(e.onGround&&time>=e.nextJump){e.vy=-Math.sqrt(2*G*combatConfig.chaser.jumpHeight);e.onGround=false;e.nextJump=time+combatConfig.chaser.jumpInterval}
+   const oldFeet=e.y+e.h;e.x=clamp(e.x+(e.vx+e.kick)*dt,0,W-e.w);e.vy=Math.min(950,e.vy+G*dt);e.y+=e.vy*dt;e.onGround=false;
+   if(e.vy>=0){let top=Infinity;for(const a of query(e.x,oldFeet-2,e.w,Math.max(4,e.y+e.h-oldFeet+2),true))if(oldFeet<=a.y+2&&e.y+e.h>=a.y&&a.y<top)top=a.y;if(isFinite(top)){e.y=top-e.h;e.vy=0;e.onGround=true}}
+  }else updateShooter(e,dt);
+  if(e.y>H+80||e.x<-80||e.x>W+80)e.alive=false;
+  if(e.alive&&Math.abs(e.x+e.w/2-p.x)<e.w/2+p.w&&e.y<p.y&&e.y+e.h>p.y-p.h)hurtPlayer(e.x+e.w/2);
+ }
+ updateEnemyShots(dt);spawnLetters=spawnLetters.filter(c=>time-c.born<.24);enemies=enemies.filter(e=>e.alive||e.hushUntil>time);progress();
+}
+function lineClear(x,y,tx,ty){for(const a of query(Math.min(x,tx),Math.min(y,ty),Math.abs(tx-x),Math.abs(ty-y))){if(segmentBox(x,y,tx,ty,a,0)!==null)return false}return true}
+function updateShooter(e,dt){
+ const cfg=combatConfig.shooter,cx=e.x+e.w/2,cy=e.y+e.h/2,dx=p.x-cx,dy=p.y-22-cy,d=Math.hypot(dx,dy);
+ if(e.warning){if(time-e.warning.at>=combatConfig.warning){const w=e.warning;if(enemyShots.length<16)enemyShots.push({id:'enemy-shot-'+(++shotSerial),source:e.source,x:cx,y:cy,vx:w.dx*cfg.speedBullet,vy:w.dy*cfg.speedBullet,life:cfg.lifeBullet,remaining:cfg.range,text:shotSerial%2?'？':'！'});e.warning=null;e.nextAttack=time+cfg.interval-combatConfig.warning}return}
+ const direction=d<170?-Math.sign(dx):d>260?Math.sign(dx):Math.sin(time*.7+e.home.x);
+ e.kick*=Math.exp(-dt*9);e.x=clamp(e.x+(direction*cfg.speed+e.kick)*dt,Math.max(0,e.home.x-100),Math.min(W-e.w,e.home.x+100));e.y=e.home.y-5+Math.sin(time*2)*3;
+ const ax=e.x+e.w/2,ay=e.y+e.h/2,aimX=p.x-ax,aimY=p.y-22-ay,dist=Math.hypot(aimX,aimY);if(time>=e.nextAttack&&dist<=cfg.range&&dist>1&&lineClear(ax,ay,p.x,p.y-22))e.warning={at:time,dx:aimX/dist,dy:aimY/dist};
+}
+function updateEnemyShots(dt){
+ for(let i=enemyShots.length-1;i>=0;i--){const b=enemyShots[i],speed=Math.hypot(b.vx,b.vy),d=Math.min(dt,b.life,b.remaining/Math.max(1,speed));const nx=b.x+b.vx*d,ny=b.y+b.vy*d;b.life-=d;b.remaining-=d*speed;
+  let wall=Infinity;for(const a of query(Math.min(b.x,nx)-1,Math.min(b.y,ny)-1,Math.abs(nx-b.x)+2,Math.abs(ny-b.y)+2)){const t=segmentBox(b.x,b.y,nx,ny,a,1);if(t!==null)wall=Math.min(wall,t)}
+  const hit=segmentBox(b.x,b.y,nx,ny,{x:p.x-p.w,y:p.y-p.h,w:p.w*2,h:p.h},2);
+  if(hit!==null&&hit<wall){hurtPlayer(b.x);enemyShots.splice(i,1);continue}
+  if(wall!==Infinity||b.life<=1e-8||b.remaining<=1e-8||nx<0||nx>W||ny<0||ny>H){enemyShots.splice(i,1);continue}b.x=nx;b.y=ny;
+ }
+}
+function hurtPlayer(x){if(level<2||!combatConfig.enableShield||time<invincibleUntil||paused||ending||settled)return;
+ shield--;p.vx=(p.x>=x?1:-1)*140;p.vy=-140;p.onGround=false;invincibleUntil=time+combatConfig.invincible;sound('impact');
+ if(shield<=0){if(level===5&&boss.active&&boss.alive){boss.hp=Math.min(boss.maxHp,boss.hp+Math.round(boss.maxHp*combatConfig.boss.healOnRecovery));boss.recoveries++;renderBoss()}shield=combatConfig.shield;const safe=glyphs.filter(a=>a.alive&&a.y>100&&a.y<H-60&&!enemies.some(e=>e.alive&&Math.hypot(e.x+e.w/2-(a.x+a.w/2),e.y+e.h-a.y)<150)&&!enemyShots.some(b=>Math.hypot(b.x-a.x,b.y-a.y)<100)&&!(level===5&&boss.active&&boss.alive&&Math.hypot(boss.x+boss.w/2-a.x,boss.y+boss.h-a.y)<180));
+  if(safe.length){const a=safe.reduce((best,a)=>Math.abs(a.y-p.y)+Math.abs(a.x-p.x)*.32<Math.abs(best.y-p.y)+Math.abs(best.x-p.x)*.32?a:best);Object.assign(p,{x:a.x+a.w/2,y:a.y,vx:0,vy:0,onGround:true,jumps:0,drop:0,coyote:0,jumpBuffer:0});manualUntil=0;camX=clamp(p.x-sw/scale*.5,0,Math.max(0,W-sw/scale));camY=clamp(p.y-sh/scale*.55,0,Math.max(0,H-sh/scale))}else respawn(false);
+  invincibleUntil=time+combatConfig.recovery;clearHeldInput();notify(level===5&&boss.active&&boss.alive?'回到文字上；Boss 恢复 12% 生命，改造与网页破坏保留。':'回到文字上，继续就好。',2400);
+ }renderShield();
+}
+
+function drawCombat(){if(level<2)return;
+ for(const t of targets){if(t.done)continue;const c=sourceCenter(t);if(!c)continue;ctx.fillStyle=t.warning?'#d37670':'#b17c79';ctx.beginPath();ctx.arc(c.x-9,c.y+7,t.warning?3.5:2.5,0,Math.PI*2);ctx.fill();
+  if(t.warning){ctx.save();ctx.globalAlpha=.45;for(const a of t.items.slice(0,3)){if(!a.alive)continue;ctx.font=a.font;ctx.fillStyle=a.color;ctx.textBaseline='top';ctx.fillText(a.text,a.x+Math.sin(time*38)*1.1,a.y)}ctx.restore()}
+ }
+ for(const c of spawnLetters){const f=(time-c.born)/.24;if(f>=1)continue;ctx.save();ctx.globalAlpha=1-f*.35;ctx.fillStyle='#657084';ctx.font='600 14px Arial';ctx.textBaseline='top';ctx.fillText(c.text,c.x+(c.tx-c.x)*f,c.y+(c.ty-c.y)*f-Math.sin(f*Math.PI)*8);ctx.restore()}
+ for(const e of enemies){if(!e.alive&&!e.hushUntil)continue;ctx.save();ctx.globalAlpha=e.alive?clamp((time-e.born)/.24,.2,1):Math.max(0,(e.hushUntil-time)/.45);ctx.translate(e.x,e.y);ctx.fillStyle=time<e.hitUntil?'#b37464':'#555f70';ctx.font='600 14px Arial';ctx.textBaseline='top';ctx.fillText(e.text,time<e.hitUntil?Math.sin(time*70):0,0);
+  if(e.type==='chaser'){ctx.strokeStyle='#758294';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(10,16);ctx.lineTo(8,22);ctx.moveTo(32,16);ctx.lineTo(34,22);ctx.stroke()}else if(e.warning){ctx.strokeStyle='#c69077';ctx.lineWidth=1;ctx.beginPath();ctx.arc(e.w/2,e.h/2,25,0,Math.PI*2*clamp((time-e.warning.at)/combatConfig.warning,0,1));ctx.stroke();ctx.beginPath();ctx.moveTo(e.w/2,e.h/2);ctx.lineTo(e.w/2+e.warning.dx*45,e.h/2+e.warning.dy*45);ctx.stroke()}
+  if(hitDebug){ctx.strokeStyle='#a96ec0';ctx.strokeRect(0,0,e.w,e.h)}ctx.restore();
+ }
+ for(const b of enemyShots){ctx.fillStyle='#ac7770';ctx.font='14px Arial';ctx.textBaseline='middle';ctx.fillText(b.text,b.x-4,b.y)}
+}
+
+// A compact word boss shares the same ordered collision path as webpage content.
+let boss=null;
+function resetBoss(){
+ if(level!==5){boss=null;$('#boss-hud').hidden=true;return}
+ const cfg=combatConfig.boss;boss={kind:'enemy',type:'boss',id:'boss-5',source:'boss',text:'绩效审判',active:false,alive:false,defeated:false,hp:cfg.hp,maxHp:cfg.hp,w:cfg.width,h:cfg.height,x:0,y:0,phase:1,warning:null,dash:null,born:time,nextAttack:time+.9,cycle:0,recoveries:0,hitUntil:0};renderBoss();
+}
+function bossAnchor(){const el=$('#boss-anchor'),r=localRect(el);return {x:r.x+Math.min(220,r.width*.5),y:r.y}}
+function activateBoss(){
+ if(level!==5||boss.active||boss.defeated)return;const a=bossAnchor(),left=clamp(a.x-220,20,W-boss.w-20),right=clamp(a.x+220,20,W-boss.w-20),x=Math.abs(left+boss.w/2-p.x)>Math.abs(right+boss.w/2-p.x)?left:right;Object.assign(boss,{active:true,alive:true,x:x,y:Math.max(100,a.y-82),home:{x:a.x,y:a.y-60},born:time,nextAttack:time+1.25});notify('绩效审判出现：先看预告，再躲散射或冲刺。',3200);renderBoss();
+}
+function renderBoss(){
+ if(level!==5||!boss)return;$('#boss-hud').hidden=false;$('#boss-hp').max=boss.maxHp;$('#boss-hp').value=Math.max(0,boss.hp);
+ $('#boss-status').textContent=boss.defeated?'✓ 绩效审判已击败':!boss.active?'Boss 等待靠近最终评估':`绩效审判 · 阶段 ${boss.phase}/3 · ${Math.ceil(boss.hp)} / ${boss.maxHp}`;
+ $('#boss-guide').disabled=paused||ending||settled||boss.defeated;
+}
+function hurtBoss(amount,x){
+ if(level!==5||!boss.active||!boss.alive)return;boss.hp=Math.max(0,boss.hp-amount);boss.hitUntil=time+.13;boss.x=clamp(boss.x+(boss.x+boss.w/2>=x?1:-1)*Math.min(3,amount*.2),8,W-boss.w-8);
+ if(boss.hp===0){boss.alive=false;boss.defeated=true;boss.warning=null;boss.dash=null;enemyShots=enemyShots.filter(b=>b.source!=='boss');scatterEnemy(boss);award('boss',combatConfig.boss.reward);notify('绩效审判已拆散。你的判断，留在自己手里。',3600)}
+ renderBoss();growthDirty=true;
+}
+function bossPhase(){return boss.hp/boss.maxHp>.65?1:boss.hp/boss.maxHp>.3?2:3}
+function updateBoss(dt){
+ if(level!==5||paused||ending||settled)return;const cfg=combatConfig.boss,a=bossAnchor();
+ if(!boss.active){if(targets.every(t=>t.done)||Math.hypot(p.x-a.x,p.y-a.y)<cfg.activationDistance)activateBoss();else return}
+ if(!boss.alive)return;const next=bossPhase();if(next!==boss.phase){boss.phase=next;notify('Boss 第 '+next+' 阶段：'+(next===2?'散射更密，留意冲刺预告。':'最后一轮，继续移动找空隙。'),2000)}
+ const spec=cfg.phases[boss.phase-1],cx=boss.x+boss.w/2,cy=boss.y+boss.h/2;
+ if(boss.dash){const d=boss.dash,nx=clamp(boss.x+d.dx*390*dt,8,W-boss.w-8),ny=clamp(boss.y+d.dy*390*dt,100,H-boss.h-40);
+  // Visible characters stop the rush; the boss never silently destroys or passes a wall.
+  const block=!lineClear(cx,cy,nx+boss.w/2,ny+boss.h/2);if(!block){boss.x=nx;boss.y=ny}if(block||time>=d.until){boss.dash=null;boss.nextAttack=time+.7}
+ }else if(boss.warning){const tell=boss.warning;
+  if(time-tell.at>=spec.warning){if(tell.type==='rush')boss.dash={dx:tell.dx,dy:tell.dy,until:time+.6};else{
+   const base=Math.atan2(tell.dy,tell.dx),span=.78+(boss.phase-1)*.12;
+   for(let i=0;i<spec.fan&&enemyShots.length<cfg.shotCap;i++){const angle=base+(i/(spec.fan-1)-.5)*span;enemyShots.push({id:'boss-shot-'+(++shotSerial),source:'boss',x:cx,y:cy,vx:Math.cos(angle)*spec.speed,vy:Math.sin(angle)*spec.speed,life:cfg.range/spec.speed,remaining:cfg.range,text:boss.phase===3?'！':'？'})}
+  }boss.warning=null;boss.nextAttack=time+spec.cooldown;boss.cycle++}
+ }else{
+  const dx=p.x-cx,dy=p.y-24-cy,d=Math.hypot(dx,dy);if(d>220){boss.x=clamp(boss.x+Math.sign(dx)*Math.min(Math.abs(dx),65*dt),Math.max(10,a.x-420),Math.min(W-boss.w-10,a.x+430));boss.y=clamp(boss.y+Math.sign(dy)*Math.min(Math.abs(dy),45*dt),Math.max(100,a.y-250),Math.min(H-boss.h-45,a.y+200))}
+  const aimX=p.x-boss.x-boss.w/2,aimY=p.y-24-boss.y-boss.h/2,dist=Math.hypot(aimX,aimY);
+  if(time>=boss.nextAttack&&dist<cfg.range&&dist>1&&lineClear(boss.x+boss.w/2,boss.y+boss.h/2,p.x,p.y-24))boss.warning={at:time,dx:aimX/dist,dy:aimY/dist,type:boss.phase>=2&&boss.cycle%3===2?'rush':'fan'};
+ }
+ if(time-boss.born>=1.25&&Math.abs(boss.x+boss.w/2-p.x)<boss.w/2+p.w&&boss.y<p.y&&boss.y+boss.h>p.y-p.h)hurtPlayer(boss.x+boss.w/2);
+ renderBoss();
+}
+function drawBoss(){
+ if(level!==5||!boss?.active||!boss.alive)return;const cx=boss.x+boss.w/2,cy=boss.y+boss.h/2;ctx.save();ctx.fillStyle=time<boss.hitUntil?'#d58a64':'#91465b';ctx.font='600 22px Arial';ctx.textBaseline='top';ctx.fillText(boss.text,boss.x,boss.y);ctx.strokeStyle='#b9878f';ctx.lineWidth=1.2;ctx.beginPath();ctx.moveTo(boss.x+16,boss.y+23);ctx.lineTo(boss.x+11,boss.y+28);ctx.moveTo(boss.x+70,boss.y+23);ctx.lineTo(boss.x+75,boss.y+28);ctx.stroke();
+ if(boss.warning){const w=boss.warning,spec=combatConfig.boss.phases[boss.phase-1],f=clamp((time-w.at)/spec.warning,0,1);ctx.globalAlpha=.3+f*.45;ctx.strokeStyle=w.type==='rush'?'#b95a6e':'#bc8a50';ctx.setLineDash([5,6]);ctx.lineWidth=w.type==='rush'?3:1;ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(cx+w.dx*(w.type==='rush'?235:150),cy+w.dy*(w.type==='rush'?235:150));ctx.stroke();ctx.setLineDash([]);ctx.font='10px Arial';ctx.fillText(w.type==='rush'?'冲刺预告':'散射预告',boss.x,boss.y-17);ctx.beginPath();ctx.arc(cx,cy,42,-Math.PI/2,-Math.PI/2+Math.PI*2*f);ctx.stroke()}
+ if(hitDebug){ctx.strokeStyle='#a96eb7';ctx.strokeRect(boss.x,boss.y,boss.w,boss.h)}ctx.restore();
+}
+$('#boss-guide').onclick=()=>{if(level!==5||paused||ending||settled)return;const a=bossAnchor();camX=clamp(a.x-sw/scale*.4,0,Math.max(0,W-sw/scale));camY=clamp(a.y-sh/scale*.5,0,Math.max(0,H-sh/scale));manualUntil=time+8;updateTransforms();notify('靠近最终评估，关闭三处来源并击败 Boss；定位不会移动小人。',3500);focusGame()};
+
+let audioCtx,noiseBuffer;
+const image=$('#studio-image');
+const officeSVG=`<svg xmlns="http://www.w3.org/2000/svg" width="314" height="156" viewBox="0 0 314 156"><path fill="#edf2f6" d="M0 0h314v156H0z"/><path fill="#d6e2ef" d="M18 18h142v77H18z"/><path stroke="#fff" stroke-width="3" d="M65 18v77m47-77v77M18 64h142"/><path fill="#a1b5cf" d="M13 115h254v5H13zM27 120h5v36h-5zM248 120h5v36h-5z"/><g fill="#66809f"><rect x="36" y="73" width="51" height="37" rx="2"/><rect x="115" y="73" width="51" height="37" rx="2"/><rect x="195" y="73" width="51" height="37" rx="2"/></g><g fill="#b1c0d3"><path d="M56 110h5v5h-5zM138 110h5v5h-5zM217 110h5v5h-5z"/></g></svg>`;
+image.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(officeSVG);
+function rand(a,b){return a+Math.random()*(b-a)}
+function clamp(v,a,b){return Math.max(a,Math.min(b,v))}
+function notify(text,ms=2400){$('#toast').textContent=text;$('#toast').classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('#toast').classList.remove('show'),ms)}
+function begin(){if(ending)return; if(!started){started=true;startTime=performance.now();$('#hint').classList.add('dismissed')} unlockAudio()}
+function unlockAudio(){
+ if(muted)return;
+ try{if(!audioCtx){audioCtx=new (window.AudioContext||window.webkitAudioContext)();noiseBuffer=audioCtx.createBuffer(1,audioCtx.sampleRate*.6,audioCtx.sampleRate);let a=noiseBuffer.getChannelData(0);for(let i=0;i<a.length;i++)a[i]=Math.random()*2-1}if(audioCtx.state==='suspended')audioCtx.resume().catch(()=>{})}catch(e){muted=true;$('#audio').textContent='音效 关'}
+}
+function sound(kind){
+ if(muted||!audioCtx||audioCtx.state!=='running')return;
+ const t=audioCtx.currentTime, heavy=kind==='heavy', fire=kind==='fire', dur=heavy?.38:fire?.075:.13;
+ const gain=audioCtx.createGain(),filter=audioCtx.createBiquadFilter(),src=audioCtx.createBufferSource();
+ src.buffer=noiseBuffer;filter.type=heavy?'lowpass':'bandpass';filter.frequency.setValueAtTime(heavy?900:fire?1700:2500,t);filter.Q.value=.7;
+ gain.gain.setValueAtTime(heavy?.24:fire?.043:.028,t);gain.gain.exponentialRampToValueAtTime(.0001,t+dur);
+ src.connect(filter);filter.connect(gain);gain.connect(audioCtx.destination);src.start(t);src.stop(t+dur+.02);
+ if(heavy||fire){const o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type='sine';o.frequency.setValueAtTime(heavy?115:145,t);o.frequency.exponentialRampToValueAtTime(heavy?34:60,t+dur);g.gain.setValueAtTime(heavy?.22:.052,t);g.gain.exponentialRampToValueAtTime(.0001,t+dur);o.connect(g);g.connect(audioCtx.destination);o.start(t);o.stop(t+dur+.03)}
+}
+function wrapText(){
+ [page].forEach(root=>{
+  const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:n=>n.parentElement.closest('.glyph')?NodeFilter.FILTER_REJECT:NodeFilter.FILTER_ACCEPT});
+  const nodes=[];while(walker.nextNode())nodes.push(walker.currentNode);
+  for(const node of nodes){if(!node.nodeValue.trim())continue;const f=document.createDocumentFragment();for(const c of Array.from(node.nodeValue)){if(/\s/.test(c)){f.appendChild(document.createTextNode(c));continue}const s=document.createElement('span');s.className='glyph';s.textContent=c;f.appendChild(s)}node.replaceWith(f)}
+ });
+}
+function addItem(a){a.id=all.length;a.alive=true;all.push(a);totalWeight+=a.weight;return a}
+// DOM rectangles are screen-space; normalize through the currently rendered world transform.
+function localRect(el){
+ const r=el.getBoundingClientRect(),wr=world.getBoundingClientRect(),s=wr.width/W;
+ return {x:(r.x-wr.x)/s,y:(r.y-wr.y)/s,left:(r.left-wr.x)/s,top:(r.top-wr.y)/s,width:r.width/s,height:r.height/s};
+}
+function screenToWorld(x,y){const wr=world.getBoundingClientRect(),s=wr.width/W;return {x:(x-wr.x)/s,y:(y-wr.y)/s}}
+function updateAim(){
+ if(pointer.moved){Object.assign(cursorWorld,screenToWorld(pointer.x,pointer.y));p.angle=Math.atan2(cursorWorld.y-(p.y-24),cursorWorld.x-p.x);p.face=Math.cos(p.angle)>=0?1:-1}else p.angle=p.face===1?0:Math.PI;
+}
+function measure(){
+ H=Math.ceil(localRect(page).height);
+ page.querySelectorAll('.glyph').forEach(el=>{
+  const r=localRect(el), st=getComputedStyle(el),fs=parseFloat(st.fontSize), inkH=fs;
+  const a=addItem({kind:'glyph',el,x:r.left,y:r.top+(r.height-inkH)*.5+.7,w:r.width,h:inkH,weight:1,text:el.textContent,font:`${st.fontWeight} ${st.fontSize} ${st.fontFamily}`,color:st.color,fs});glyphs.push(a);
+ });
+ page.querySelectorAll('[data-surface]').forEach(el=>{
+  const r=localRect(el),st=getComputedStyle(el);
+  // Background panels are drawable surfaces, not extra stone platforms.
+  const a=addItem({kind:'surface',el,x:r.x,y:r.y,w:r.width,h:r.height,weight:8,color:st.backgroundColor,hp:3});surfaces.push(a);
+ });
+ const ir=localRect(image);sourceImage=image;image.style.visibility='hidden';
+ const cols=14,rows=7,tw=ir.width/cols,th=ir.height/rows;
+ for(let iy=0;iy<rows;iy++)for(let ix=0;ix<cols;ix++)imageTiles.push(addItem({kind:'tile',x:ir.x+ix*tw,y:ir.y+iy*th,w:tw+.2,h:th+.2,sx:ix*314/cols,sy:iy*156/rows,ssw:314/cols,ssh:156/rows,weight:1}));
+ const sr=localRect($('#spawn-paragraph').querySelector('.glyph'));
+ const near=glyphs.filter(a=>Math.abs(a.y-sr.y)<15).sort((a,b)=>Math.abs(a.x-490)-Math.abs(b.x-490))[0];
+ spawn={x:near?near.x+near.w*.5:490,y:near?near.y:sr.y+4};Object.assign(p,{x:spawn.x,y:spawn.y,onGround:true});lastSafe={...spawn};
+ // Borders have thin geometry; their transparent containers must not block projectiles.
+ for(const el of page.querySelectorAll('header,article h2,.conversation-heading,.side-section,.site-footer')){
+  const st=getComputedStyle(el),r=localRect(el);
+  for(const side of ['Top','Bottom']){const w=parseFloat(st['border'+side+'Width']);if(!w)continue;
+   addItem({kind:'rule',el,side,x:r.x,y:side==='Top'?r.y:r.y+r.height-w,w:r.width,h:w,weight:1,color:st['border'+side+'Color']});
+  }
+ }
+ rebuildGrid();
+}
+function refreshGeometry(){
+ if(!all.length)return;H=Math.ceil(localRect(page).height);
+ for(const a of all){if(a.kind==='tile')continue;const r=localRect(a.el);
+  if(a.kind==='glyph'){const st=getComputedStyle(a.el);a.fs=parseFloat(st.fontSize);Object.assign(a,{x:r.x,y:r.y+(r.height-a.fs)*.5+.7,w:r.width,h:a.fs,font:`${st.fontWeight} ${st.fontSize} ${st.fontFamily}`})}
+  else if(a.kind==='rule'){const width=parseFloat(getComputedStyle(a.el)['border'+a.side+'Width']);Object.assign(a,{x:r.x,y:a.side==='Top'?r.y:r.y+r.height-width,w:r.width,h:width})}
+  else Object.assign(a,{x:r.x,y:r.y,w:r.width,h:r.height});
+ }
+ const r=localRect(image),tw=r.width/14,th=r.height/7;
+ imageTiles.forEach((a,i)=>Object.assign(a,{x:r.x+(i%14)*tw,y:r.y+Math.floor(i/14)*th,w:tw+.2,h:th+.2}));
+ rebuildGrid();
+}
+function rebuildGrid(){grid.clear();for(const a of all){for(let cy=Math.floor(a.y/64);cy<=Math.floor((a.y+a.h)/64);cy++)for(let cx=Math.floor(a.x/96);cx<=Math.floor((a.x+a.w)/96);cx++){const k=cx+','+cy;if(!grid.has(k))grid.set(k,[]);grid.get(k).push(a)}}}
+function query(x,y,w,h,onlySolid=false){
+ const out=[];queryTick++;for(let cy=Math.floor(y/64);cy<=Math.floor((y+h)/64);cy++)for(let cx=Math.floor(x/96);cx<=Math.floor((x+w)/96);cx++){const list=grid.get(cx+','+cy);if(!list)continue;for(const a of list){if(!a.alive||a.seen===queryTick||(onlySolid&&(a.kind==='rule'||(a.kind==='surface'&&a.el.classList.contains('notice')))))continue;a.seen=queryTick;if(a.x<=x+w&&a.x+a.w>=x&&a.y<=y+h&&a.y+a.h>=y)out.push(a)}}return out;
+}
+function resize(){refreshGeometry();sw=innerWidth;sh=innerHeight;scale=Math.max(sw/W,isTouch?.66:.58);dpr=Math.min(devicePixelRatio||1,2);canvas.width=Math.round(sw*dpr);canvas.height=Math.round(sh*dpr);canvas.style.width=sw+'px';canvas.style.height=sh+'px';ctx.setTransform(dpr,0,0,dpr,0,0);camX=clamp(camX,0,Math.max(0,W-sw/scale));camY=clamp(camY,0,Math.max(0,H-sh/scale));updateTransforms()}
+function updateTransforms(){world.style.transform=`translate(${-camX*scale}px,${-camY*scale}px) scale(${scale})`;let track=$('#track').clientHeight,th=Math.max(30,track*Math.min(1,(sh/scale)/H));$('#thumb').style.height=th+'px';$('#thumb').style.transform=`translateY(${(track-th)*camY/Math.max(1,H-sh/scale)}px)`}
+function fragment(a,cx,cy,power=1){
+ if(reduced&&Math.random()>.35)return;
+ let ax=a.x+a.w/2,ay=a.y+a.h/2,dx=ax-cx,dy=ay-cy,l=Math.hypot(dx,dy)||1;
+ const item={kind:a.kind,text:a.text,font:a.font,color:a.color||'#8d9bac',fs:a.fs,x:ax,y:ay,w:a.w,h:a.h,vx:dx/l*rand(70,185)*power+rand(-70,70),vy:dy/l*rand(60,155)*power-rand(60,150),r:rand(-.2,.2),vr:rand(-6,6),life:rand(1.2,2.35),maxLife:2.35,sx:a.sx,sy:a.sy,ssw:a.ssw,ssh:a.ssh};
+ if(a.kind==='surface'||a.kind==='rule'){item.w=Math.min(a.w/5,24);item.h=rand(4,12);item.color=a.color==='rgba(0, 0, 0, 0)'?'#d7e0eb':a.color}
+ fragments.push(item);if(fragments.length>620)fragments.splice(0,fragments.length-620);
+}
+function destroy(a,cx,cy,power=1){if(!a.alive)return;a.alive=false;if(hitDebug)debugRemoved.push({id:a.id,text:a.text||a.kind,x:a.x,y:a.y});goneWeight+=a.weight;if(a.kind==='glyph'){goneGlyphs++;a.el.classList.add('gone')}else if(a.kind==='surface'){a.el.classList.add('surface-gone');/* Label is a separate destructible unit; keep it visible after the blue background is gone. */}else if(a.kind==='rule')a.el.style['border'+a.side+'Color']='transparent';else goneTiles++;fragment(a,cx,cy,power);onDestroyed(a)}
+let lastProgress=-1,finishAnnounced=false;
+function progress(){const percent=Math.round(goneWeight/Math.max(1,totalWeight)*1000)/10;$('#progress').textContent=percent+'%';flushGrowth()}
+
+function segmentBox(x0,y0,x1,y1,a,pad=1){
+ let t0=0,t1=1,dx=x1-x0,dy=y1-y0;
+ for(const [pos,delta,min,max] of [[x0,dx,a.x-pad,a.x+a.w+pad],[y0,dy,a.y-pad,a.y+a.h+pad]]){
+  if(Math.abs(delta)<1e-8){if(pos<min||pos>max)return null;continue}
+  let lo=(min-pos)/delta,hi=(max-pos)/delta;if(lo>hi)[lo,hi]=[hi,lo];t0=Math.max(t0,lo);t1=Math.min(t1,hi);if(t0>t1)return null;
+ }return t0;
+}
+function muzzle(){return {x:p.x+Math.cos(p.angle)*40,y:p.y-24+Math.sin(p.angle)*40}}
+function selectWeapon(next){clearHeldInput();weapon=next;$('#weapon').textContent=['1 射击 ▸','2 榴弹 ▸','3 橡皮擦 ▸'][weapon];focusGame()}
+function erase(){
+ if(time-lastErase<.35)return;lastErase=time;
+ const from={x:p.x,y:p.y-24},m=muzzle(),to={x:m.x+Math.cos(p.angle)*230,y:m.y+Math.sin(p.angle)*230};
+ for(const a of combatCandidates(Math.min(from.x,to.x)-10,Math.min(from.y,to.y)-10,Math.abs(to.x-from.x)+20,Math.abs(to.y-from.y)+20)){
+  const t=segmentBox(from.x,from.y,to.x,to.y,a,8);if(t!==null){traceHit(from.x+(to.x-from.x)*t,from.y+(to.y-from.y)*t,a);a.kind==='enemy'?hurtEnemy(a,getWeaponStats().eraserDamage,from.x):destroy(a,from.x,from.y,.55)}
+ }
+ if(hitDebug){debugTrace.push({x:from.x,y:from.y,ex:to.x,ey:to.y});if(debugTrace.length>160)debugTrace.shift()}
+ sweeps.push({x:from.x,y:from.y,ex:to.x,ey:to.y,life:.16});sound('impact');progress();
+}
+function doJump(){begin();p.jumpBuffer=.14;manualUntil=0}
+function respawn(message=true){const candidates=glyphs.filter(a=>a.alive&&a.y>130&&a.y<H-100);if(candidates.length){let best=candidates.reduce((b,a)=>Math.abs(a.y-p.y)+Math.abs(a.x-p.x)*.32<Math.abs(b.y-p.y)+Math.abs(b.x-p.x)*.32?a:b,candidates[0]);p.x=best.x+best.w/2;p.y=best.y;p.onGround=true;lastSafe={x:p.x,y:p.y}}else{p.x=spawn.x;p.y=H-24;p.onGround=true}p.vx=0;p.vy=0;p.jumps=0;p.drop=0;manualUntil=0;camX=clamp(p.x-sw/scale*.5,0,Math.max(0,W-sw/scale));camY=clamp(p.y-sh/scale*.56,0,Math.max(0,H-sh/scale));if(message)notify('回到还能站立的文字上。',1600)}
+function move(dt){
+ const left=keys.has('a')||keys.has('arrowleft')||mobileKeys.has('left'),right=keys.has('d')||keys.has('arrowright')||mobileKeys.has('right');
+ const dropping=keys.has('s')||keys.has('arrowdown')||mobileKeys.has('drop');
+ let input=(right?1:0)-(left?1:0);if(input){p.face=input;manualUntil=0;p.vx+=(input*245-p.vx)*Math.min(1,dt*18)}else p.vx*=Math.exp(-dt*(p.onGround?18:5));
+ if(dropping){p.drop=.18;p.onGround=false;p.vy=Math.max(p.vy,85);manualUntil=0}else p.drop=Math.max(0,p.drop-dt);
+ p.coyote=p.onGround?.11:Math.max(0,p.coyote-dt);p.jumpBuffer=Math.max(0,p.jumpBuffer-dt);
+ if(p.jumpBuffer>0&&(p.onGround||p.coyote>0||p.jumps<2)){p.vy=p.jumps===1?-495:-530;p.jumps=p.onGround||p.coyote>0?1:2;p.onGround=false;p.coyote=0;p.jumpBuffer=0}
+ let prevY=p.y;p.x=clamp(p.x+p.vx*dt,8,W-8);p.vy=Math.min(p.vy+G*dt,950);p.y+=p.vy*dt;p.onGround=false;
+ if(p.vy>=0&&p.drop<=0){let top=Infinity;const cand=query(p.x-p.w,prevY-4,p.w*2,Math.max(8,p.y-prevY+8),true);for(const a of cand){if(a.x+a.w<p.x-p.w||a.x>p.x+p.w)continue;if(prevY<=a.y+4&&p.y>=a.y&&a.y<top)top=a.y}if(Number.isFinite(top)){p.y=top;p.vy=0;p.onGround=true;p.jumps=0;if(time-lastSafeTime>.8){lastSafe={x:p.x,y:p.y};lastSafeTime=time}}}
+ if(p.y>H-25){p.y=H-25;p.vy=0;p.onGround=true;p.jumps=0}if(p.y<44){p.y=44;p.vy=Math.max(0,p.vy)}
+ p.step+=Math.abs(p.vx)*dt*.055;p.recoil=Math.max(0,p.recoil-dt*30);
+ if(time>manualUntil){const vw=sw/scale,vh=sh/scale;
+  let tx=camX,ty=camY;if(p.x<camX+vw*.26)tx=p.x-vw*.26;if(p.x>camX+vw*.74)tx=p.x-vw*.74;
+  if(p.y<camY+vh*.22)ty=p.y-vh*.22;if(p.y>camY+vh*.78)ty=p.y-vh*.78;
+  tx=clamp(tx,0,Math.max(0,W-vw));ty=clamp(ty,0,Math.max(0,H-vh));camX+=(tx-camX)*Math.min(1,dt*9);camY+=(ty-camY)*Math.min(1,dt*9);
+ }
+ updateTransforms();updateAim();
+ const off=p.y<camY||p.y>camY+sh/scale||p.x<camX||p.x>camX+sw/scale;$('#return').style.display=off?'block':'none';
+ if(mouseDown||touchFire)fire(false);
+ if(heavyHeld)charge=Math.min(1,charge+dt*1.2);else charge=Math.max(0,charge-dt*5);
+}
+function hitFeedback(x,y,heavy=false){
+ const radius=heavy?getWeaponStats().radius:7;
+ rings.push({x,y,r:radius,t:0,life:heavy?.38:.18,heavy});
+ const count=reduced?4:heavy?40:8;
+ for(let i=0;i<count;i++){const angle=rand(0,Math.PI*2),v=rand(heavy?95:45,heavy?370:180);sparks.push({x,y,vx:Math.cos(angle)*v,vy:Math.sin(angle)*v,life:rand(.12,heavy?.7:.34),r:rand(.6,heavy?3:1.8),hot:Math.random()>.2})}
+ if(sparks.length>GAME_CONFIG.maxSparks)sparks.splice(0,sparks.length-GAME_CONFIG.maxSparks);
+ shake=Math.max(shake,heavy?4:1);sound(heavy?'heavy':'impact');
+}
+function damage(a,x,y,amount=1){if(!a.alive)return;if(a.kind==='enemy'){hurtEnemy(a,amount,x);return}if(a.kind==='surface'){a.hp-=amount;if(a.hp>0)return}destroy(a,x,y,1)}
+function impact(x,y,heavy=true){
+ // Explosion is anchored to projectile collision/fuse, never to the mouse.
+ const r=getWeaponStats().radius;
+ for(const a of combatCandidates(x-r,y-r,r*2,r*2)){const dx=x-clamp(x,a.x,a.x+a.w),dy=y-clamp(y,a.y,a.y+a.h);if(dx*dx+dy*dy<=r*r){if(a.kind==='enemy')hurtEnemy(a,getWeaponStats().grenadeDamage,x);else destroy(a,x,y,1.65)}}
+ hitFeedback(x,y,true);
+}
+function splitAt(b,x,y){
+ if(b.heavy||b.sub||b.splitDone)return;b.splitDone=true;
+ const spec=b.split;for(let i=0;i<spec.count&&bullets.length<GAME_CONFIG.maxBullets;i++){
+  const angle=Math.atan2(b.vy,b.vx)+(i/(spec.count-1)-.5)*Math.PI/3;
+  bullets.push({x,y,px:x,py:y,vx:Math.cos(angle)*GAME_CONFIG.gun.speed,vy:Math.sin(angle)*GAME_CONFIG.gun.speed,remaining:spec.range,life:2,heavy:false,sub:true,hits:0,maxHits:1,damage:level>=3?1+Math.floor(mods.B/4):1,hitIds:new Set([...b.hitIds].filter(id=>!objectAlive(id))),split:{count:0,range:0}});
+ }
+}
+function fire(heavy=false){
+ if(!all.length||!started||paused||ending||settled)return;updateAim();
+ if(!heavy&&weapon===2){erase();return}heavy=heavy||weapon===1;
+ const stats=getWeaponStats();if(heavy&&time-lastHeavy+1e-8<stats.cooldown)return;if(!heavy&&time-lastShot+1e-8<1/GAME_CONFIG.gun.rate)return;
+ if(bullets.length>=GAME_CONFIG.maxBullets)return;
+ if(heavy)lastHeavy=time;else lastShot=time;
+ const m=muzzle(),angle=p.angle+(heavy?0:rand(-.014,.014)),speed=heavy?GAME_CONFIG.grenade.speed:GAME_CONFIG.gun.speed;
+ bullets.push({x:m.x,y:m.y,px:m.x,py:m.y,vx:Math.cos(angle)*speed,vy:Math.sin(angle)*speed,life:heavy?GAME_CONFIG.grenade.fuse:2,remaining:heavy?Infinity:GAME_CONFIG.gun.range,heavy,sub:false,hits:0,maxHits:stats.pierce,damage:stats.damage,hitIds:new Set(),split:{...stats.split}});
+ p.recoil=heavy?5:2.5;flash=heavy?.12:.05;if(!heavy)sound('fire');
+}
+function updateBullets(dt){
+ for(let i=bullets.length-1;i>=0;i--){
+  const b=bullets[i],step=Math.min(dt,b.life);b.life-=step;
+  // Substep swept segments remain in the same logical world as the DOM terrain.
+  const speed=Math.hypot(b.vx,b.vy),travel=Math.min(b.remaining,speed*step),fraction=speed?travel/speed:0;
+  const nx=b.x+b.vx*fraction,ny=b.y+b.vy*fraction+(b.heavy?GAME_CONFIG.grenade.gravity*fraction*fraction/2:0);
+  if(b.heavy)b.vy+=GAME_CONFIG.grenade.gravity*fraction;
+  const collisions=[];
+  for(const a of combatCandidates(Math.min(b.x,nx)-1,Math.min(b.y,ny)-1,Math.abs(nx-b.x)+2,Math.abs(ny-b.y)+2)){
+   if(b.hitIds.has(a.id))continue;const t=segmentBox(b.x,b.y,nx,ny,a);if(t!==null)collisions.push({a,t});
+  }
+  collisions.sort((u,v)=>u.t-v.t);let stopped=false,ex=nx,ey=ny;
+  for(const {a,t} of collisions){
+   if(!a.alive)continue;const x=b.x+(nx-b.x)*t,y=b.y+(ny-b.y)*t;traceHit(x,y,a);b.hitIds.add(a.id);
+   if(b.heavy){impact(x,y,true);stopped=true}
+   else {damage(a,x,y,(b.damage||GAME_CONFIG.gun.damage)*(b.sub&&a.type==='boss'?combatConfig.boss.fragmentDamageMultiplier:1));hitFeedback(x,y);b.hits++;stopped=a.alive||b.hits>=b.maxHits;if(stopped)splitAt(b,x,y)}
+   if(stopped){ex=x;ey=y;break}
+  }
+  if(hitDebug){debugTrace.push({x:b.x,y:b.y,ex,ey});if(debugTrace.length>160)debugTrace.shift()}
+  b.px=b.x;b.py=b.y;b.x=ex;b.y=ey;b.remaining-=travel;
+  if(!stopped&&(b.life<=1e-8||b.remaining<=1e-8||b.x<0||b.x>W||b.y<0||b.y>H)){if(b.heavy&&b.life<=1e-8)impact(b.x,b.y,true);stopped=true}
+  if(stopped)bullets.splice(i,1);
+  progress();if(paused)break;
+ }
+}
+
+function updateEffects(dt){
+ sweeps=sweeps.filter(s=>(s.life-=dt)>0);
+ for(let i=fragments.length-1;i>=0;i--){const f=fragments[i];f.life-=dt;if(f.life<=0||f.y>H+60){fragments.splice(i,1);continue}f.vy+=520*dt;f.vx*=Math.exp(-dt*.35);f.x+=f.vx*dt;f.y+=f.vy*dt;f.r+=f.vr*dt}
+ for(let i=sparks.length-1;i>=0;i--){let s=sparks[i];s.life-=dt;if(s.life<=0){sparks.splice(i,1);continue}s.vy+=200*dt;s.x+=s.vx*dt;s.y+=s.vy*dt;s.vx*=Math.exp(-dt*2)}
+ for(let i=rings.length-1;i>=0;i--){rings[i].t+=dt;if(rings[i].t>rings[i].life)rings.splice(i,1)}
+ shake=Math.max(0,shake-dt*23);flash=Math.max(0,flash-dt);
+ if(cleanup){cleanupBudget+=dt*320;let count=Math.floor(cleanupBudget);cleanupBudget-=count;for(const a of all){if(!a.alive)continue;destroy(a,a.x+a.w/2,a.y-50,.25);if(--count<=0)break}progress()}
+}
+function draw(){
+ if(weapon===1){const wait=Math.max(0,getWeaponStats().cooldown-(time-lastHeavy));$('#weapon').textContent=wait>.01?`2 榴弹 ${wait.toFixed(1)}s`:'2 榴弹 就绪 ▸'}
+ ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,sw,sh);ctx.save();
+ const sx=reduced?0:rand(-shake,shake),sy=reduced?0:rand(-shake,shake);
+ // Apply identical screen shake to DOM terrain and its canvas projectiles/impact effects.
+ world.style.transform=`translate(${-camX*scale+sx}px,${-camY*scale+sy}px) scale(${scale})`;
+ ctx.translate(-camX*scale+sx,-camY*scale+sy);ctx.scale(scale,scale);
+ for(const a of imageTiles){if(a.alive)ctx.drawImage(sourceImage,a.sx,a.sy,a.ssw,a.ssh,a.x,a.y,a.w,a.h)}
+ for(const s of sweeps){ctx.save();ctx.globalAlpha=s.life/.16*.55;ctx.strokeStyle='#a9b9c4';ctx.lineWidth=16;ctx.lineCap='round';ctx.beginPath();ctx.moveTo(s.x,s.y);ctx.lineTo(s.ex,s.ey);ctx.stroke();ctx.restore()}
+ for(const b of bullets){ctx.save();ctx.strokeStyle=b.heavy?'#f5b546':'#f3bf5a';ctx.lineWidth=b.heavy?3:1.3;ctx.beginPath();ctx.moveTo(b.x-b.vx*.017,b.y-b.vy*.017);ctx.lineTo(b.x,b.y);ctx.stroke();if(b.heavy){ctx.fillStyle='#fff0bc';ctx.shadowColor='#ffc248';ctx.shadowBlur=11;ctx.beginPath();ctx.arc(b.x,b.y,4,0,Math.PI*2);ctx.fill()}ctx.restore()}
+ for(const r of rings){const t=r.t/r.life;ctx.save();ctx.globalAlpha=1-t;if(t<.65){const rad=r.r*(.3+t*.55);const glow=ctx.createRadialGradient(r.x,r.y,0,r.x,r.y,rad);glow.addColorStop(0,'rgba(255,246,189,.9)');glow.addColorStop(.28,'rgba(255,198,81,.48)');glow.addColorStop(1,'rgba(255,172,61,0)');ctx.fillStyle=glow;ctx.fillRect(r.x-rad,r.y-rad,rad*2,rad*2)}ctx.strokeStyle=r.heavy?'rgba(222,169,81,.65)':'rgba(204,182,143,.35)';ctx.lineWidth=.8;ctx.beginPath();ctx.arc(r.x,r.y,r.r*(.25+t*.75),0,Math.PI*2);ctx.stroke();ctx.restore()}
+ for(const f of fragments){if(f.y<camY-100||f.y>camY+sh/scale+120)continue;ctx.save();ctx.globalAlpha=Math.min(1,f.life/.5);ctx.translate(f.x,f.y);ctx.rotate(f.r);if(f.kind==='glyph'){ctx.fillStyle=f.color;ctx.font=f.font;ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(f.text,0,0)}else if(f.kind==='tile'){ctx.drawImage(sourceImage,f.sx,f.sy,f.ssw,f.ssh,-f.w/2,-f.h/2,f.w,f.h)}else{ctx.fillStyle=f.color;ctx.fillRect(-f.w/2,-f.h/2,f.w,f.h);ctx.strokeStyle='#c4cfde';ctx.lineWidth=.6;ctx.strokeRect(-f.w/2,-f.h/2,f.w,f.h)}ctx.restore()}
+ for(const s of sparks){ctx.globalAlpha=Math.min(1,s.life*4);ctx.fillStyle=s.hot?'#eca64d':'#aebed2';ctx.fillRect(s.x,s.y,s.r,s.r)}ctx.globalAlpha=1;
+ drawTargetGuide();drawCombat();drawBoss();if((!ending||time-endingAt<1.1)&&!(level>=2&&time<invincibleUntil&&Math.floor(time*12)%2))drawPlayer();
+ if(started&&pointer.moved&&!ending&&!isTouch){ctx.strokeStyle='rgba(54,94,144,.42)';ctx.lineWidth=.8;const x=cursorWorld.x,y=cursorWorld.y;ctx.beginPath();ctx.moveTo(x-7,y);ctx.lineTo(x-3,y);ctx.moveTo(x+3,y);ctx.lineTo(x+7,y);ctx.moveTo(x,y-7);ctx.lineTo(x,y-3);ctx.moveTo(x,y+3);ctx.lineTo(x,y+7);ctx.stroke()}
+ drawHitDebug();ctx.restore();
+}
+function drawPlayer(){
+ ctx.save();ctx.translate(p.x,p.y);const moving=Math.abs(p.vx)>15&&p.onGround,swing=moving?Math.sin(p.step)*9:0,lean=clamp(p.vx/60,-3,3);ctx.strokeStyle='#242728';ctx.lineWidth=3.3;ctx.lineCap='round';ctx.lineJoin='round';
+ ctx.beginPath();ctx.moveTo(lean,-27);ctx.lineTo(-1,-12);ctx.moveTo(-1,-12);ctx.lineTo(-8-swing,p.onGround?0:-2);ctx.moveTo(-1,-12);ctx.lineTo(9+swing,p.onGround?0:-9);ctx.stroke();ctx.fillStyle='#232628';ctx.beginPath();ctx.arc(lean+1,-35,6.1,0,Math.PI*2);ctx.fill();
+ const ax=Math.cos(p.angle),ay=Math.sin(p.angle);ctx.beginPath();ctx.moveTo(lean,-27);ctx.lineTo(ax*11,-23+ay*10);ctx.lineTo(ax*21,-24+ay*17);ctx.moveTo(lean+1,-23);ctx.lineTo(ax*13,-18+ay*8);ctx.lineTo(ax*28,-24+ay*24);ctx.stroke();
+ ctx.save();ctx.translate(0,-24);ctx.rotate(p.angle);ctx.translate(-p.recoil,0);ctx.fillStyle='#272e34';ctx.fillRect(12,-6,30,12);ctx.fillRect(8,-4,9,7);ctx.fillRect(36,-3,12,5);ctx.fillStyle='#458eae';ctx.fillRect(16,-3.5,20,5.5);ctx.fillStyle='#637789';ctx.fillRect(20,6,7,5);ctx.fillStyle='#cb854c';ctx.fillRect(17,6,4,4);
+ if(flash>0){const f=flash>.075?1.7:1;ctx.fillStyle='#f6bf5f';ctx.beginPath();ctx.moveTo(46,0);ctx.lineTo(65*f,-6*f);ctx.lineTo(57*f,0);ctx.lineTo(66*f,6*f);ctx.closePath();ctx.fill();ctx.fillStyle='#fff0bc';ctx.beginPath();ctx.moveTo(46,0);ctx.lineTo(58*f,-2);ctx.lineTo(55*f,2);ctx.fill()}
+ if(charge>.05){ctx.strokeStyle='#e9b253';ctx.lineWidth=1.5;ctx.beginPath();ctx.arc(43,0,7+charge*4,-Math.PI/2,-Math.PI/2+Math.PI*2*charge);ctx.stroke()}
+ ctx.restore();ctx.restore();
+}
+let endingAt=0;
+function finishLevel(){
+ if(!growth.complete||pendingNodes().length||!commitLevel())return;
+ $('#next-level').hidden=level===5;$('#next-level').textContent='进入第 '+(level+1)+' 关';$('#resume-level').hidden=level!==1;$('#skip-upgrades').hidden=true;
+ ending=true;endingAt=time;clearHeldInput();$('#hint').classList.add('dismissed');$('#finish').style.display='none';$('#level-actions').hidden=true;
+ $('#summary').textContent=`拆掉 ${goneGlyphs} 个字符 · ${Math.floor(growth.points)} 改造点 · 本关改造 ${growth.nodes.filter(n=>n.state==='claimed').length}/${growth.nodes.length}`;
+ $('#ending').classList.add('visible');$('#again').focus({preventScroll:true});
+}
+function startCleanup(){requestEnd()}
+
+function resetGame(){
+ resetGrowth();lastShot=-100;lastHeavy=-100;selectWeapon(0);lastErase=-100;sweeps=[];debugTrace=[];debugHits=[];debugRemoved=[];
+ all.forEach(a=>{a.alive=true;if(a.kind==='glyph')a.el.classList.remove('gone');if(a.kind==='surface'){a.el.classList.remove('surface-gone');a.hp=3}if(a.kind==='rule')a.el.style['border'+a.side+'Color']=''});
+ page.querySelectorAll('.text-empty').forEach(el=>el.classList.remove('text-empty'));
+ document.querySelectorAll('.rule-gone').forEach(e=>e.classList.remove('rule-gone'));goneWeight=0;goneGlyphs=0;goneTiles=0;lastProgress=-1;finishAnnounced=false;cleanup=false;cleanupBudget=0;
+ bullets=[];fragments=[];sparks=[];rings=[];keys.clear();mobileKeys.clear();started=false;paused=false;ending=false;settled=false;activeTime=0;charge=0;heavyHeld=false;mouseDown=false;touchFire=false;
+ Object.assign(p,{x:spawn.x,y:spawn.y,vx:0,vy:0,onGround:true,jumps:0,drop:0,jumpBuffer:0,angle:0,face:1});pointer.moved=false;camX=0;camY=0;manualUntil=0;$('#ending').classList.remove('visible');$('#hint').classList.remove('dismissed');$('#controls').style.display='';$('#finish').style.display='none';$('#paused').style.display='none';progress();updateTransforms();renderGrowth();focusGame();
+}
+function togglePause(){if(ending||settled||choiceNode)return;paused=!paused;$('#paused').style.display=paused?'grid':'none';clearHeldInput();renderGrowth();if(!paused){unlockAudio();focusGame()}}
+// Pointer input stays separate from the underlying (fictional) site: no forms are submitted.
+function uiTarget(el){return !!el.closest('#hud,#hint,#mobile,#ending,#track,#return,#paused,#growth-hud,#upgrade')}
+// Physical game keys remain usable when the keyboard reports Process/Unidentified.
+// A real macOS Chinese-input-method test is still required in the target environment.
+const gameKeyMap={Digit1:'1',Digit2:'2',Digit3:'3',KeyA:'a',KeyD:'d',KeyS:'s',KeyW:'w',KeyR:'r',KeyE:'e',KeyM:'m',KeyF:'f',Space:' ',ArrowUp:'arrowup',ArrowDown:'arrowdown',ArrowLeft:'arrowleft',ArrowRight:'arrowright',Escape:'escape'};
+function gameKey(e){return gameKeyMap[e.code] || (typeof e.key==='string'?e.key.toLowerCase():'')}
+function focusGame(){if(!ending&&!paused&&!settled)$('#view').focus({preventScroll:true})}
+function clearHeldInput(){keys.clear();mobileKeys.clear();mouseDown=false;touchFire=false;heavyHeld=false;charge=0;document.querySelectorAll('#mobile .down').forEach(b=>b.classList.remove('down'))}
+
+window.addEventListener('pointermove',e=>{if(e.pointerType==='mouse'){pointer.x=e.clientX;pointer.y=e.clientY;pointer.moved=true}});
+window.addEventListener('pointerdown',e=>{
+ if(uiTarget(e.target)||paused||ending||settled)return;focusGame();begin();pointer={x:e.clientX,y:e.clientY,moved:true};updateAim();
+ if(e.pointerType==='touch'){touchFire=true;return}
+ if(e.button===0){mouseDown=true;fire(false)}if(e.button===2){heavyHeld=true;charge=0}e.preventDefault();
+});
+window.addEventListener('pointerup',e=>{if(e.pointerType==='touch'){touchFire=false;return}if(e.button===0)mouseDown=false;if(e.button===2){if(heavyHeld&&charge>.15)fire(true);heavyHeld=false}});
+window.addEventListener('pointercancel',()=>{touchFire=false;mouseDown=false;heavyHeld=false});
+window.addEventListener('contextmenu',e=>e.preventDefault());
+window.addEventListener('keydown',e=>{
+ if(e.metaKey||e.ctrlKey||e.altKey)return; // Preserve browser/system shortcuts.
+ if(e.target instanceof Element && (e.target.matches('input,textarea,select')||e.target.isContentEditable))return;
+ if((ending||paused)&&e.target.closest('button')&&[' ','Enter'].includes(e.key))return;
+ const k=gameKey(e);if(k==='escape'){e.preventDefault();if(!e.repeat)togglePause();return}
+ if(ending||settled)return;if([' ','arrowup','arrowdown','arrowleft','arrowright','a','d','s','w','r','e','m','f','1','2','3'].includes(k))e.preventDefault();else return;
+ if(['1','2','3'].includes(k)){selectWeapon(+k-1);return}if(k==='m'&&!e.repeat){toggleAudio();return}if(paused)return;begin();keys.add(k);
+ if((k===' '||k==='w'||k==='arrowup')&&!e.repeat)doJump();if(k==='r'&&!e.repeat)respawn();if(k==='e'&&!e.repeat){heavyHeld=true;charge=0}if(k==='f'&&!e.repeat)startCleanup();
+},true);
+window.addEventListener('keyup',e=>{const k=gameKey(e);keys.delete(k);if(k==='e'){if(heavyHeld&&charge>.15)fire(true);heavyHeld=false}},true);
+window.addEventListener('blur',clearHeldInput);
+document.addEventListener('visibilitychange',()=>{if(document.hidden)clearHeldInput()});
+window.addEventListener('wheel',e=>{if(ending||paused||settled)return;e.preventDefault();camY=clamp(camY+e.deltaY/scale,0,Math.max(0,H-sh/scale));if(e.shiftKey)camX=clamp(camX+e.deltaY/scale,0,Math.max(0,W-sw/scale));manualUntil=time+4;updateTransforms()},{passive:false});
+$('#track').addEventListener('pointerdown',e=>{e.preventDefault();$('#track').setPointerCapture(e.pointerId);scrollToPointer(e)});$('#track').addEventListener('pointermove',e=>{if($('#track').hasPointerCapture(e.pointerId))scrollToPointer(e)});
+function scrollToPointer(e){const r=$('#track').getBoundingClientRect();camY=clamp((e.clientY-r.y)/r.height,0,1)*Math.max(0,H-sh/scale);manualUntil=time+6;updateTransforms()}
+function toggleAudio(){muted=!muted;$('#audio').textContent='音效 '+(muted?'关':'开');if(!muted)unlockAudio()}
+$('#weapon').onclick=()=>selectWeapon((weapon+1)%3);
+$('#audio').onclick=toggleAudio;$('#reset').onclick=resetGame;$('#again').onclick=newRun;$('#finish').onclick=requestEnd;$('#return').onclick=()=>{manualUntil=0;camY=clamp(p.y-sh/scale*.55,0,Math.max(0,H-sh/scale));camX=clamp(p.x-sw/scale*.5,0,Math.max(0,W-sw/scale))};$('#resume').onclick=togglePause;
+$('#ending-levels').onclick=()=>{$('#ending').classList.remove('visible');settled=true;ending=false;renderGrowth();$('#level-select').focus({preventScroll:true})};
+$('#quiet').onclick=()=>{$('#ending').classList.remove('visible');settled=true;ending=false;camX=0;camY=0;$('#controls').style.display='none';notify('今天就先到这里。右上角可以重新开始。',5000)};
+for(const b of document.querySelectorAll('#mobile button')){
+ b.addEventListener('pointerdown',e=>{e.preventDefault();e.stopPropagation();if(paused||ending||settled)return;begin();b.setPointerCapture(e.pointerId);b.classList.add('down');let a=b.dataset.action;if(a==='jump')doJump();else if(a==='fire'){touchFire=true;if(!pointer.moved){pointer.moved=false}}else mobileKeys.add(a)});
+ const up=e=>{e.preventDefault();b.classList.remove('down');let a=b.dataset.action;mobileKeys.delete(a);if(a==='fire')touchFire=false};b.addEventListener('pointerup',up);b.addEventListener('pointercancel',up);
+}
+if(isTouch)$('#hint-copy').innerHTML+=' <br>左侧移动，右侧跳跃；点网页射击。';
+window.addEventListener('resize',resize);
+document.fonts.addEventListener('loadingdone',refreshGeometry);
+const geometryObserver=new ResizeObserver(()=>{if(all.length)refreshGeometry()});geometryObserver.observe(page);geometryObserver.observe(image);
+let last=0;
+function frame(ts){const dt=Math.min((ts-last)/1000||.016,.033);last=ts;
+ if(!paused){time+=dt;if(started&&!ending&&!settled){activeTime+=dt;move(dt);if(!paused)updateBullets(dt);if(!paused)updateCombat(dt)}updateEffects(dt);updateTransforms()}
+ draw();requestAnimationFrame(frame);
+}
+async function init(){
+ await document.fonts.ready;if(!image.complete)await new Promise((resolve,reject)=>{image.onload=resolve;image.onerror=reject});
+ wrapText();measure();resize();resetGrowth();saveRun();$('#next-level').hidden=level===5||!run.results[level];if(!storageOK)notify('本地保存不可用，当前标签页仍可切关；关闭标签页后可能丢失流程。',5000);progress();focusGame();requestAnimationFrame(frame);
+ // Small QA surface for a future developer; not a gameplay dependency.
+ window.pageSmash={getState:()=>({glyphs:glyphs.length,items:all.length,totalWeight,goneWeight,goneGlyphs,goneTiles,progress:goneWeight/totalWeight,started,paused,ending,settled,worldHeight:H,player:{...p},camera:{x:camX,y:camY,scale},activeTime,bullets:bullets.length,fragments:fragments.length}),reset:resetGame,inspect:()=>all.map(({el,...a})=>a),testImpact:impact,testFinish:()=>{all.forEach(a=>destroy(a,a.x,a.y,.1));progress()}};
+}
+init().catch(err=>{console.error(err);$('#hint').innerHTML='<strong>页面暂未载入完成。</strong><span>请使用桌面浏览器重新打开此 HTML 文件。</span>'});
+})();
+</script>
+</body>
+</html>

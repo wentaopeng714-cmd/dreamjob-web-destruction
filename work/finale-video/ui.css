@@ -1,0 +1,9 @@
+#finale-film[hidden],#finale-replay[hidden]{display:none!important}
+#clear-dialog.with-film{width:min(540px,calc(100vw - 28px));padding:18px 24px}
+.with-film .clear-symbol{display:none}.with-film #clear-detail,.with-film #clear-upgrades{display:none}
+#finale-film{margin:12px 0}#finale-video{display:block;background:#000;width:100%;height:auto;max-height:42dvh;aspect-ratio:1080 / 580;object-fit:contain;border-radius:10px}
+#finale-status,.finale-caption{font-size:12px;margin:7px 0!important;color:#6d7e91!important}
+.finale-actions{display:flex;justify-content:center;gap:8px}
+#clear-dialog #finale-play,#clear-dialog #finale-skip,#clear-dialog #finale-replay{border:1px solid #7596b8;background:#1d344b;color:white;border-radius:8px;padding:9px 12px;cursor:pointer;font:inherit;font-size:13px}
+#clear-dialog #finale-play{background:#316e95}#finale-replay{margin:10px auto 0}
+@media(max-height:500px){#clear-dialog.with-film{padding:10px 16px}#finale-video{height:36dvh}.with-film #clear-condition{margin:3px 0}.with-film h2{font-size:19px}.finale-caption{display:none}.with-film .clear-label{display:none}}

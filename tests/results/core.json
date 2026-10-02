@@ -1,0 +1,919 @@
+[
+  {
+    "suite": "finale",
+    "level": 1,
+    "passed": true,
+    "count": 7,
+    "failed": [],
+    "rows": [
+      {
+        "name": "Video source stays unloaded before victory",
+        "pass": true
+      },
+      {
+        "name": "Cannot enter film before objective completion",
+        "pass": true
+      },
+      {
+        "name": "Victory flow remains valid",
+        "pass": true
+      },
+      {
+        "name": "Only final stage opens film",
+        "pass": true
+      },
+      {
+        "name": "Continue removes film and releases game pause",
+        "pass": true
+      },
+      {
+        "name": "No repeated movie after continuing",
+        "pass": true
+      },
+      {
+        "name": "Retry resets finale state",
+        "pass": true
+      }
+    ]
+  },
+  {
+    "suite": "finale",
+    "level": 2,
+    "passed": true,
+    "count": 8,
+    "failed": [],
+    "rows": [
+      {
+        "name": "Video source stays unloaded before victory",
+        "pass": true
+      },
+      {
+        "name": "Cannot enter film before objective completion",
+        "pass": true
+      },
+      {
+        "name": "Finite roster finished within bounded simulation",
+        "pass": true,
+        "data": {
+          "loops": 706,
+          "spawned": 8,
+          "total": 8
+        }
+      },
+      {
+        "name": "Victory flow remains valid",
+        "pass": true
+      },
+      {
+        "name": "Only final stage opens film",
+        "pass": true
+      },
+      {
+        "name": "Continue removes film and releases game pause",
+        "pass": true
+      },
+      {
+        "name": "No repeated movie after continuing",
+        "pass": true
+      },
+      {
+        "name": "Retry resets finale state",
+        "pass": true
+      }
+    ]
+  },
+  {
+    "suite": "finale",
+    "level": 3,
+    "passed": true,
+    "count": 8,
+    "failed": [],
+    "rows": [
+      {
+        "name": "Video source stays unloaded before victory",
+        "pass": true
+      },
+      {
+        "name": "Cannot enter film before objective completion",
+        "pass": true
+      },
+      {
+        "name": "Finite roster finished within bounded simulation",
+        "pass": true,
+        "data": {
+          "loops": 966,
+          "spawned": 12,
+          "total": 12
+        }
+      },
+      {
+        "name": "Victory flow remains valid",
+        "pass": true
+      },
+      {
+        "name": "Only final stage opens film",
+        "pass": true
+      },
+      {
+        "name": "Continue removes film and releases game pause",
+        "pass": true
+      },
+      {
+        "name": "No repeated movie after continuing",
+        "pass": true
+      },
+      {
+        "name": "Retry resets finale state",
+        "pass": true
+      }
+    ]
+  },
+  {
+    "suite": "finale",
+    "level": 4,
+    "passed": true,
+    "count": 8,
+    "failed": [],
+    "rows": [
+      {
+        "name": "Video source stays unloaded before victory",
+        "pass": true
+      },
+      {
+        "name": "Cannot enter film before objective completion",
+        "pass": true
+      },
+      {
+        "name": "Finite roster finished within bounded simulation",
+        "pass": true,
+        "data": {
+          "loops": 1257,
+          "spawned": 16,
+          "total": 16
+        }
+      },
+      {
+        "name": "Victory flow remains valid",
+        "pass": true
+      },
+      {
+        "name": "Only final stage opens film",
+        "pass": true
+      },
+      {
+        "name": "Continue removes film and releases game pause",
+        "pass": true
+      },
+      {
+        "name": "No repeated movie after continuing",
+        "pass": true
+      },
+      {
+        "name": "Retry resets finale state",
+        "pass": true
+      }
+    ]
+  },
+  {
+    "suite": "finale",
+    "level": 5,
+    "passed": true,
+    "count": 14,
+    "failed": [],
+    "rows": [
+      {
+        "name": "Video source stays unloaded before victory",
+        "pass": true
+      },
+      {
+        "name": "Cannot enter film before objective completion",
+        "pass": true
+      },
+      {
+        "name": "Clearing 20 monsters alone does not open movie",
+        "pass": true
+      },
+      {
+        "name": "Victory flow remains valid",
+        "pass": true
+      },
+      {
+        "name": "Only final stage opens film",
+        "pass": true
+      },
+      {
+        "name": "Embedded MP4 loads only at victory",
+        "pass": true
+      },
+      {
+        "name": "Mobile native playback available",
+        "pass": true
+      },
+      {
+        "name": "Skipping keeps completed objective and paused results",
+        "pass": true
+      },
+      {
+        "name": "Replay reopens movie",
+        "pass": true
+      },
+      {
+        "name": "Ended hands back to final choices",
+        "pass": true
+      },
+      {
+        "name": "Failure offers skip instead of locking result",
+        "pass": true
+      },
+      {
+        "name": "Continue removes film and releases game pause",
+        "pass": true
+      },
+      {
+        "name": "No repeated movie after continuing",
+        "pass": true
+      },
+      {
+        "name": "Retry resets finale state",
+        "pass": true
+      }
+    ]
+  },
+  {
+    "suite": "clear",
+    "level": 1,
+    "passed": true,
+    "count": 18,
+    "failed": [],
+    "rows": [
+      {
+        "name": "Current standard permanently visible",
+        "pass": true
+      },
+      {
+        "name": "All five standards displayed in task",
+        "pass": true
+      },
+      {
+        "name": "No next-stage button before complete",
+        "pass": true
+      },
+      {
+        "name": "Fixed standard completes stage",
+        "pass": true
+      },
+      {
+        "name": "Automatic clear notice appears",
+        "pass": true
+      },
+      {
+        "name": "Clear notice pauses play and releases fire",
+        "pass": true
+      },
+      {
+        "name": "Clear progress is explicit",
+        "pass": true
+      },
+      {
+        "name": "Level four has a next stage and final stage does not",
+        "pass": true
+      },
+      {
+        "name": "Clear overlay is excluded from destructible terrain",
+        "pass": true
+      },
+      {
+        "name": "Clear stops all spawn paths",
+        "pass": true
+      },
+      {
+        "name": "Continue dismisses notice and resumes",
+        "pass": true
+      },
+      {
+        "name": "Continuing never repeats victory notice",
+        "pass": true
+      },
+      {
+        "name": "Optional destruction still works after clear",
+        "pass": true
+      },
+      {
+        "name": "Pending upgrades do not hide completed objective",
+        "pass": true
+      },
+      {
+        "name": "Next-stage action consumes pending upgrade queue",
+        "pass": true,
+        "data": {
+          "pending": 2,
+          "mods": {
+            "A": 2,
+            "B": 0,
+            "C": 0,
+            "D": 0
+          },
+          "qaNext": 2
+        }
+      },
+      {
+        "name": "Next-stage action commits actual equipment",
+        "pass": true
+      },
+      {
+        "name": "Repeated next action cannot duplicate settlement",
+        "pass": true
+      },
+      {
+        "name": "Retry restores objective and allows one fresh notice",
+        "pass": true
+      }
+    ]
+  },
+  {
+    "suite": "clear",
+    "level": 2,
+    "passed": true,
+    "count": 29,
+    "failed": [],
+    "rows": [
+      {
+        "name": "Current standard permanently visible",
+        "pass": true
+      },
+      {
+        "name": "All five standards displayed in task",
+        "pass": true
+      },
+      {
+        "name": "No next-stage button before complete",
+        "pass": true
+      },
+      {
+        "name": "Quota agrees with displayed rule",
+        "pass": true
+      },
+      {
+        "name": "Legacy source cannot bypass roster",
+        "pass": true
+      },
+      {
+        "name": "Paused generator cannot spawn",
+        "pass": true
+      },
+      {
+        "name": "A registered monster counts once",
+        "pass": true
+      },
+      {
+        "name": "Unregistered monster cannot advance clear",
+        "pass": true
+      },
+      {
+        "name": "Remaining display includes future monsters",
+        "pass": true,
+        "data": {
+          "spawned": 2,
+          "live": 1,
+          "total": 8
+        }
+      },
+      {
+        "name": "Finite roster finished within bounded simulation",
+        "pass": true,
+        "data": {
+          "loops": 496,
+          "spawned": 8,
+          "total": 8
+        }
+      },
+      {
+        "name": "Fixed standard completes stage",
+        "pass": true
+      },
+      {
+        "name": "Automatic clear notice appears",
+        "pass": true
+      },
+      {
+        "name": "Clear notice pauses play and releases fire",
+        "pass": true
+      },
+      {
+        "name": "Clear progress is explicit",
+        "pass": true
+      },
+      {
+        "name": "Level four has a next stage and final stage does not",
+        "pass": true
+      },
+      {
+        "name": "Clear overlay is excluded from destructible terrain",
+        "pass": true
+      },
+      {
+        "name": "Clear stops all spawn paths",
+        "pass": true
+      },
+      {
+        "name": "Direct attempts cannot exceed quota",
+        "pass": true
+      },
+      {
+        "name": "Clear removes queued spawn warning",
+        "pass": true
+      },
+      {
+        "name": "Continue dismisses notice and resumes",
+        "pass": true
+      },
+      {
+        "name": "Continuing never repeats victory notice",
+        "pass": true
+      },
+      {
+        "name": "Optional destruction still works after clear",
+        "pass": true
+      },
+      {
+        "name": "Continued dismantling never restarts waves",
+        "pass": true
+      },
+      {
+        "name": "Finite roster finished within bounded simulation",
+        "pass": true,
+        "data": {
+          "loops": 706,
+          "spawned": 8,
+          "total": 8
+        }
+      },
+      {
+        "name": "Pending upgrades do not hide completed objective",
+        "pass": true
+      },
+      {
+        "name": "Next-stage action consumes pending upgrade queue",
+        "pass": true,
+        "data": {
+          "pending": 1,
+          "mods": {
+            "A": 1,
+            "B": 0,
+            "C": 0,
+            "D": 0
+          },
+          "qaNext": 3
+        }
+      },
+      {
+        "name": "Next-stage action commits actual equipment",
+        "pass": true
+      },
+      {
+        "name": "Repeated next action cannot duplicate settlement",
+        "pass": true
+      },
+      {
+        "name": "Retry restores objective and allows one fresh notice",
+        "pass": true
+      }
+    ]
+  },
+  {
+    "suite": "clear",
+    "level": 3,
+    "passed": true,
+    "count": 29,
+    "failed": [],
+    "rows": [
+      {
+        "name": "Current standard permanently visible",
+        "pass": true
+      },
+      {
+        "name": "All five standards displayed in task",
+        "pass": true
+      },
+      {
+        "name": "No next-stage button before complete",
+        "pass": true
+      },
+      {
+        "name": "Quota agrees with displayed rule",
+        "pass": true
+      },
+      {
+        "name": "Legacy source cannot bypass roster",
+        "pass": true
+      },
+      {
+        "name": "Paused generator cannot spawn",
+        "pass": true
+      },
+      {
+        "name": "A registered monster counts once",
+        "pass": true
+      },
+      {
+        "name": "Unregistered monster cannot advance clear",
+        "pass": true
+      },
+      {
+        "name": "Remaining display includes future monsters",
+        "pass": true,
+        "data": {
+          "spawned": 2,
+          "live": 1,
+          "total": 12
+        }
+      },
+      {
+        "name": "Finite roster finished within bounded simulation",
+        "pass": true,
+        "data": {
+          "loops": 756,
+          "spawned": 12,
+          "total": 12
+        }
+      },
+      {
+        "name": "Fixed standard completes stage",
+        "pass": true
+      },
+      {
+        "name": "Automatic clear notice appears",
+        "pass": true
+      },
+      {
+        "name": "Clear notice pauses play and releases fire",
+        "pass": true
+      },
+      {
+        "name": "Clear progress is explicit",
+        "pass": true
+      },
+      {
+        "name": "Level four has a next stage and final stage does not",
+        "pass": true
+      },
+      {
+        "name": "Clear overlay is excluded from destructible terrain",
+        "pass": true
+      },
+      {
+        "name": "Clear stops all spawn paths",
+        "pass": true
+      },
+      {
+        "name": "Direct attempts cannot exceed quota",
+        "pass": true
+      },
+      {
+        "name": "Clear removes queued spawn warning",
+        "pass": true
+      },
+      {
+        "name": "Continue dismisses notice and resumes",
+        "pass": true
+      },
+      {
+        "name": "Continuing never repeats victory notice",
+        "pass": true
+      },
+      {
+        "name": "Optional destruction still works after clear",
+        "pass": true
+      },
+      {
+        "name": "Continued dismantling never restarts waves",
+        "pass": true
+      },
+      {
+        "name": "Finite roster finished within bounded simulation",
+        "pass": true,
+        "data": {
+          "loops": 966,
+          "spawned": 12,
+          "total": 12
+        }
+      },
+      {
+        "name": "Pending upgrades do not hide completed objective",
+        "pass": true
+      },
+      {
+        "name": "Next-stage action consumes pending upgrade queue",
+        "pass": true,
+        "data": {
+          "pending": 1,
+          "mods": {
+            "A": 3,
+            "B": 1,
+            "C": 2,
+            "D": 1
+          },
+          "qaNext": 4
+        }
+      },
+      {
+        "name": "Next-stage action commits actual equipment",
+        "pass": true
+      },
+      {
+        "name": "Repeated next action cannot duplicate settlement",
+        "pass": true
+      },
+      {
+        "name": "Retry restores objective and allows one fresh notice",
+        "pass": true
+      }
+    ]
+  },
+  {
+    "suite": "clear",
+    "level": 4,
+    "passed": true,
+    "count": 29,
+    "failed": [],
+    "rows": [
+      {
+        "name": "Current standard permanently visible",
+        "pass": true
+      },
+      {
+        "name": "All five standards displayed in task",
+        "pass": true
+      },
+      {
+        "name": "No next-stage button before complete",
+        "pass": true
+      },
+      {
+        "name": "Quota agrees with displayed rule",
+        "pass": true
+      },
+      {
+        "name": "Legacy source cannot bypass roster",
+        "pass": true
+      },
+      {
+        "name": "Paused generator cannot spawn",
+        "pass": true
+      },
+      {
+        "name": "A registered monster counts once",
+        "pass": true
+      },
+      {
+        "name": "Unregistered monster cannot advance clear",
+        "pass": true
+      },
+      {
+        "name": "Remaining display includes future monsters",
+        "pass": true,
+        "data": {
+          "spawned": 2,
+          "live": 1,
+          "total": 16
+        }
+      },
+      {
+        "name": "Finite roster finished within bounded simulation",
+        "pass": true,
+        "data": {
+          "loops": 1047,
+          "spawned": 16,
+          "total": 16
+        }
+      },
+      {
+        "name": "Fixed standard completes stage",
+        "pass": true
+      },
+      {
+        "name": "Automatic clear notice appears",
+        "pass": true
+      },
+      {
+        "name": "Clear notice pauses play and releases fire",
+        "pass": true
+      },
+      {
+        "name": "Clear progress is explicit",
+        "pass": true
+      },
+      {
+        "name": "Level four has a next stage and final stage does not",
+        "pass": true
+      },
+      {
+        "name": "Clear overlay is excluded from destructible terrain",
+        "pass": true
+      },
+      {
+        "name": "Clear stops all spawn paths",
+        "pass": true
+      },
+      {
+        "name": "Direct attempts cannot exceed quota",
+        "pass": true
+      },
+      {
+        "name": "Clear removes queued spawn warning",
+        "pass": true
+      },
+      {
+        "name": "Continue dismisses notice and resumes",
+        "pass": true
+      },
+      {
+        "name": "Continuing never repeats victory notice",
+        "pass": true
+      },
+      {
+        "name": "Optional destruction still works after clear",
+        "pass": true
+      },
+      {
+        "name": "Continued dismantling never restarts waves",
+        "pass": true
+      },
+      {
+        "name": "Finite roster finished within bounded simulation",
+        "pass": true,
+        "data": {
+          "loops": 1257,
+          "spawned": 16,
+          "total": 16
+        }
+      },
+      {
+        "name": "Pending upgrades do not hide completed objective",
+        "pass": true
+      },
+      {
+        "name": "Next-stage action consumes pending upgrade queue",
+        "pass": true,
+        "data": {
+          "pending": 1,
+          "mods": {
+            "A": 4,
+            "B": 2,
+            "C": 3,
+            "D": 2
+          },
+          "qaNext": 5
+        }
+      },
+      {
+        "name": "Next-stage action commits actual equipment",
+        "pass": true
+      },
+      {
+        "name": "Repeated next action cannot duplicate settlement",
+        "pass": true
+      },
+      {
+        "name": "Retry restores objective and allows one fresh notice",
+        "pass": true
+      }
+    ]
+  },
+  {
+    "suite": "clear",
+    "level": 5,
+    "passed": true,
+    "count": 28,
+    "failed": [],
+    "rows": [
+      {
+        "name": "Current standard permanently visible",
+        "pass": true
+      },
+      {
+        "name": "All five standards displayed in task",
+        "pass": true
+      },
+      {
+        "name": "No next-stage button before complete",
+        "pass": true
+      },
+      {
+        "name": "Quota agrees with displayed rule",
+        "pass": true
+      },
+      {
+        "name": "Legacy source cannot bypass roster",
+        "pass": true
+      },
+      {
+        "name": "Paused generator cannot spawn",
+        "pass": true
+      },
+      {
+        "name": "A registered monster counts once",
+        "pass": true
+      },
+      {
+        "name": "Unregistered monster cannot advance clear",
+        "pass": true
+      },
+      {
+        "name": "Remaining display includes future monsters",
+        "pass": true,
+        "data": {
+          "spawned": 2,
+          "live": 1,
+          "total": 20
+        }
+      },
+      {
+        "name": "Boss rule remains visible before Boss appears",
+        "pass": true
+      },
+      {
+        "name": "Finite roster finished within bounded simulation",
+        "pass": true,
+        "data": {
+          "loops": 1239,
+          "spawned": 20,
+          "total": 20
+        }
+      },
+      {
+        "name": "Fixed standard completes stage",
+        "pass": true
+      },
+      {
+        "name": "Automatic clear notice appears",
+        "pass": true
+      },
+      {
+        "name": "Clear notice pauses play and releases fire",
+        "pass": true
+      },
+      {
+        "name": "Clear progress is explicit",
+        "pass": true
+      },
+      {
+        "name": "Level four has a next stage and final stage does not",
+        "pass": true
+      },
+      {
+        "name": "Clear overlay is excluded from destructible terrain",
+        "pass": true
+      },
+      {
+        "name": "Clear stops all spawn paths",
+        "pass": true
+      },
+      {
+        "name": "Direct attempts cannot exceed quota",
+        "pass": true
+      },
+      {
+        "name": "Clear removes queued spawn warning",
+        "pass": true
+      },
+      {
+        "name": "Continue dismisses notice and resumes",
+        "pass": true
+      },
+      {
+        "name": "Continuing never repeats victory notice",
+        "pass": true
+      },
+      {
+        "name": "Optional destruction still works after clear",
+        "pass": true
+      },
+      {
+        "name": "Continued dismantling never restarts waves",
+        "pass": true
+      },
+      {
+        "name": "Finite roster finished within bounded simulation",
+        "pass": true,
+        "data": {
+          "loops": 1449,
+          "spawned": 20,
+          "total": 20
+        }
+      },
+      {
+        "name": "Pending upgrades do not hide completed objective",
+        "pass": true
+      },
+      {
+        "name": "Final stage opens final results instead of nonexistent sixth stage",
+        "pass": true
+      },
+      {
+        "name": "Retry restores objective and allows one fresh notice",
+        "pass": true
+      }
+    ]
+  }
+]

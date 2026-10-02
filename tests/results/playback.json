@@ -1,0 +1,122 @@
+{
+  "playback": [
+    {
+      "action": "real video ended",
+      "state": {
+        "visible": false,
+        "paused": true,
+        "time": 27.749002,
+        "duration": 27.749002,
+        "ready": 4,
+        "ended": true,
+        "gamePaused": true,
+        "dialog": true,
+        "wavesStopped": true,
+        "bossDefeated": true
+      }
+    },
+    {
+      "action": "replay then skip",
+      "state": {
+        "visible": false,
+        "paused": true,
+        "time": 0.63643,
+        "duration": 27.749002,
+        "ready": 4,
+        "ended": false,
+        "gamePaused": true,
+        "dialog": true,
+        "wavesStopped": true,
+        "bossDefeated": true
+      }
+    },
+    {
+      "action": "continue after skip",
+      "state": {
+        "visible": false,
+        "paused": true,
+        "time": 0.63643,
+        "duration": 27.749002,
+        "ready": 4,
+        "ended": false,
+        "gamePaused": false,
+        "dialog": false,
+        "wavesStopped": true,
+        "bossDefeated": true
+      }
+    }
+  ],
+  "layouts": [
+    {
+      "dialog": {
+        "client": 537,
+        "height": 543.328125,
+        "scroll": 537
+      },
+      "size": [
+        390,
+        844
+      ],
+      "video": {
+        "height": 167.546875,
+        "muted": false,
+        "paused": false,
+        "width": 312
+      }
+    },
+    {
+      "dialog": {
+        "client": 360,
+        "height": 365.984375,
+        "scroll": 360
+      },
+      "size": [
+        844,
+        390
+      ],
+      "video": {
+        "height": 140.390625,
+        "muted": false,
+        "paused": false,
+        "width": 506
+      }
+    }
+  ],
+  "afterSettlement": {
+    "visible": false,
+    "paused": true,
+    "time": 0.999004,
+    "duration": 27.749002,
+    "ready": 4,
+    "ended": false,
+    "gamePaused": false,
+    "dialog": false,
+    "wavesStopped": true,
+    "bossDefeated": true
+  },
+  "game": {
+    "level": 5,
+    "mods": {
+      "A": 5,
+      "B": 3,
+      "C": 4,
+      "D": 3
+    },
+    "results": [
+      "5"
+    ],
+    "entry": {
+      "A": 4,
+      "B": 3,
+      "C": 4,
+      "D": 3
+    },
+    "complete": true,
+    "paused": false,
+    "noticeVisible": false,
+    "spawned": 20,
+    "killed": 20,
+    "total": 20,
+    "pending": 0
+  }
+}
