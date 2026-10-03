@@ -1,0 +1,156 @@
+{
+  "level": 2,
+  "entry": {
+    "A": 3,
+    "B": 1,
+    "C": 0,
+    "D": 0
+  },
+  "size": [
+    1280,
+    720
+  ],
+  "results": [
+    {
+      "mode": "idle",
+      "phase": "dead",
+      "seconds": 22.799999999999986,
+      "hp": 0,
+      "minHp": 0,
+      "healthRecovered": 0,
+      "medkitsPicked": 0,
+      "medkitsDropped": 0,
+      "damageTaken": 5,
+      "damageBy": {
+        "beam": 4,
+        "projectile": 1
+      },
+      "attacks": {
+        "beam": 8,
+        "caster": 0,
+        "charged": 0
+      },
+      "intercepts": 8,
+      "killed": 246,
+      "total": 1495,
+      "eliteKills": 0,
+      "eliteTotal": 9,
+      "ink": 88,
+      "mods": {
+        "A": 4,
+        "B": 1,
+        "C": 0,
+        "D": 0
+      },
+      "progress": 0.1802177630382958,
+      "boss": null,
+      "active": 3,
+      "pending": 1247,
+      "endPlayer": {
+        "x": 720,
+        "y": 2654.0001403095284
+      },
+      "remainingRoster": [
+        {
+          "id": "title-1229",
+          "x": 793.9643299574624,
+          "y": 2324.4844242123104
+        },
+        {
+          "id": "letter-1114",
+          "mode": "chase",
+          "x": 438,
+          "y": 2429.7
+        },
+        {
+          "id": "letter-1115",
+          "mode": "cross",
+          "x": 453,
+          "y": 2429.7
+        }
+      ],
+      "uniqueSources": 248
+    },
+    {
+      "mode": "weave",
+      "phase": "clear",
+      "seconds": 138.93333333333604,
+      "hp": 5,
+      "minHp": 2,
+      "healthRecovered": 2,
+      "medkitsPicked": 2,
+      "medkitsDropped": 4,
+      "damageTaken": 6,
+      "damageBy": {
+        "projectile": 1,
+        "beam": 5
+      },
+      "attacks": {
+        "beam": 42,
+        "caster": 0,
+        "charged": 0
+      },
+      "intercepts": 17,
+      "killed": 1495,
+      "total": 1495,
+      "eliteKills": 9,
+      "eliteTotal": 9,
+      "ink": 1182,
+      "mods": {
+        "A": 6,
+        "B": 4,
+        "C": 0,
+        "D": 0
+      },
+      "progress": 1,
+      "boss": null,
+      "active": 0,
+      "pending": 0,
+      "endPlayer": {
+        "x": 806.680695990041,
+        "y": 443.480935544245
+      },
+      "remainingRoster": [],
+      "uniqueSources": 1495
+    },
+    {
+      "mode": "collect",
+      "phase": "clear",
+      "seconds": 139.28333333333632,
+      "hp": 5,
+      "minHp": 5,
+      "healthRecovered": 0,
+      "medkitsPicked": 0,
+      "medkitsDropped": 4,
+      "damageTaken": 0,
+      "damageBy": {},
+      "attacks": {
+        "beam": 42,
+        "caster": 0,
+        "charged": 0
+      },
+      "intercepts": 38,
+      "killed": 1495,
+      "total": 1495,
+      "eliteKills": 9,
+      "eliteTotal": 9,
+      "ink": 1590,
+      "mods": {
+        "A": 6,
+        "B": 4,
+        "C": 1,
+        "D": 0
+      },
+      "progress": 1,
+      "boss": null,
+      "active": 0,
+      "pending": 0,
+      "endPlayer": {
+        "x": 832.1732500551695,
+        "y": 348.6058805580677
+      },
+      "remainingRoster": [],
+      "uniqueSources": 1495
+    }
+  ]
+}

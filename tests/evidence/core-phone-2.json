@@ -1,0 +1,440 @@
+{
+  "level": 2,
+  "profile": {
+    "name": "轻压",
+    "description": "双线封锁 · 交叉文字 · 普通弹可擦除",
+    "advance": 36,
+    "letterSpeed": 195,
+    "spawnInterval": 0.18,
+    "maxActive": 60,
+    "warmup": 0.4,
+    "batch": 2,
+    "hp": 2,
+    "strongHp": 4,
+    "eliteScale": 1.8,
+    "elites": 2,
+    "fan": 3,
+    "shotSpeed": 225,
+    "eliteCooldown": 3.5,
+    "turn": 0.9,
+    "shield": 5,
+    "invincible": 1.2,
+    "lanes": 2,
+    "warning": 1,
+    "casterEvery": 0,
+    "chargedHp": 1,
+    "healEvery": 2
+  },
+  "roster": {
+    "glyphs": 1554,
+    "letters": 1495,
+    "titles": 9
+  },
+  "music": "未读的回声",
+  "pageColor": "rgb(242, 243, 236)",
+  "passed": true,
+  "count": 85,
+  "size": [
+    390,
+    844
+  ],
+  "failed": [],
+  "rows": [
+    {
+      "name": "Each level has a separate music theme",
+      "pass": true
+    },
+    {
+      "name": "Difficulty profiles have increasing attack speeds and distinct pressure",
+      "pass": true
+    },
+    {
+      "name": "Upgrade nodes increase from six to ten",
+      "pass": true
+    },
+    {
+      "name": "Every webpage glyph is registered exactly once",
+      "pass": true,
+      "data": {
+        "normal": 1495,
+        "elites": 9,
+        "glyphs": 1554
+      }
+    },
+    {
+      "name": "Registration includes main body, navigation, blue links, buttons and sidebar",
+      "pass": true
+    },
+    {
+      "name": "Game controls are not included",
+      "pass": true
+    },
+    {
+      "name": "All headings become finite elite actors",
+      "pass": true
+    },
+    {
+      "name": "Ready view starts at original webpage bottom",
+      "pass": true
+    },
+    {
+      "name": "Original webpage layout is retained",
+      "pass": true
+    },
+    {
+      "name": "Start menu has five accessible chapter choices",
+      "pass": true
+    },
+    {
+      "name": "Menu theme matches this original webpage",
+      "pass": true
+    },
+    {
+      "name": "Start menu keeps gameplay controls inert",
+      "pass": true
+    },
+    {
+      "name": "Starting shows the full webpage from the top before combat",
+      "pass": true
+    },
+    {
+      "name": "Opening camera actually pans downward without damaging text",
+      "pass": true
+    },
+    {
+      "name": "Paused preview does not advance",
+      "pass": true
+    },
+    {
+      "name": "Preview resize retains the preview position, rather than jumping to player",
+      "pass": true
+    },
+    {
+      "name": "Skip arrives at the visible character and enables combat",
+      "pass": true
+    },
+    {
+      "name": "Actual button selects grenade and remains selected after rendering",
+      "pass": true
+    },
+    {
+      "name": "Switching does not cancel a held joystick or movement key",
+      "pass": true
+    },
+    {
+      "name": "Selected weapon changes real firing stats",
+      "pass": true
+    },
+    {
+      "name": "Eraser selection changes its actual range and pulse interval",
+      "pass": true
+    },
+    {
+      "name": "Physical firing counts change for each selected main weapon",
+      "pass": true,
+      "data": [
+        {
+          "gun": 90,
+          "grenade": 2,
+          "eraser": 7
+        },
+        {
+          "gun": 54,
+          "grenade": 3,
+          "eraser": 7
+        },
+        {
+          "gun": 54,
+          "grenade": 2,
+          "eraser": 10
+        }
+      ]
+    },
+    {
+      "name": "Scrolling blood packs stay in the reachable area above controls",
+      "pass": true
+    },
+    {
+      "name": "Full health does not consume a medkit",
+      "pass": true
+    },
+    {
+      "name": "A distant medkit does not heal remotely",
+      "pass": true
+    },
+    {
+      "name": "Physical pickup heals two and removes the item once",
+      "pass": true
+    },
+    {
+      "name": "Consumed medkit cannot heal a second time",
+      "pass": true
+    },
+    {
+      "name": "Uncollected medkit expires without affecting enemy quota",
+      "pass": true
+    },
+    {
+      "name": "Real letter defeat triggers a finite healing drop",
+      "pass": true
+    },
+    {
+      "name": "Blood packs cannot exceed the selected level budget",
+      "pass": true
+    },
+    {
+      "name": "Retry removes all old medkits and restores menu",
+      "pass": true
+    },
+    {
+      "name": "Direct selection has a viable or inherited loadout",
+      "pass": true
+    },
+    {
+      "name": "Skipping the preview enters page battle",
+      "pass": true
+    },
+    {
+      "name": "Camera and character actually advance upward",
+      "pass": true,
+      "data": {
+        "initial": 2527.897511974023,
+        "now": 2491.897511974023
+      }
+    },
+    {
+      "name": "Text above the revealed page remains stationary",
+      "pass": true
+    },
+    {
+      "name": "First revealed text launches immediately",
+      "pass": true
+    },
+    {
+      "name": "New enemy appears at its exact source location",
+      "pass": true,
+      "data": {
+        "origin": {
+          "x": 308.0000121586683,
+          "y": 2939.1999888262517
+        }
+      }
+    },
+    {
+      "name": "Native font size and color are retained",
+      "pass": true
+    },
+    {
+      "name": "Launch has a visible warning before collision",
+      "pass": true
+    },
+    {
+      "name": "Detachment leaves a gap and removes stationary collision",
+      "pass": true
+    },
+    {
+      "name": "Other source text does not reflow",
+      "pass": true
+    },
+    {
+      "name": "Detached visible text can be counterattacked during warning",
+      "pass": true
+    },
+    {
+      "name": "Warning becomes an active attack",
+      "pass": true
+    },
+    {
+      "name": "Letter attack is substantially faster than old falling text",
+      "pass": true
+    },
+    {
+      "name": "Swept bullet damages the actor it physically crosses",
+      "pass": true
+    },
+    {
+      "name": "Hit record corresponds to the same visible actor",
+      "pass": true,
+      "data": {
+        "id": "letter-1345",
+        "x": 729,
+        "y": 3064.000076076587,
+        "rect": {
+          "x": 720,
+          "y": 3054.000076076587,
+          "w": 18,
+          "h": 9
+        },
+        "at": 0
+      }
+    },
+    {
+      "name": "Destroyed actor does not count twice",
+      "pass": true
+    },
+    {
+      "name": "Dead source retains no invisible collision",
+      "pass": true
+    },
+    {
+      "name": "Two-hit 出 becomes 山",
+      "pass": true
+    },
+    {
+      "name": "Second hit destroys 山",
+      "pass": true
+    },
+    {
+      "name": "Lost upper strokes also lose collision",
+      "pass": true
+    },
+    {
+      "name": "Passed attack can return without becoming a new enemy",
+      "pass": true
+    },
+    {
+      "name": "Return preserves source identity and total quota",
+      "pass": true
+    },
+    {
+      "name": "Movement works during scrolling",
+      "pass": true
+    },
+    {
+      "name": "Release clears all movement input",
+      "pass": true
+    },
+    {
+      "name": "Resize/zoom keeps player visible at 0.8",
+      "pass": true,
+      "data": {
+        "foot": 463.1184704523352,
+        "scale": 0.6240000000000001
+      }
+    },
+    {
+      "name": "Resize/zoom keeps player visible at 1.2",
+      "pass": true,
+      "data": {
+        "foot": 450.10770567850284,
+        "scale": 0.9359999999999999
+      }
+    },
+    {
+      "name": "Resize/zoom keeps player visible at 1",
+      "pass": true,
+      "data": {
+        "foot": 456.6130880654189,
+        "scale": 0.78
+      }
+    },
+    {
+      "name": "Resize retains source world coordinates",
+      "pass": true
+    },
+    {
+      "name": "Native resize listener follows the player even while paused",
+      "pass": true
+    },
+    {
+      "name": "Horizontal traversal reaches sidebar without coordinate drift",
+      "pass": true
+    },
+    {
+      "name": "Gun and grenade both attack without a firing gesture",
+      "pass": true
+    },
+    {
+      "name": "Automatic eraser reacts to nearby letters",
+      "pass": true
+    },
+    {
+      "name": "Blast can defeat a title and counts it once",
+      "pass": true
+    },
+    {
+      "name": "Uncollected kills do not unlock growth",
+      "pass": true
+    },
+    {
+      "name": "Collected ink opens a real upgrade choice",
+      "pass": true
+    },
+    {
+      "name": "Gun upgrade improves gun, blast and eraser",
+      "pass": true
+    },
+    {
+      "name": "Blast branch still improves after gun upgrades",
+      "pass": true
+    },
+    {
+      "name": "Cooling branch still reduces interval",
+      "pass": true
+    },
+    {
+      "name": "Defeat pauses and offers retry",
+      "pass": true
+    },
+    {
+      "name": "Retry starts the opening preview",
+      "pass": true
+    },
+    {
+      "name": "Retry restores the original whole page",
+      "pass": true
+    },
+    {
+      "name": "Shield count comes from the selected difficulty",
+      "pass": true
+    },
+    {
+      "name": "Profiles use one, two and three locked attack lanes",
+      "pass": true
+    },
+    {
+      "name": "Warning includes the real player position before firing",
+      "pass": true
+    },
+    {
+      "name": "Dodging leaves the locked lane at its displayed position",
+      "pass": true
+    },
+    {
+      "name": "Ordinary shots can be erased; heavy shots survive one pulse",
+      "pass": true
+    },
+    {
+      "name": "Difficulty label is shown before beginning",
+      "pass": true
+    },
+    {
+      "name": "Whole page quota is required before clear",
+      "pass": true
+    },
+    {
+      "name": "No legacy waves are spawned during page assault",
+      "pass": true
+    },
+    {
+      "name": "Standard settlement opens after all page text is defeated",
+      "pass": true
+    },
+    {
+      "name": "Clear stops attack generation",
+      "pass": true
+    },
+    {
+      "name": "Free dismantling restores original controls",
+      "pass": true
+    },
+    {
+      "name": "Retry never leaves a stale completion dialog",
+      "pass": true
+    },
+    {
+      "name": "Replay starts at page bottom without stale actors",
+      "pass": true
+    }
+  ]
+}

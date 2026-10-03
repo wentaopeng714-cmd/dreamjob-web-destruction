@@ -1,0 +1,42 @@
+{
+  "date": "2026-10-03",
+  "coreChecks": 1305,
+  "viewports": [
+    [
+      1280,
+      720
+    ],
+    [
+      390,
+      844
+    ],
+    [
+      844,
+      390
+    ]
+  ],
+  "levels": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "nativeJoystick": true,
+  "pausedNativeResize": true,
+  "sequentialInheritance": true,
+  "difficultyRevision": "2026-10-03",
+  "startMenuThemes": 5,
+  "nativeIntroPan": true,
+  "nativeWeaponSwitch": true,
+  "nativeScrollableMenu": true,
+  "medkits": true,
+  "finalePlayback": {
+    "duration": 27.749002,
+    "paused": false,
+    "readyState": 4
+  },
+  "htmlSha256": "ca6007e5cb8b6feaa1aabdfc7751bce911b7d76cd446893640a9d2a0ddc910f2",
+  "productionSha256": "05ae881becb288ed2742c5cb8b97b043691d91d61b965510b980e54cb07b046c",
+  "published": false
+}

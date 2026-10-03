@@ -1,0 +1,279 @@
+{
+  "level": 5,
+  "entry": {
+    "A": 9,
+    "B": 4,
+    "C": 3,
+    "D": 3
+  },
+  "size": [
+    1280,
+    720
+  ],
+  "results": [
+    {
+      "mode": "idle",
+      "phase": "dead",
+      "seconds": 11.266666666666806,
+      "hp": 0,
+      "minHp": 0,
+      "healthRecovered": 0,
+      "medkitsPicked": 0,
+      "medkitsDropped": 0,
+      "damageTaken": 5,
+      "damageBy": {
+        "beam": 2,
+        "projectile": 3
+      },
+      "attacks": {
+        "beam": 9,
+        "caster": 6,
+        "charged": 30
+      },
+      "intercepts": 6,
+      "killed": 137,
+      "total": 1435,
+      "eliteKills": 0,
+      "eliteTotal": 8,
+      "ink": 69,
+      "mods": {
+        "A": 9,
+        "B": 4,
+        "C": 4,
+        "D": 3
+      },
+      "progress": 0.1208368397603485,
+      "boss": {
+        "started": false,
+        "defeated": false,
+        "hp": 3600,
+        "phase": 1,
+        "attacks": 0
+      },
+      "active": 14,
+      "pending": 1285,
+      "endPlayer": {
+        "x": 720,
+        "y": 3376.4665631931302
+      },
+      "remainingRoster": [
+        {
+          "id": "title-1260",
+          "x": 756.9671119676287,
+          "y": 3054.70416125352
+        },
+        {
+          "id": "letter-1270",
+          "mode": "caster",
+          "x": 380,
+          "y": 3094.9470392406474
+        },
+        {
+          "id": "letter-1197",
+          "mode": "dive",
+          "x": 441.7115948759104,
+          "y": 3212.1121275506985
+        },
+        {
+          "id": "letter-1198",
+          "mode": "chase",
+          "x": 463.02317874874916,
+          "y": 3217.6773153275635
+        },
+        {
+          "id": "letter-1199",
+          "mode": "dive",
+          "x": 419.86570077366343,
+          "y": 3184.804266043302
+        },
+        {
+          "id": "letter-1200",
+          "mode": "chase",
+          "x": 439.05181884241955,
+          "y": 3189.192012239102
+        },
+        {
+          "id": "letter-1201",
+          "mode": "caster",
+          "x": 362,
+          "y": 3105.7
+        },
+        {
+          "id": "letter-1202",
+          "mode": "chase",
+          "x": 436.1793741011911,
+          "y": 3171.0473243965093
+        },
+        {
+          "id": "letter-1203",
+          "mode": "dive",
+          "x": 407.44880252116945,
+          "y": 3142.1775448033577
+        },
+        {
+          "id": "letter-1204",
+          "mode": "chase",
+          "x": 423.08006953697316,
+          "y": 3143.138342117275
+        },
+        {
+          "id": "letter-1205",
+          "mode": "dive",
+          "x": 422,
+          "y": 3131.7
+        },
+        {
+          "id": "letter-1206",
+          "mode": "chase",
+          "x": 437,
+          "y": 3131.7
+        },
+        {
+          "id": "letter-1207",
+          "mode": "cross",
+          "x": 452,
+          "y": 3131.7
+        },
+        {
+          "id": "letter-1208",
+          "mode": "chase",
+          "x": 467,
+          "y": 3131.7
+        }
+      ],
+      "uniqueSources": 150
+    },
+    {
+      "mode": "weave",
+      "phase": "dead",
+      "seconds": 14.36666666666696,
+      "hp": 0,
+      "minHp": 0,
+      "healthRecovered": 0,
+      "medkitsPicked": 0,
+      "medkitsDropped": 0,
+      "damageTaken": 5,
+      "damageBy": {
+        "projectile": 4,
+        "beam": 1
+      },
+      "attacks": {
+        "beam": 12,
+        "caster": 13,
+        "charged": 55
+      },
+      "intercepts": 9,
+      "killed": 185,
+      "total": 1435,
+      "eliteKills": 0,
+      "eliteTotal": 8,
+      "ink": 101,
+      "mods": {
+        "A": 9,
+        "B": 4,
+        "C": 4,
+        "D": 3
+      },
+      "progress": 0.1589742586439897,
+      "boss": {
+        "started": false,
+        "defeated": false,
+        "hp": 3600,
+        "phase": 1,
+        "attacks": 0
+      },
+      "active": 6,
+      "pending": 1245,
+      "endPlayer": {
+        "x": 1048.7082436173687,
+        "y": 3302.7714381618857
+      },
+      "remainingRoster": [
+        {
+          "id": "title-1260",
+          "x": 966.4871231878576,
+          "y": 2893.095582229216
+        },
+        {
+          "id": "letter-1165",
+          "mode": "dive",
+          "x": 571.673432387282,
+          "y": 3195.200226954626
+        },
+        {
+          "id": "letter-1170",
+          "mode": "chase",
+          "x": 549.8541007778639,
+          "y": 3147.647063862398
+        },
+        {
+          "id": "letter-1171",
+          "mode": "dive",
+          "x": 489.97384480507094,
+          "y": 3120.185016887627
+        },
+        {
+          "id": "letter-1172",
+          "mode": "chase",
+          "x": 500.4169365798933,
+          "y": 3121.691782095984
+        },
+        {
+          "id": "letter-1173",
+          "mode": "dive",
+          "x": 470.27121178192994,
+          "y": 3106.4503684432566
+        }
+      ],
+      "uniqueSources": 190
+    },
+    {
+      "mode": "collect",
+      "phase": "clear",
+      "seconds": 177.30000000003324,
+      "hp": 1,
+      "minHp": 1,
+      "healthRecovered": 2,
+      "medkitsPicked": 1,
+      "medkitsDropped": 3,
+      "damageTaken": 7,
+      "damageBy": {
+        "projectile": 3,
+        "bossContact": 4
+      },
+      "attacks": {
+        "beam": 225,
+        "caster": 159,
+        "charged": 777
+      },
+      "intercepts": 510,
+      "killed": 1435,
+      "total": 1435,
+      "eliteKills": 8,
+      "eliteTotal": 8,
+      "ink": 1534,
+      "mods": {
+        "A": 12,
+        "B": 5,
+        "C": 9,
+        "D": 3
+      },
+      "progress": 1,
+      "boss": {
+        "started": true,
+        "defeated": true,
+        "hp": 0,
+        "phase": 3,
+        "attacks": 12
+      },
+      "active": 0,
+      "pending": 0,
+      "endPlayer": {
+        "x": 824.5813257095931,
+        "y": 444.1725
+      },
+      "remainingRoster": [],
+      "uniqueSources": 1435
+    }
+  ]
+}

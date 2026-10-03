@@ -1,0 +1,196 @@
+{
+  "before": {
+    "level": 4,
+    "introTrace": [],
+    "boss": null,
+    "phase": "battle",
+    "weapon": 0,
+    "menu": false,
+    "intro": 0,
+    "medkits": [],
+    "medkitsPicked": 0,
+    "healthRecovered": 0,
+    "progress": 0.0033312835613116755,
+    "total": 1418,
+    "sourceTotal": 1467,
+    "spawned": 8,
+    "killed": 0,
+    "eliteKills": 0,
+    "eliteTotal": 8,
+    "ink": 0,
+    "hp": 4,
+    "actors": 9,
+    "pending": 1410,
+    "camera": {
+      "x": 461.6666666666667,
+      "y": 2792.930111186178,
+      "scale": 0.78
+    },
+    "player": {
+      "x": 720,
+      "y": 3420.0326752887418
+    },
+    "route": 3420.0326752887418,
+    "mods": {
+      "A": 7,
+      "B": 3,
+      "C": 2,
+      "D": 2
+    },
+    "paused": false,
+    "trace": []
+  },
+  "after": {
+    "level": 4,
+    "introTrace": [],
+    "boss": null,
+    "phase": "battle",
+    "weapon": 0,
+    "menu": false,
+    "intro": 0,
+    "medkits": [],
+    "medkitsPicked": 0,
+    "healthRecovered": 0,
+    "progress": 0.0073534762423306055,
+    "total": 1418,
+    "sourceTotal": 1467,
+    "spawned": 20,
+    "killed": 13,
+    "eliteKills": 0,
+    "eliteTotal": 8,
+    "ink": 0,
+    "hp": 4,
+    "actors": 8,
+    "pending": 1398,
+    "camera": {
+      "x": 470.2541588862386,
+      "y": 2780.895711186182,
+      "scale": 0.78
+    },
+    "player": {
+      "x": 728.5874922195719,
+      "y": 3400.974490592516
+    },
+    "route": 3407.998275288746,
+    "mods": {
+      "A": 7,
+      "B": 3,
+      "C": 2,
+      "D": 2
+    },
+    "paused": true,
+    "trace": [
+      {
+        "kind": "pointermove",
+        "x": 720,
+        "y": 3418.477275288742,
+        "stick": {
+          "x": 0,
+          "y": 0
+        },
+        "trusted": true
+      },
+      {
+        "kind": "pointerdown",
+        "x": 720,
+        "y": 3418.2896752887423,
+        "stick": {
+          "x": 0,
+          "y": 0
+        },
+        "trusted": true
+      },
+      {
+        "kind": "pointermove",
+        "x": 720,
+        "y": 3418.1846752887423,
+        "stick": {
+          "x": 0,
+          "y": 0
+        },
+        "trusted": true
+      },
+      {
+        "kind": "pointermove",
+        "x": 720,
+        "y": 3418.090875288742,
+        "stick": {
+          "x": 0.20996640537514,
+          "y": -0.167973124300112
+        },
+        "trusted": true
+      },
+      {
+        "kind": "pointermove",
+        "x": 720.8420191230941,
+        "y": 3417.226859990267,
+        "stick": {
+          "x": 0.3219484882418813,
+          "y": -0.251959686450168
+        },
+        "trusted": true
+      },
+      {
+        "kind": "pointermove",
+        "x": 722.1615951704138,
+        "y": 3415.99954830106,
+        "stick": {
+          "x": 0.43393057110862265,
+          "y": -0.335946248600224
+        },
+        "trusted": true
+      },
+      {
+        "kind": "pointermove",
+        "x": 723.1340447066931,
+        "y": 3415.1402841439403,
+        "stick": {
+          "x": 0.5179171332586786,
+          "y": -0.4479283314669653
+        },
+        "trusted": true
+      },
+      {
+        "kind": "pointermove",
+        "x": 724.1267192121055,
+        "y": 3414.190754841962,
+        "stick": {
+          "x": 0.62989921612542,
+          "y": -0.5319148936170213
+        },
+        "trusted": true
+      },
+      {
+        "kind": "pointermove",
+        "x": 725.4826176529704,
+        "y": 3412.943573936343,
+        "stick": {
+          "x": 0.7418812989921613,
+          "y": -0.6159014557670773
+        },
+        "trusted": true
+      },
+      {
+        "kind": "pointermove",
+        "x": 727.0139367444798,
+        "y": 3411.57429016226,
+        "stick": {
+          "x": 0.7733921049602127,
+          "y": -0.6339279548854202
+        },
+        "trusted": true
+      },
+      {
+        "kind": "pointerup",
+        "x": 728.5874922195719,
+        "y": 3410.1878905925123,
+        "stick": {
+          "x": 0,
+          "y": 0
+        },
+        "trusted": true
+      }
+    ]
+  },
+  "music": "♫ 音乐 播放"
+}

@@ -1,0 +1,54 @@
+{
+  "level": 2,
+  "entry": {
+    "A": 3,
+    "B": 1,
+    "C": 0,
+    "D": 0
+  },
+  "size": [
+    390,
+    844
+  ],
+  "results": [
+    {
+      "mode": "collect",
+      "phase": "clear",
+      "seconds": 138.53333333333572,
+      "hp": 5,
+      "minHp": 5,
+      "healthRecovered": 0,
+      "medkitsPicked": 0,
+      "medkitsDropped": 4,
+      "damageTaken": 0,
+      "damageBy": {},
+      "attacks": {
+        "beam": 54,
+        "caster": 0,
+        "charged": 0
+      },
+      "intercepts": 44,
+      "killed": 1495,
+      "total": 1495,
+      "eliteKills": 9,
+      "eliteTotal": 9,
+      "ink": 1548,
+      "mods": {
+        "A": 6,
+        "B": 5,
+        "C": 0,
+        "D": 0
+      },
+      "progress": 1,
+      "boss": null,
+      "active": 0,
+      "pending": 0,
+      "endPlayer": {
+        "x": 651.700992300554,
+        "y": 329.88181742971335
+      },
+      "remainingRoster": [],
+      "uniqueSources": 1495
+    }
+  ]
+}

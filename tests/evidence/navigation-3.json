@@ -1,0 +1,142 @@
+{
+  "level": 3,
+  "result": {
+    "mode": "collect",
+    "phase": "clear",
+    "seconds": 121.64999999999438,
+    "hp": 5,
+    "minHp": 5,
+    "healthRecovered": 0,
+    "medkitsPicked": 0,
+    "medkitsDropped": 3,
+    "damageTaken": 0,
+    "damageBy": {},
+    "attacks": {
+      "beam": 62,
+      "caster": 13,
+      "charged": 119
+    },
+    "intercepts": 58,
+    "killed": 1412,
+    "total": 1412,
+    "eliteKills": 8,
+    "eliteTotal": 8,
+    "ink": 1468,
+    "mods": {
+      "A": 8,
+      "B": 8,
+      "C": 5,
+      "D": 0
+    },
+    "progress": 1,
+    "boss": null,
+    "active": 0,
+    "pending": 0,
+    "endPlayer": {
+      "x": 654.6969558775318,
+      "y": 310.0299861326901
+    },
+    "remainingRoster": [],
+    "uniqueSources": 1412
+  },
+  "entry": {
+    "A": 6,
+    "B": 6,
+    "C": 1,
+    "D": 0
+  },
+  "previous": {
+    "level": 2,
+    "points": 1554,
+    "mods": {
+      "A": 6,
+      "B": 6,
+      "C": 1,
+      "D": 0
+    },
+    "sources": {
+      "glyph": 1554,
+      "image": 0,
+      "button": 0,
+      "target": 0,
+      "enemy": 0,
+      "source": 0,
+      "boss": 0
+    },
+    "nodes": [
+      {
+        "id": "level2-node1",
+        "threshold": 70,
+        "state": "claimed",
+        "unlockAt": 6.049999999999979,
+        "claimAt": 6.049999999999979,
+        "choice": "A",
+        "unlockWallAt": 0.27379999999701976,
+        "claimWallAt": 0.27459999999776485
+      },
+      {
+        "id": "level2-node2",
+        "threshold": 151,
+        "state": "claimed",
+        "unlockAt": 14.733333333333688,
+        "claimAt": 14.733333333333688,
+        "choice": "A",
+        "unlockWallAt": 0.6907999999970198,
+        "claimWallAt": 0.6913999999985099
+      },
+      {
+        "id": "level2-node3",
+        "threshold": 306,
+        "state": "claimed",
+        "unlockAt": 27.716666666666324,
+        "claimAt": 27.716666666666324,
+        "choice": "B",
+        "unlockWallAt": 1.360099999997765,
+        "claimWallAt": 1.3605
+      },
+      {
+        "id": "level2-node4",
+        "threshold": 513,
+        "state": "claimed",
+        "unlockAt": 48.516666666665145,
+        "claimAt": 48.516666666665145,
+        "choice": "B",
+        "unlockWallAt": 2.617199999999255,
+        "claimWallAt": 2.617699999999255
+      },
+      {
+        "id": "level2-node5",
+        "threshold": 762,
+        "state": "claimed",
+        "unlockAt": 70.38333333333057,
+        "claimAt": 70.38333333333057,
+        "choice": "B",
+        "unlockWallAt": 4.131,
+        "claimWallAt": 4.1315
+      },
+      {
+        "id": "level2-node6",
+        "threshold": 1048,
+        "state": "claimed",
+        "unlockAt": 92.99999999999595,
+        "claimAt": 92.99999999999595,
+        "choice": "B",
+        "unlockWallAt": 6.29189999999851,
+        "claimWallAt": 6.2925
+      },
+      {
+        "id": "level2-node7",
+        "threshold": 1368,
+        "state": "claimed",
+        "unlockAt": 119.23333333332779,
+        "claimAt": 119.23333333332779,
+        "choice": "C",
+        "unlockWallAt": 10.126699999999255,
+        "claimWallAt": 10.12729999999702
+      }
+    ],
+    "completedAt": 1791030208544
+  },
+  "done": true,
+  "finale": false
+}

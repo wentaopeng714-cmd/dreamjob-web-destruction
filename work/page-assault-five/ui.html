@@ -1,0 +1,20 @@
+<div id="survival-guide" hidden><span id="survival-copy"></span><button id="survival-skip" hidden>跳过浏览</button></div>
+<section id="assault-menu" hidden role="dialog" aria-modal="true" aria-labelledby="menu-title">
+ <div class="menu-shell">
+  <header class="menu-header"><b>梦想直聘 <span>网页逆袭</span></b><span>五份记录，一次反击</span></header>
+  <div class="menu-columns">
+   <div class="menu-story">
+    <p class="menu-eyebrow" id="menu-chapter"></p>
+    <h1 id="menu-title">把压力，<br>打回纸上。</h1>
+    <p class="menu-lead" id="menu-lead"></p>
+    <div class="menu-document" aria-label="本关网页摘录"><div><span id="menu-document-type"></span><span>原始记录</span></div><h2 id="menu-document-title"></h2><p id="menu-document-copy"></p><div class="menu-document-footer"><span id="menu-document-tag"></span><svg viewBox="0 0 40 64" width="29" height="46" aria-hidden="true"><circle cx="20" cy="8" r="5" fill="currentColor"/><path d="M20 14v24m0-15-12 9m12-9 13-6M20 38 9 57m11-19 12 17" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></div></div>
+    <div class="menu-actions"><button id="menu-play">浏览网页 · 开始本关 <span>→</span></button><label class="menu-scan-option"><input id="menu-scan" type="checkbox" checked>播放开场浏览动画</label></div>
+    <p class="menu-controls">WASD / 方向键 / 摇杆移动 · 自动攻击<br>点武器或按 1 / 2 / 3 切换主武器 · 靠近血包回血</p>
+   </div>
+   <nav class="menu-levels" aria-label="选择关卡"><div class="menu-section-title"><span>选择你的战场</span><span>01 — 05</span></div><div id="menu-level-list"></div><p class="menu-rule" id="menu-rule"></p><p class="menu-loadout" id="menu-loadout"></p></nav>
+  </div>
+  <footer class="menu-footer"><span>那些文字会从原处袭来。你决定如何回应。</span><button id="menu-audio">音乐 · 开</button></footer>
+ </div>
+</section>
+<div id="assault-intro" hidden aria-live="polite"><div><b id="intro-title"></b><span id="intro-copy">先看看这份记录</span></div><progress id="intro-progress" max="1" value="0" aria-label="开场浏览进度"></progress><button id="intro-skip">跳过 · 进入战场</button></div>
+<div id="survival-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="survival-over-title"><h2 id="survival-over-title">被文字淹没了</h2><p id="survival-over-copy"></p><button id="survival-retry">再试一次</button><button id="survival-review">重新从页底开始</button></div>
